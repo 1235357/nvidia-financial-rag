@@ -1,0 +1,13 @@
+**
+!Dockerfile
+!pyproject.toml
+!README.md
+!LICENSE
+!THIRD_PARTY.md
+!src/
+!src/nvidia_rag/
+!src/nvidia_rag/*.py
+!examples/
+!examples/serve_demo.py
+!constraints/
+!constraints/api-demo.txt

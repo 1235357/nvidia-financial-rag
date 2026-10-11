@@ -1,0 +1,10 @@
+# Dated direct-dependency constraints from the accepted Windows/Python 3.13 API
+# environment. CI verifies this selection on its own OS; transitive dependencies
+# are resolved by pip and archived by CI, so this is not a full hash lockfile.
+PyMuPDF==1.28.2
+numpy==2.5.4
+scikit-learn==1.9.1
+tiktoken==0.14.0
+fastapi==0.143.0
+httpx==0.28.1
+uvicorn==0.54.0

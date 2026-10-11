@@ -1,0 +1,14 @@
+artifacts/
+dist/
+build/
+*.egg-info/
+__pycache__/
+.venv/
+.venv-acceptance/
+.env
+.env.*
+.pytest_cache/
+.ci-api/
+.model-cache/
+.runtime/
+*.log
