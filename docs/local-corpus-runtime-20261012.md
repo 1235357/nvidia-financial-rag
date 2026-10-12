@@ -6,7 +6,7 @@ and completed eight lexical HTTP queries on loopback. The semantic environment
 encoded all 2,855 chunks with a cached BGE model and recorded eight evidence-only
 query results. This establishes the dated local execution described below.
 Financial field support, independent human gold, production capacity and a public
-hosted API remain unverified. Publication CI for this increment has not yet run.
+hosted API remain unverified. [Publication CI](acceptance/ci-api-acceptance-20261012.json) subsequently passed at `155758c` after two test-isolation repairs; it checks synthetic/API/package behavior and does not repeat the real corpus/model experiment.
 
 The [public acceptance summary](acceptance/local-corpus-runtime-20261012.json)
 contains the exact source, package, input and output identities. The underlying
@@ -153,8 +153,9 @@ benchmarks or scale acceptance. Installation and diagnostic histories were
 retained; an incomplete first install log is not retrospectively labelled a
 terminal failure or success.
 
-This increment still needs publication CI and independent reproduction from a
-public clone. Financial field and duration support, threshold calibration,
+The source publication passed Linux/Windows and generated-data container CI at
+`155758c`; independent financial reproduction from a public clone remains open.
+Financial field and duration support, threshold calibration,
 independent human gold, hosted API acceptance and Dot reproduction remain open.
 The four exposed development questions provide a regression investigation, not
 independent acceptance data. The next quality work must address the wrong-year

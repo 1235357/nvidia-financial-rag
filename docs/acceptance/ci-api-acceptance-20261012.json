@@ -1,0 +1,701 @@
+{
+  "actual_bge_model_run": false,
+  "actual_financial_corpus_run": false,
+  "archive_review_completed_at_utc": "2026-10-12T05:35:09.536059+00:00",
+  "archive_review_scope": "Fresh local read-only archive, source, RECORD and published receipt review; official job state was supplied by the parent's independently retrieved run record. No new CI execution.",
+  "browser_native_generation_run": false,
+  "container": {
+    "capabilities_dropped": "ALL",
+    "checks": [
+      "liveness",
+      "hidden_docs",
+      "401_authentication",
+      "422_blank_query",
+      "synthetic_evidence",
+      "empty_answer",
+      "synthetic_refusal",
+      "request_id"
+    ],
+    "financial_corpus_used": false,
+    "http_scope": "generated-data evidence-only transport",
+    "job_id": 114667626745,
+    "model_used": false,
+    "no_new_privileges": true,
+    "published_listener": "127.0.0.1:8000",
+    "read_only": true,
+    "user_asserted": "10001:10001"
+  },
+  "created_at_utc": "2026-10-12T05:04:50.403304+00:00",
+  "dependency_boundary": "Only API extras were installed in the independent consumers; semantic/generation/demo heavyweight extras remain separate.",
+  "historical_local_wheel": {
+    "bytes": 105190,
+    "sha256": "76246d9638a6ddfb30e0abeace884fa67115fa8e38a4187590efeb52f86701e9"
+  },
+  "jobs": [
+    {
+      "conclusion": "success",
+      "id": 114667259710,
+      "name": "package (ubuntu-latest)",
+      "status": "completed",
+      "url": "https://github.com/1235357/nvidia-financial-rag/actions/runs/38205272181/job/114667259710"
+    },
+    {
+      "conclusion": "success",
+      "id": 114667259952,
+      "name": "package (windows-latest)",
+      "status": "completed",
+      "url": "https://github.com/1235357/nvidia-financial-rag/actions/runs/38205272181/job/114667259952"
+    },
+    {
+      "conclusion": "success",
+      "id": 114667626745,
+      "name": "container",
+      "status": "completed",
+      "url": "https://github.com/1235357/nvidia-financial-rag/actions/runs/38205272181/job/114667626745"
+    }
+  ],
+  "not_accepted": [
+    "financial correctness",
+    "human gold",
+    "hosted production API",
+    "load/capacity",
+    "TLS",
+    "financial runtime readiness"
+  ],
+  "platforms": {
+    "Linux": {
+      "artifact": {
+        "bytes": 111688,
+        "sha256": "4cacf1ed957dde8cc2b3b6f4b181e67747126a3935dcdf5f9b85259190f91d88"
+      },
+      "artifact_id": 11727051704,
+      "installed_api_path_verified_then_omitted": true,
+      "installed_contract": {
+        "api_sha256": "8173e9f879509fb9d083f03e9ef4537fc3937e1ed723da75be946435277b3454",
+        "cases": [
+          {
+            "case": "timeout",
+            "error_code": "generation_timeout",
+            "http_status": 504
+          },
+          {
+            "case": "connection",
+            "error_code": "generation_unavailable",
+            "http_status": 503
+          },
+          {
+            "case": "upstream_503",
+            "error_code": "generation_unavailable",
+            "http_status": 503
+          },
+          {
+            "case": "invalid_shape",
+            "error_code": "generation_unavailable",
+            "http_status": 503
+          },
+          {
+            "case": "unfinished",
+            "error_code": "generation_unavailable",
+            "http_status": 503
+          },
+          {
+            "case": "abstention",
+            "error_code": null,
+            "http_status": 200
+          },
+          {
+            "case": "content_veto",
+            "error_code": null,
+            "http_status": 200
+          },
+          {
+            "case": "accepted",
+            "error_code": null,
+            "http_status": 200
+          },
+          {
+            "case": "empty",
+            "error_code": null,
+            "http_status": 200
+          },
+          {
+            "case": "token_counter_failure",
+            "error_code": "generation_unavailable",
+            "http_status": 503
+          },
+          {
+            "case": "prompt_budget",
+            "error_code": null,
+            "http_status": 200
+          }
+        ],
+        "distribution": "0.1.0",
+        "fastapi": "0.143.0",
+        "generation_sha256": "6672737f8de809e3536535e738133f758d858e00ecde1eba103de2c7b1daf0a5",
+        "httpx": "0.28.1",
+        "not_accepted": [
+          "real model/index",
+          "financial correctness",
+          "runtime readiness",
+          "network listener",
+          "load",
+          "TLS",
+          "Linux"
+        ],
+        "python": "3.13.16",
+        "status": "passed"
+      },
+      "installed_wheel_direct_reference_sha256": "2953af30616a0206d1930c7a6c5b501761fd97b0a3ec80b96715cd37c91630f5",
+      "job_id": 114667259710,
+      "members": {
+        "checkout-tests.xml": {
+          "bytes": 50887,
+          "sha256": "bcb7a90c99ae116f31cf116f641335d22a8adab6d5a926c25c73074fad7625b8"
+        },
+        "dist/nvidia_financial_rag-0.1.0-py3-none-any.whl": {
+          "bytes": 105163,
+          "sha256": "2953af30616a0206d1930c7a6c5b501761fd97b0a3ec80b96715cd37c91630f5"
+        },
+        "installed-api-contract.json": {
+          "bytes": 1714,
+          "sha256": "e8ff3dcc80fd83a35c276b2dbaf9853224e55ac9be7b41118371dd8ccc8ebc53"
+        },
+        "resolved-api.txt": {
+          "bytes": 848,
+          "sha256": "9cd3bbd0420804128c64c47596d346c312eb1ad0f8ed3783aca48d827141e8e5"
+        }
+      },
+      "resolved_dependency_versions": {
+        "annotated-doc": "0.0.5",
+        "annotated-types": "0.8.0",
+        "anyio": "4.15.1",
+        "certifi": "2026.7.22",
+        "charset-normalizer": "3.5.2",
+        "click": "8.5.0",
+        "cloudpickle": "3.1.2",
+        "fastapi": "0.143.0",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httptools": "0.9.0",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "joblib": "1.6.0",
+        "narwhals": "2.27.1",
+        "numpy": "2.5.4",
+        "opentelemetry-api": "1.45.1",
+        "pydantic": "2.14.1",
+        "pydantic-core": "2.50.1",
+        "pymupdf": "1.28.2",
+        "python-dotenv": "1.2.4",
+        "pyyaml": "6.0.3",
+        "regex": "2026.9.29",
+        "requests": "2.34.2",
+        "scikit-learn": "1.9.1",
+        "scipy": "1.18.1",
+        "starlette": "1.7.0",
+        "threadpoolctl": "3.7.0",
+        "tiktoken": "0.14.0",
+        "typing-extensions": "4.16.0",
+        "typing-inspection": "0.4.4",
+        "urllib3": "2.8.0",
+        "uvicorn": "0.54.0",
+        "uvloop": "0.23.0",
+        "watchfiles": "1.3.0",
+        "websockets": "17.2"
+      },
+      "tests": {
+        "count": 362,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "xml_seconds": 4.748
+      },
+      "wheel": {
+        "bytes": 105163,
+        "sha256": "2953af30616a0206d1930c7a6c5b501761fd97b0a3ec80b96715cd37c91630f5"
+      }
+    },
+    "Windows": {
+      "artifact": {
+        "bytes": 111920,
+        "sha256": "00a766b5e3f7b7d3875655a3a25db4f45201b59ccf0546fcd9447439dadd1e3c"
+      },
+      "artifact_id": 11727366022,
+      "installed_api_path_verified_then_omitted": true,
+      "installed_contract": {
+        "api_sha256": "8173e9f879509fb9d083f03e9ef4537fc3937e1ed723da75be946435277b3454",
+        "cases": [
+          {
+            "case": "timeout",
+            "error_code": "generation_timeout",
+            "http_status": 504
+          },
+          {
+            "case": "connection",
+            "error_code": "generation_unavailable",
+            "http_status": 503
+          },
+          {
+            "case": "upstream_503",
+            "error_code": "generation_unavailable",
+            "http_status": 503
+          },
+          {
+            "case": "invalid_shape",
+            "error_code": "generation_unavailable",
+            "http_status": 503
+          },
+          {
+            "case": "unfinished",
+            "error_code": "generation_unavailable",
+            "http_status": 503
+          },
+          {
+            "case": "abstention",
+            "error_code": null,
+            "http_status": 200
+          },
+          {
+            "case": "content_veto",
+            "error_code": null,
+            "http_status": 200
+          },
+          {
+            "case": "accepted",
+            "error_code": null,
+            "http_status": 200
+          },
+          {
+            "case": "empty",
+            "error_code": null,
+            "http_status": 200
+          },
+          {
+            "case": "token_counter_failure",
+            "error_code": "generation_unavailable",
+            "http_status": 503
+          },
+          {
+            "case": "prompt_budget",
+            "error_code": null,
+            "http_status": 200
+          }
+        ],
+        "distribution": "0.1.0",
+        "fastapi": "0.143.0",
+        "generation_sha256": "6672737f8de809e3536535e738133f758d858e00ecde1eba103de2c7b1daf0a5",
+        "httpx": "0.28.1",
+        "not_accepted": [
+          "real model/index",
+          "financial correctness",
+          "runtime readiness",
+          "network listener",
+          "load",
+          "TLS",
+          "Linux"
+        ],
+        "python": "3.13.15",
+        "status": "passed"
+      },
+      "installed_wheel_direct_reference_sha256": "9593b73dae91e61b172de3b8f2fec2fe93332f5521ca681970097527b3d595ab",
+      "job_id": 114667259952,
+      "members": {
+        "checkout-tests.xml": {
+          "bytes": 50888,
+          "sha256": "dcdbbf39ee8ff3a0d97f3d4d9e68b205bd97992dba79a3bcc9bf56e92bc85e02"
+        },
+        "dist/nvidia_financial_rag-0.1.0-py3-none-any.whl": {
+          "bytes": 105190,
+          "sha256": "9593b73dae91e61b172de3b8f2fec2fe93332f5521ca681970097527b3d595ab"
+        },
+        "installed-api-contract.json": {
+          "bytes": 1773,
+          "sha256": "baf7855dfa6f50cd39189b3ce4c076ef2216554d3cb50595317ec05b2c13cf94"
+        },
+        "resolved-api.txt": {
+          "bytes": 857,
+          "sha256": "a46facbd9b821a4edd892b68c0dd39eb53cc7dc3e4edcd27d5bfcc8d92853c47"
+        }
+      },
+      "resolved_dependency_versions": {
+        "annotated-doc": "0.0.5",
+        "annotated-types": "0.8.0",
+        "anyio": "4.15.1",
+        "certifi": "2026.7.22",
+        "charset-normalizer": "3.5.2",
+        "click": "8.5.0",
+        "cloudpickle": "3.1.2",
+        "fastapi": "0.143.0",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httptools": "0.9.0",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "joblib": "1.6.0",
+        "narwhals": "2.27.1",
+        "numpy": "2.5.4",
+        "opentelemetry-api": "1.45.1",
+        "pydantic": "2.14.1",
+        "pydantic-core": "2.50.1",
+        "pymupdf": "1.28.2",
+        "python-dotenv": "1.2.4",
+        "pyyaml": "6.0.3",
+        "regex": "2026.9.29",
+        "requests": "2.34.2",
+        "scikit-learn": "1.9.1",
+        "scipy": "1.18.1",
+        "starlette": "1.7.0",
+        "threadpoolctl": "3.7.0",
+        "tiktoken": "0.14.0",
+        "typing-extensions": "4.16.0",
+        "typing-inspection": "0.4.4",
+        "urllib3": "2.8.0",
+        "uvicorn": "0.54.0",
+        "watchfiles": "1.3.0",
+        "websockets": "17.2"
+      },
+      "tests": {
+        "count": 362,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "xml_seconds": 10.895
+      },
+      "wheel": {
+        "bytes": 105190,
+        "sha256": "9593b73dae91e61b172de3b8f2fec2fe93332f5521ca681970097527b3d595ab"
+      }
+    }
+  },
+  "receipt_scope_note": "The ASGI installed-contract receipt retains its generic not_accepted list including Linux and network listener. OS and actual loopback transport were separately established by these successful jobs and their logs.",
+  "schema_version": 1,
+  "scope": "two-platform checkout/package/isolated-API checks and nonroot generated-data container HTTP",
+  "source_commit": "155758ca536354933a1f29075eb9cc48ada78932",
+  "status": "passed_at_stated_ci_scope",
+  "wheel_identity_boundary": "CI wheels are fresh builds with their own archive digests; they are not the historical local accepted wheel.",
+  "wheel_member_audit": {
+    "Linux_Windows_METADATA_difference": {
+      "Linux": {
+        "bytes": 14014,
+        "sha256": "340ec01684575ad6f3d1c488fd74f971420a13f2fd4cfc7e9802ca2191f1e03d"
+      },
+      "Windows": {
+        "bytes": 14186,
+        "sha256": "e8f27a122508213422068127e05542ff75c29e7e4a99bedf27d8f6ae32b54ce0"
+      },
+      "Windows_CRLF_pairs": 172,
+      "classification": "Only CRLF versus LF; parsed package description matches committed README after named LF normalization."
+    },
+    "Linux_Windows_RECORD_difference": "Only the METADATA digest and byte count differ; both complete RECORD files independently verify.",
+    "Linux_Windows_member_body_differences": [
+      "nvidia_financial_rag-0.1.0.dist-info/METADATA",
+      "nvidia_financial_rag-0.1.0.dist-info/RECORD"
+    ],
+    "Windows_historical_all_22_member_bodies_raw_byte_equal": true,
+    "Windows_historical_zip_entry_metadata_difference": "All 22 entries have different timestamps; all other inspected ZipInfo fields are equal.",
+    "all_sixteen_modules_raw_byte_equal_to_source_commit_and_worktree": true,
+    "complete_wheel_byte_reproducibility_claimed": false,
+    "module_count_per_wheel": 16,
+    "modules": {
+      "nvidia_rag/__init__.py": {
+        "Linux": {
+          "bytes": 487,
+          "sha256": "7813b376c6630a10dbcc47d3aab8391d1d6d352ee33947ac59667907da107ab7"
+        },
+        "Windows": {
+          "bytes": 487,
+          "sha256": "7813b376c6630a10dbcc47d3aab8391d1d6d352ee33947ac59667907da107ab7"
+        },
+        "historical": {
+          "bytes": 487,
+          "sha256": "7813b376c6630a10dbcc47d3aab8391d1d6d352ee33947ac59667907da107ab7"
+        },
+        "source": {
+          "bytes": 487,
+          "sha256": "7813b376c6630a10dbcc47d3aab8391d1d6d352ee33947ac59667907da107ab7"
+        }
+      },
+      "nvidia_rag/api.py": {
+        "Linux": {
+          "bytes": 10700,
+          "sha256": "8173e9f879509fb9d083f03e9ef4537fc3937e1ed723da75be946435277b3454"
+        },
+        "Windows": {
+          "bytes": 10700,
+          "sha256": "8173e9f879509fb9d083f03e9ef4537fc3937e1ed723da75be946435277b3454"
+        },
+        "historical": {
+          "bytes": 10700,
+          "sha256": "8173e9f879509fb9d083f03e9ef4537fc3937e1ed723da75be946435277b3454"
+        },
+        "source": {
+          "bytes": 10700,
+          "sha256": "8173e9f879509fb9d083f03e9ef4537fc3937e1ed723da75be946435277b3454"
+        }
+      },
+      "nvidia_rag/conversation.py": {
+        "Linux": {
+          "bytes": 2618,
+          "sha256": "bb0b745c4afeb204b07959cbba744e71bdf16df0870ca3ae8b483481ea5521ed"
+        },
+        "Windows": {
+          "bytes": 2618,
+          "sha256": "bb0b745c4afeb204b07959cbba744e71bdf16df0870ca3ae8b483481ea5521ed"
+        },
+        "historical": {
+          "bytes": 2618,
+          "sha256": "bb0b745c4afeb204b07959cbba744e71bdf16df0870ca3ae8b483481ea5521ed"
+        },
+        "source": {
+          "bytes": 2618,
+          "sha256": "bb0b745c4afeb204b07959cbba744e71bdf16df0870ca3ae8b483481ea5521ed"
+        }
+      },
+      "nvidia_rag/core.py": {
+        "Linux": {
+          "bytes": 14172,
+          "sha256": "aa057293545956c7de9c233ae41432d9b6daffc23640fe9fc2869d89d91ad438"
+        },
+        "Windows": {
+          "bytes": 14172,
+          "sha256": "aa057293545956c7de9c233ae41432d9b6daffc23640fe9fc2869d89d91ad438"
+        },
+        "historical": {
+          "bytes": 14172,
+          "sha256": "aa057293545956c7de9c233ae41432d9b6daffc23640fe9fc2869d89d91ad438"
+        },
+        "source": {
+          "bytes": 14172,
+          "sha256": "aa057293545956c7de9c233ae41432d9b6daffc23640fe9fc2869d89d91ad438"
+        }
+      },
+      "nvidia_rag/corpus.py": {
+        "Linux": {
+          "bytes": 24256,
+          "sha256": "00fb1c1c3360875fb6d6d1e06040388276eb9672a352d382f7195b81147e8e7f"
+        },
+        "Windows": {
+          "bytes": 24256,
+          "sha256": "00fb1c1c3360875fb6d6d1e06040388276eb9672a352d382f7195b81147e8e7f"
+        },
+        "historical": {
+          "bytes": 24256,
+          "sha256": "00fb1c1c3360875fb6d6d1e06040388276eb9672a352d382f7195b81147e8e7f"
+        },
+        "source": {
+          "bytes": 24256,
+          "sha256": "00fb1c1c3360875fb6d6d1e06040388276eb9672a352d382f7195b81147e8e7f"
+        }
+      },
+      "nvidia_rag/corpus_embeddings.py": {
+        "Linux": {
+          "bytes": 18839,
+          "sha256": "a340decf0e1435b7ecb5efe21cb6211fc4d5a8e9e71644c6fc403ed460ecdbcb"
+        },
+        "Windows": {
+          "bytes": 18839,
+          "sha256": "a340decf0e1435b7ecb5efe21cb6211fc4d5a8e9e71644c6fc403ed460ecdbcb"
+        },
+        "historical": {
+          "bytes": 18839,
+          "sha256": "a340decf0e1435b7ecb5efe21cb6211fc4d5a8e9e71644c6fc403ed460ecdbcb"
+        },
+        "source": {
+          "bytes": 18839,
+          "sha256": "a340decf0e1435b7ecb5efe21cb6211fc4d5a8e9e71644c6fc403ed460ecdbcb"
+        }
+      },
+      "nvidia_rag/demo.py": {
+        "Linux": {
+          "bytes": 59767,
+          "sha256": "6e649bde9413d2106569d8bc66abcba190f9cfdbc878f777bfbda0b94e10af8e"
+        },
+        "Windows": {
+          "bytes": 59767,
+          "sha256": "6e649bde9413d2106569d8bc66abcba190f9cfdbc878f777bfbda0b94e10af8e"
+        },
+        "historical": {
+          "bytes": 59767,
+          "sha256": "6e649bde9413d2106569d8bc66abcba190f9cfdbc878f777bfbda0b94e10af8e"
+        },
+        "source": {
+          "bytes": 59767,
+          "sha256": "6e649bde9413d2106569d8bc66abcba190f9cfdbc878f777bfbda0b94e10af8e"
+        }
+      },
+      "nvidia_rag/embedding_store.py": {
+        "Linux": {
+          "bytes": 5125,
+          "sha256": "7922b538ab9206b8a81670d7f1ee9a49484eb3141bba933c871dc549314075f4"
+        },
+        "Windows": {
+          "bytes": 5125,
+          "sha256": "7922b538ab9206b8a81670d7f1ee9a49484eb3141bba933c871dc549314075f4"
+        },
+        "historical": {
+          "bytes": 5125,
+          "sha256": "7922b538ab9206b8a81670d7f1ee9a49484eb3141bba933c871dc549314075f4"
+        },
+        "source": {
+          "bytes": 5125,
+          "sha256": "7922b538ab9206b8a81670d7f1ee9a49484eb3141bba933c871dc549314075f4"
+        }
+      },
+      "nvidia_rag/evaluation.py": {
+        "Linux": {
+          "bytes": 50705,
+          "sha256": "295f2cc64dce5d0adce28c4e675c113d95c33d154a5c9b2a76bc8c26b71807ab"
+        },
+        "Windows": {
+          "bytes": 50705,
+          "sha256": "295f2cc64dce5d0adce28c4e675c113d95c33d154a5c9b2a76bc8c26b71807ab"
+        },
+        "historical": {
+          "bytes": 50705,
+          "sha256": "295f2cc64dce5d0adce28c4e675c113d95c33d154a5c9b2a76bc8c26b71807ab"
+        },
+        "source": {
+          "bytes": 50705,
+          "sha256": "295f2cc64dce5d0adce28c4e675c113d95c33d154a5c9b2a76bc8c26b71807ab"
+        }
+      },
+      "nvidia_rag/generation.py": {
+        "Linux": {
+          "bytes": 42320,
+          "sha256": "6672737f8de809e3536535e738133f758d858e00ecde1eba103de2c7b1daf0a5"
+        },
+        "Windows": {
+          "bytes": 42320,
+          "sha256": "6672737f8de809e3536535e738133f758d858e00ecde1eba103de2c7b1daf0a5"
+        },
+        "historical": {
+          "bytes": 42320,
+          "sha256": "6672737f8de809e3536535e738133f758d858e00ecde1eba103de2c7b1daf0a5"
+        },
+        "source": {
+          "bytes": 42320,
+          "sha256": "6672737f8de809e3536535e738133f758d858e00ecde1eba103de2c7b1daf0a5"
+        }
+      },
+      "nvidia_rag/ingest.py": {
+        "Linux": {
+          "bytes": 12366,
+          "sha256": "6f9e91715a789046c1c7fa827de205948da6cce9e05a3f6e7a1b3d171738838f"
+        },
+        "Windows": {
+          "bytes": 12366,
+          "sha256": "6f9e91715a789046c1c7fa827de205948da6cce9e05a3f6e7a1b3d171738838f"
+        },
+        "historical": {
+          "bytes": 12366,
+          "sha256": "6f9e91715a789046c1c7fa827de205948da6cce9e05a3f6e7a1b3d171738838f"
+        },
+        "source": {
+          "bytes": 12366,
+          "sha256": "6f9e91715a789046c1c7fa827de205948da6cce9e05a3f6e7a1b3d171738838f"
+        }
+      },
+      "nvidia_rag/retrieval.py": {
+        "Linux": {
+          "bytes": 29787,
+          "sha256": "fe72d9a2b3e04078972db26cb528af7982e1c284f000be334e4c8f827c0933dc"
+        },
+        "Windows": {
+          "bytes": 29787,
+          "sha256": "fe72d9a2b3e04078972db26cb528af7982e1c284f000be334e4c8f827c0933dc"
+        },
+        "historical": {
+          "bytes": 29787,
+          "sha256": "fe72d9a2b3e04078972db26cb528af7982e1c284f000be334e4c8f827c0933dc"
+        },
+        "source": {
+          "bytes": 29787,
+          "sha256": "fe72d9a2b3e04078972db26cb528af7982e1c284f000be334e4c8f827c0933dc"
+        }
+      },
+      "nvidia_rag/runtime.py": {
+        "Linux": {
+          "bytes": 2721,
+          "sha256": "486198cc3c508d5a5092a9d39aab2f00b5c7fb8e05b5f505aa05ec0c757f6646"
+        },
+        "Windows": {
+          "bytes": 2721,
+          "sha256": "486198cc3c508d5a5092a9d39aab2f00b5c7fb8e05b5f505aa05ec0c757f6646"
+        },
+        "historical": {
+          "bytes": 2721,
+          "sha256": "486198cc3c508d5a5092a9d39aab2f00b5c7fb8e05b5f505aa05ec0c757f6646"
+        },
+        "source": {
+          "bytes": 2721,
+          "sha256": "486198cc3c508d5a5092a9d39aab2f00b5c7fb8e05b5f505aa05ec0c757f6646"
+        }
+      },
+      "nvidia_rag/service.py": {
+        "Linux": {
+          "bytes": 2825,
+          "sha256": "afe876f279080d8b74774a59b286c8d8847dab75be0472a33771ffbddddc218e"
+        },
+        "Windows": {
+          "bytes": 2825,
+          "sha256": "afe876f279080d8b74774a59b286c8d8847dab75be0472a33771ffbddddc218e"
+        },
+        "historical": {
+          "bytes": 2825,
+          "sha256": "afe876f279080d8b74774a59b286c8d8847dab75be0472a33771ffbddddc218e"
+        },
+        "source": {
+          "bytes": 2825,
+          "sha256": "afe876f279080d8b74774a59b286c8d8847dab75be0472a33771ffbddddc218e"
+        }
+      },
+      "nvidia_rag/sources.py": {
+        "Linux": {
+          "bytes": 11439,
+          "sha256": "4007e680e42a4df0a5f71f27094073686d3eebe94f8d61552e2c0f088fec1d2a"
+        },
+        "Windows": {
+          "bytes": 11439,
+          "sha256": "4007e680e42a4df0a5f71f27094073686d3eebe94f8d61552e2c0f088fec1d2a"
+        },
+        "historical": {
+          "bytes": 11439,
+          "sha256": "4007e680e42a4df0a5f71f27094073686d3eebe94f8d61552e2c0f088fec1d2a"
+        },
+        "source": {
+          "bytes": 11439,
+          "sha256": "4007e680e42a4df0a5f71f27094073686d3eebe94f8d61552e2c0f088fec1d2a"
+        }
+      },
+      "nvidia_rag/table_structure.py": {
+        "Linux": {
+          "bytes": 17945,
+          "sha256": "bce239ee844ec5a172b2a658fdf39e1eec27078da83027925a846319544ecefa"
+        },
+        "Windows": {
+          "bytes": 17945,
+          "sha256": "bce239ee844ec5a172b2a658fdf39e1eec27078da83027925a846319544ecefa"
+        },
+        "historical": {
+          "bytes": 17945,
+          "sha256": "bce239ee844ec5a172b2a658fdf39e1eec27078da83027925a846319544ecefa"
+        },
+        "source": {
+          "bytes": 17945,
+          "sha256": "bce239ee844ec5a172b2a658fdf39e1eec27078da83027925a846319544ecefa"
+        }
+      }
+    },
+    "new_installation_build_model_or_network_run": false,
+    "record_rows_per_wheel": 22,
+    "record_self_entry": "Empty hash and size; every other row independently matches the exact member body.",
+    "source_commit": "155758ca536354933a1f29075eb9cc48ada78932",
+    "status": "passed_at_finite_member_scope"
+  },
+  "workflow_run": {
+    "conclusion": "success",
+    "id": 38205272181,
+    "status": "completed",
+    "url": "https://github.com/1235357/nvidia-financial-rag/actions/runs/38205272181"
+  }
+}

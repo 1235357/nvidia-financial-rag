@@ -4,6 +4,10 @@ An evidence-first Python library and authenticated FastAPI adapter for financial
 
 This is an independent development project licensed under **AGPL-3.0-or-later**. Review [LICENSE](LICENSE) and [third-party and data rights](THIRD_PARTY.md) before integration. The mandatory PyMuPDF/MuPDF dependency has AGPL/commercial terms; this release does not promise unrestricted proprietary relicensing of the combined runtime.
 
+The [ten-report corpus guide](docs/ten-report-corpus-20261012.md) records 3,240 source-linked chunks, a pinned BGE passage matrix and 24 exposed development queries. Its [issuer source registry](corpus/sources-ten-reports.json) and [runtime metadata](docs/acceptance/local-ten-report-runtime-20261012.json) preserve exact provenance. Financial readiness failed: global retrieval accepts unrelated annual-report passages and the current similarity threshold rejects some correct statement pages. Use these recorded cases to reproduce and improve retrieval; they are not an accuracy claim.
+
+[Workflow 38205272181](https://github.com/1235357/nvidia-financial-rag/actions/runs/38205272181) passed Linux/Windows checkout, fresh installed API and nonroot generated-data container HTTP checks at `155758ca536354933a1f29075eb9cc48ada78932`. [The independent archive review](docs/acceptance/ci-api-acceptance-20261012.json) verifies both 362-test results and each rebuilt wheel's modules/RECORD. CI uses synthetic evidence and does not run the actual BGE experiment or establish financial readiness.
+
 ## Run the generated-data API
 
 Python package metadata permits Python 3.11 and later. The dated local acceptance used Windows/Python 3.13; the release workflow checks Python 3.13 on Linux and Windows. Read the actual workflow result before treating either platform as accepted for a particular commit.
