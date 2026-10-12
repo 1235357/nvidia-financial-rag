@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "document_id": "nvidia-fy2021-annual",
+      "label": "NVIDIA Form 10-K, fiscal 2021, year ended January 31, 2021",
+      "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2021/q4/0ec16816-55e2-4812-8f77-75cab5909247.pdf",
+      "filename": "nvidia-fy2021-10k.pdf",
+      "sha256": "a9b562ceebfcc8e59869c66625409de01329753e9750da57984c946f2bd08eb7"
+    },
+    {
+      "document_id": "nvidia-fy2027-q2",
+      "label": "NVIDIA Form 10-Q, fiscal 2027 Q2, quarter ended July 26, 2026",
+      "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2027/q2/9498713c-0387-46ee-ba58-9412ca866dce.pdf",
+      "filename": "nvidia-fy2027-q2.pdf",
+      "sha256": "160d966b72adcf9e63a68d6c52d323526311516fc28737043b79cd74f2e932db"
+    },
+    {
+      "document_id": "nvidia-fy2026-annual",
+      "label": "NVIDIA fiscal 2026 annual review",
+      "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2026/ar/2026-Annual-Report-Web.pdf",
+      "filename": "nvidia-fy2026-annual.pdf",
+      "sha256": "0e725ba048221539dca3eb1a4e70febfcbb785e9afb96cd3ff0b035d7d734e5c"
+    },
+    {
+      "document_id": "nvidia-fy2025-annual",
+      "label": "NVIDIA fiscal 2025 annual review",
+      "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2025/annual/NVIDIA-2025-Annual-Report.pdf",
+      "filename": "nvidia-fy2025-annual.pdf",
+      "sha256": "757b344ab62ba282f6e44e0702e8ce5f190d88fb23b5e0a2beaf4cb277a395cc"
+    },
+    {
+      "document_id": "nvidia-fy2025-q2",
+      "reporting_period": {
+        "fiscal_year": 2025,
+        "quarter": 2,
+        "end_date": "2024-07-28",
+        "source_locator": "PDF page 1 quarterly end date; page 12 Note 5 second quarter of fiscal year 2025; page 3 three/six-month income columns",
+        "reviewed_by": "Codex local PDF text and page 3 visual review 2026-09-30; not student mastery"
+      },
+      "label": "NVIDIA Form 10-Q, fiscal 2025 Q2, quarter ended July 28, 2024",
+      "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2025/q2/78501ce3-7816-4c4d-8688-53dd140df456.pdf",
+      "filename": "nvidia-fy2025-q2.pdf",
+      "sha256": "35d94221f0ed30f974b4fe6536fa54ff40945265d8b354b0ae17066c8856a861"
+    },
+    {
+      "document_id": "nvidia-fy2024-annual",
+      "label": "NVIDIA fiscal 2024 annual review",
+      "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2024/ar/NVIDIA-2024-Annual-Report.pdf",
+      "filename": "nvidia-fy2024-annual.pdf",
+      "sha256": "b0de35ded9da9463d5c33dce77cf9b2158b88cf666f144646d0cc64af23c5960"
+    },
+    {
+      "document_id": "nvidia-fy2023-annual",
+      "label": "NVIDIA fiscal 2023 annual review",
+      "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2023/ar/2023-Annual-Report-1.pdf",
+      "filename": "nvidia-fy2023-annual.pdf",
+      "sha256": "7bbb6ec51fa8fea39f46cccb16153e3d290bcfd0507c4410bc0c1de71e3e764f"
+    },
+    {
+      "document_id": "nvidia-fy2022-annual",
+      "label": "NVIDIA fiscal 2022 annual review",
+      "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2022/ar/2022-Annual-Review.pdf",
+      "filename": "nvidia-fy2022-annual.pdf",
+      "sha256": "fc9da67f18d3ab5fbf0ffaa70ff652a23f501976bb3369a71f2fdaa1d87b1815"
+    }
+  ]
+}

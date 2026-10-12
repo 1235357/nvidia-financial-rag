@@ -91,6 +91,8 @@ The demo has a 16-connection Uvicorn concurrency bound and a five-second keep-al
 
 ## Real financial-corpus runtime
 
+The [local financial-corpus recipe](docs/local-financial-corpus.md) adds an operator-local build and strict verified loader for the [eight pinned source registrations](corpus/sources-annual-plus-fy2025-q2.json), then exposes an explicitly scoped CPU TF-IDF evidence API through the installed `nvidia_rag.corpus` interfaces. PDFs, extracted chunks, vectors and models remain external. Build the reviewed wheel once, install that exact identified wheel, supply prepared local files/cache, and distinguish real-corpus HTTP equivalence from semantic retrieval, financial field support and generation acceptance. The recipe does not turn an older index count or a synthetic transport test into current financial acceptance.
+
 The existing [run_api.py](run_api.py) is a separate model-backed source-tree launcher. Prepare approved chunks, corpus/embedding manifests, matching vectors and a cached pinned BGE model outside Git. It defaults to cached models, CUDA and generation disabled; use explicit CPU settings where appropriate:
 
 ```text

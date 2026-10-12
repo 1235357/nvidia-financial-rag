@@ -1,0 +1,472 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS-scoped-local-installed-corpus-http-bge-runtime",
+  "observedAtUtc": "2026-10-12T01:30:50.543737+00:00",
+  "scope": "One reviewed wheel, operator-supplied eight PDFs, strict portable corpus, actual lexical loopback HTTP and cached CPU BGE evidence-only comparison; separate local acceptance scopes",
+  "sourceBaseline": "082c208a120a54090a186f16b530fe45859e056f",
+  "sourceFiles": [
+    {
+      "path": "README.md",
+      "bytes": 12734,
+      "sha256": "be234d5b8148e779561d1ddab46bd0ac4831adf480ba0fc3e83a2648c50608fc"
+    },
+    {
+      "path": "src/nvidia_rag/core.py",
+      "bytes": 14172,
+      "sha256": "aa057293545956c7de9c233ae41432d9b6daffc23640fe9fc2869d89d91ad438"
+    },
+    {
+      "path": "src/nvidia_rag/ingest.py",
+      "bytes": 12366,
+      "sha256": "6f9e91715a789046c1c7fa827de205948da6cce9e05a3f6e7a1b3d171738838f"
+    },
+    {
+      "path": "src/nvidia_rag/corpus.py",
+      "bytes": 24256,
+      "sha256": "00fb1c1c3360875fb6d6d1e06040388276eb9672a352d382f7195b81147e8e7f"
+    },
+    {
+      "path": "src/nvidia_rag/corpus_embeddings.py",
+      "bytes": 18839,
+      "sha256": "a340decf0e1435b7ecb5efe21cb6211fc4d5a8e9e71644c6fc403ed460ecdbcb"
+    },
+    {
+      "path": "examples/build_corpus.py",
+      "bytes": 746,
+      "sha256": "faa6b84ba5cc972ea64c6802b71fff567831146b161f15cef871ee6003ee0272"
+    },
+    {
+      "path": "examples/serve_corpus.py",
+      "bytes": 2544,
+      "sha256": "036f25c6204cdb081dcbaee849ca6a34debc71738b67607a6b2af918ceef5970"
+    },
+    {
+      "path": "examples/build_corpus_embeddings.py",
+      "bytes": 788,
+      "sha256": "d6db5129f390d53f04cd913f05c42c4143555d50f506b67a5d7157bb5ba155d6"
+    },
+    {
+      "path": "acceptance/corpus_consumer.py",
+      "bytes": 14849,
+      "sha256": "570676604c1771c12390bf79e8f9cfd2c36813ba1440ba7f5a9b972a3a3158cf"
+    },
+    {
+      "path": "acceptance/corpus_semantic.py",
+      "bytes": 15415,
+      "sha256": "632c96ea2e1176ed62e8073614384e400d677f9d5fa27403285a72d69ff9fc27"
+    },
+    {
+      "path": "tests/test_corpus_recipe.py",
+      "bytes": 33919,
+      "sha256": "9d6b5ef02aa5ebd092a8d3fe672846c5729a3e31c3195ec6f9a7c600ede9620c"
+    },
+    {
+      "path": "tests/test_corpus_consumer.py",
+      "bytes": 14995,
+      "sha256": "0a8d344a330961f54dbbac36b58b8a4699db6999888ab21bcd1051789cf03c40"
+    },
+    {
+      "path": "tests/test_corpus_embeddings.py",
+      "bytes": 22822,
+      "sha256": "03ca266e9730c81e641c69439c81b916d8a7d31fe742adf2d03e7a13a0cd1b61"
+    },
+    {
+      "path": "tests/test_corpus_semantic.py",
+      "bytes": 21334,
+      "sha256": "b87dc084e3021728b0094a7cc9b8913c3b2abf4a842af0c41dad938b228587f0"
+    },
+    {
+      "path": "corpus/sources-annual-plus-fy2025-q2.json",
+      "bytes": 3274,
+      "sha256": "74379f0ecb5b131ca8562d2713a13147dc538047e7f2e2b03212ca6f2f7ed495"
+    },
+    {
+      "path": "docs/local-financial-corpus.md",
+      "bytes": 24585,
+      "sha256": "dff933fdd80edfc4182ac8317436b684b24c9a94d36a231197bee2a9c4a30257"
+    }
+  ],
+  "packageModules": [
+    {
+      "path": "nvidia_rag/__init__.py",
+      "bytes": 487,
+      "sha256": "7813b376c6630a10dbcc47d3aab8391d1d6d352ee33947ac59667907da107ab7"
+    },
+    {
+      "path": "nvidia_rag/api.py",
+      "bytes": 10700,
+      "sha256": "8173e9f879509fb9d083f03e9ef4537fc3937e1ed723da75be946435277b3454"
+    },
+    {
+      "path": "nvidia_rag/conversation.py",
+      "bytes": 2618,
+      "sha256": "bb0b745c4afeb204b07959cbba744e71bdf16df0870ca3ae8b483481ea5521ed"
+    },
+    {
+      "path": "nvidia_rag/core.py",
+      "bytes": 14172,
+      "sha256": "aa057293545956c7de9c233ae41432d9b6daffc23640fe9fc2869d89d91ad438"
+    },
+    {
+      "path": "nvidia_rag/corpus_embeddings.py",
+      "bytes": 18839,
+      "sha256": "a340decf0e1435b7ecb5efe21cb6211fc4d5a8e9e71644c6fc403ed460ecdbcb"
+    },
+    {
+      "path": "nvidia_rag/corpus.py",
+      "bytes": 24256,
+      "sha256": "00fb1c1c3360875fb6d6d1e06040388276eb9672a352d382f7195b81147e8e7f"
+    },
+    {
+      "path": "nvidia_rag/demo.py",
+      "bytes": 59767,
+      "sha256": "6e649bde9413d2106569d8bc66abcba190f9cfdbc878f777bfbda0b94e10af8e"
+    },
+    {
+      "path": "nvidia_rag/embedding_store.py",
+      "bytes": 5125,
+      "sha256": "7922b538ab9206b8a81670d7f1ee9a49484eb3141bba933c871dc549314075f4"
+    },
+    {
+      "path": "nvidia_rag/evaluation.py",
+      "bytes": 50705,
+      "sha256": "295f2cc64dce5d0adce28c4e675c113d95c33d154a5c9b2a76bc8c26b71807ab"
+    },
+    {
+      "path": "nvidia_rag/generation.py",
+      "bytes": 42320,
+      "sha256": "6672737f8de809e3536535e738133f758d858e00ecde1eba103de2c7b1daf0a5"
+    },
+    {
+      "path": "nvidia_rag/ingest.py",
+      "bytes": 12366,
+      "sha256": "6f9e91715a789046c1c7fa827de205948da6cce9e05a3f6e7a1b3d171738838f"
+    },
+    {
+      "path": "nvidia_rag/retrieval.py",
+      "bytes": 29787,
+      "sha256": "fe72d9a2b3e04078972db26cb528af7982e1c284f000be334e4c8f827c0933dc"
+    },
+    {
+      "path": "nvidia_rag/runtime.py",
+      "bytes": 2721,
+      "sha256": "486198cc3c508d5a5092a9d39aab2f00b5c7fb8e05b5f505aa05ec0c757f6646"
+    },
+    {
+      "path": "nvidia_rag/service.py",
+      "bytes": 2825,
+      "sha256": "afe876f279080d8b74774a59b286c8d8847dab75be0472a33771ffbddddc218e"
+    },
+    {
+      "path": "nvidia_rag/sources.py",
+      "bytes": 11439,
+      "sha256": "4007e680e42a4df0a5f71f27094073686d3eebe94f8d61552e2c0f088fec1d2a"
+    },
+    {
+      "path": "nvidia_rag/table_structure.py",
+      "bytes": 17945,
+      "sha256": "bce239ee844ec5a172b2a658fdf39e1eec27078da83027925a846319544ecefa"
+    }
+  ],
+  "wheel": {
+    "bytes": 105190,
+    "sha256": "76246d9638a6ddfb30e0abeace884fa67115fa8e38a4187590efeb52f86701e9"
+  },
+  "sourceReview": {
+    "status": "PASS",
+    "controlledTests": [
+      {
+        "pass": 239,
+        "seconds": 7.16,
+        "warnings": 1,
+        "sha256": "91add48d0d439c49bfd533fef7d812e79295e9fd50b8f9e6599b5a91bd12ee0a"
+      },
+      {
+        "pass": 362,
+        "seconds": 7.03,
+        "warnings": 1,
+        "sha256": "3474bb016454877bf6ce898f0c7e388d7aea9b2b174b704e3939f049d7a4aa38"
+      }
+    ]
+  },
+  "corpus": {
+    "documents": 8,
+    "physicalPages": 1153,
+    "nonemptyPages": 1137,
+    "chunks": 2855,
+    "sourcePdfBytes": 167056483,
+    "profile": "plain-word-safe-400-0-v1",
+    "inputs": [
+      {
+        "bytes": 2685,
+        "path": "artifacts/portable-word-safe-20261011-01/build-receipt.json",
+        "sha256": "6650f22ba1b1c67bf176410ff54d0431d4188d7b9be9f3759b63533ca8031e73"
+      },
+      {
+        "bytes": 4612,
+        "path": "artifacts/portable-word-safe-20261011-01/manifest.json",
+        "sha256": "c2d7f10787071e749be5b175559a08a569683550b0139c532413300d8107dac6"
+      },
+      {
+        "bytes": 4589830,
+        "path": "artifacts/portable-word-safe-20261011-01/chunks.jsonl",
+        "sha256": "2360ddf7959f455da88a4d8005342f267c321cbe8a2b13ecefd9652ec4b25ae5"
+      }
+    ]
+  },
+  "lexicalHttp": {
+    "scopeChildren": 2,
+    "actualHttpQueries": 8,
+    "threshold": 0.0,
+    "topK": 5,
+    "generationRuns": 0,
+    "durationCollision": "Three/six month revenue lists share p29; three/six net-income lists share p31 in each scope",
+    "candidatePage3InTop5": false,
+    "independentReview": {
+      "bytes": 20892,
+      "sha256": "99805d4a9eb224b60c7e4a0368c88b8358861345ad33f107c75916fa51b91515",
+      "checks": 27,
+      "scope": "Installed artifact/source/hash/transport receipt closure; no rerun HTTP/model"
+    }
+  },
+  "semantic": {
+    "model": "BAAI/bge-small-en-v1.5",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "device": "cpu",
+    "localFilesOnly": true,
+    "matrix": {
+      "dtype": "float32",
+      "finite": true,
+      "maximum_norm": 1.0000001192092896,
+      "minimum_norm": 0.9999998807907104,
+      "shape": [
+        2855,
+        384
+      ],
+      "writeable": false
+    },
+    "modelInputs": {
+      "candidate_questions": {
+        "bytes": 19060,
+        "sha256": "9cf18ce2edd0a0348df794e4b5526c6155eef869525e9b22385b007f16deb21d"
+      },
+      "corpus/build-receipt.json": {
+        "bytes": 2685,
+        "sha256": "6650f22ba1b1c67bf176410ff54d0431d4188d7b9be9f3759b63533ca8031e73"
+      },
+      "corpus/chunks.jsonl": {
+        "bytes": 4589830,
+        "sha256": "2360ddf7959f455da88a4d8005342f267c321cbe8a2b13ecefd9652ec4b25ae5"
+      },
+      "corpus/manifest.json": {
+        "bytes": 4612,
+        "sha256": "c2d7f10787071e749be5b175559a08a569683550b0139c532413300d8107dac6"
+      },
+      "registry": {
+        "bytes": 3274,
+        "sha256": "74379f0ecb5b131ca8562d2713a13147dc538047e7f2e2b03212ca6f2f7ed495"
+      },
+      "wheel": {
+        "bytes": 105190,
+        "sha256": "76246d9638a6ddfb30e0abeace884fa67115fa8e38a4187590efeb52f86701e9"
+      }
+    },
+    "vectorsSha256": "a159cf92ec65912d4ffb14da2994a8e321b75d861240ba081aae88667d2e49d3",
+    "comparison": {
+      "bytes": 31534,
+      "sha256": "c647b4d2ab3141873cdbbbee07d031d6c7dcb1ad74c53c530c4e18c7eb9fd63e"
+    },
+    "queryEncodings": 8,
+    "candidateRows": 40,
+    "threshold": 0.78,
+    "topK": 5,
+    "rows": [
+      {
+        "documentScope": null,
+        "questionId": "q2_regression_revenue_three_months",
+        "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was revenue for the three-month period ended July 28, 2024, in millions of dollars?",
+        "topDocumentId": "nvidia-fy2023-annual",
+        "topPhysicalPage": 149,
+        "topCosine": 0.80756767339748,
+        "canAnswerUnderConfiguredGate": true,
+        "answerEmpty": true,
+        "top5PhysicalPages": [
+          149,
+          158,
+          179,
+          198,
+          160
+        ]
+      },
+      {
+        "documentScope": null,
+        "questionId": "q2_regression_revenue_six_months",
+        "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was revenue for the six-month period ended July 28, 2024, in millions of dollars?",
+        "topDocumentId": "nvidia-fy2023-annual",
+        "topPhysicalPage": 149,
+        "topCosine": 0.811965847692661,
+        "canAnswerUnderConfiguredGate": true,
+        "answerEmpty": true,
+        "top5PhysicalPages": [
+          149,
+          179,
+          160,
+          158,
+          76
+        ]
+      },
+      {
+        "documentScope": null,
+        "questionId": "q2_regression_net_income_three_months",
+        "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the three-month period ended July 28, 2024, in millions of dollars?",
+        "topDocumentId": "nvidia-fy2026-annual",
+        "topPhysicalPage": 158,
+        "topCosine": 0.8110113904545713,
+        "canAnswerUnderConfiguredGate": true,
+        "answerEmpty": true,
+        "top5PhysicalPages": [
+          158,
+          149,
+          4,
+          140,
+          48
+        ]
+      },
+      {
+        "documentScope": null,
+        "questionId": "q2_regression_net_income_six_months",
+        "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the six-month period ended July 28, 2024, in millions of dollars?",
+        "topDocumentId": "nvidia-fy2023-annual",
+        "topPhysicalPage": 149,
+        "topCosine": 0.8070537541920475,
+        "canAnswerUnderConfiguredGate": true,
+        "answerEmpty": true,
+        "top5PhysicalPages": [
+          149,
+          158,
+          140,
+          47,
+          139
+        ]
+      },
+      {
+        "documentScope": [
+          "nvidia-fy2025-q2"
+        ],
+        "questionId": "q2_regression_revenue_three_months",
+        "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was revenue for the three-month period ended July 28, 2024, in millions of dollars?",
+        "topDocumentId": "nvidia-fy2025-q2",
+        "topPhysicalPage": 23,
+        "topCosine": 0.7863750709788457,
+        "canAnswerUnderConfiguredGate": true,
+        "answerEmpty": true,
+        "top5PhysicalPages": [
+          23,
+          22,
+          29,
+          17,
+          19
+        ]
+      },
+      {
+        "documentScope": [
+          "nvidia-fy2025-q2"
+        ],
+        "questionId": "q2_regression_revenue_six_months",
+        "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was revenue for the six-month period ended July 28, 2024, in millions of dollars?",
+        "topDocumentId": "nvidia-fy2025-q2",
+        "topPhysicalPage": 23,
+        "topCosine": 0.7827689998453418,
+        "canAnswerUnderConfiguredGate": true,
+        "answerEmpty": true,
+        "top5PhysicalPages": [
+          23,
+          17,
+          29,
+          22,
+          19
+        ]
+      },
+      {
+        "documentScope": [
+          "nvidia-fy2025-q2"
+        ],
+        "questionId": "q2_regression_net_income_three_months",
+        "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the three-month period ended July 28, 2024, in millions of dollars?",
+        "topDocumentId": "nvidia-fy2025-q2",
+        "topPhysicalPage": 4,
+        "topCosine": 0.7871779568228869,
+        "canAnswerUnderConfiguredGate": true,
+        "answerEmpty": true,
+        "top5PhysicalPages": [
+          4,
+          23,
+          3,
+          8,
+          5
+        ]
+      },
+      {
+        "documentScope": [
+          "nvidia-fy2025-q2"
+        ],
+        "questionId": "q2_regression_net_income_six_months",
+        "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the six-month period ended July 28, 2024, in millions of dollars?",
+        "topDocumentId": "nvidia-fy2025-q2",
+        "topPhysicalPage": 3,
+        "topCosine": 0.7783780214668117,
+        "canAnswerUnderConfiguredGate": false,
+        "answerEmpty": true,
+        "top5PhysicalPages": [
+          3,
+          8,
+          4,
+          28,
+          23
+        ]
+      }
+    ],
+    "independentReview": {
+      "bytes": 12307,
+      "sha256": "d44ef8147419962e943e84bfffdd2b3b6fe331f83df71c3a4b28a2c674ceea75",
+      "status": "PASS-scoped-runtime-archive-closure",
+      "frozenFilesVerified": 51,
+      "storedQueryVectorsPresent": false,
+      "independentCosineArithmetic": "not performed; archived query vectors absent",
+      "modelOrQueryReruns": 0,
+      "scope": "Strict loaders, exact source/wheel/cache/2855x384 identity, 8 records/40candidate bindings, reconstructed citation/context/refusal identities and tokenizer-only counts"
+    },
+    "originalPrefixedQueryTokenCounts": [
+      46,
+      46,
+      47,
+      47
+    ]
+  },
+  "passageTokenizerCoverage": {
+    "encoding": "BGE cached tokenizer",
+    "addSpecialTokens": true,
+    "truncationForCounting": false,
+    "chunkCount": 2855,
+    "minimumTokens": 3,
+    "maximumTokens": 471,
+    "configuredLimit": 512,
+    "exceedingLimit": 0,
+    "financialFieldPreservation": "not evaluated"
+  },
+  "financialFieldSupport": "not_evaluated",
+  "humanGold": 0,
+  "generationRuns": 0,
+  "publicationCi": "not yet executed for this increment",
+  "limits": [
+    "Same eight sources were already registered; this portability increment adds no new source",
+    "Global BGE ranks other-year annual passages first despite specified FY2025Q2; .78 does not prove source/period correctness",
+    "Explicit Q2 six-month net-income first candidate is .778378 and refuses at .78",
+    "One vector build and one comparison are not performance distributions or scale acceptance",
+    "Unsigned identities prove internal consistency, not external authentication",
+    "PDFs/chunks/vectors/models/raw private logs are excluded from Git",
+    "PyMuPDF and package remain under stated AGPL/dependency/source rights",
+    "Public hosted API, calibration, independent human gold and Dot reproduction remain unverified",
+    "Query vectors are not retained in the semantic comparison receipt; reviewer did not independently recompute cosine values or observe model calls"
+  ]
+}

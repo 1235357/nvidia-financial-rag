@@ -122,6 +122,7 @@ def chunk_pages(
 def chunk_pages_word_safe(
     pages: Iterable[Chunk], *, max_tokens: int,
     encoding_name: str = 'cl100k_base',
+    encoding=None,
 ) -> list[Chunk]:
     """Experimental whitespace-boundary packing; no overlap or sentence guarantee.
 
@@ -131,7 +132,10 @@ def chunk_pages_word_safe(
     """
     if max_tokens <= 0:
         raise ValueError('max_tokens must be positive')
-    encoding = tiktoken.get_encoding(encoding_name)
+    if encoding is None:
+        encoding = tiktoken.get_encoding(encoding_name)
+    elif type(getattr(encoding, 'name', None)) is not str or encoding.name != encoding_name:
+        raise ValueError('supplied encoding name differs from encoding_name')
     chunks: list[Chunk] = []
     for page in pages:
         words = list(re.finditer(r'\S+', page.text))

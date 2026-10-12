@@ -41,7 +41,10 @@ def _chunk_extracted_pages(
     max_tokens: int,
     overlap_tokens: int,
     encoding_name: str,
+    encoding=None,
 ) -> list[Chunk]:
+    if encoding is not None and strategy != 'word_safe':
+        raise ValueError('encoding injection requires word_safe strategy')
     if strategy == 'sentence_safe':
         if overlap_tokens != 0:
             raise ValueError('sentence_safe does not support overlap; use overlap_tokens=0')
@@ -49,7 +52,8 @@ def _chunk_extracted_pages(
     if strategy == 'word_safe':
         if overlap_tokens != 0:
             raise ValueError('word_safe does not support overlap; use overlap_tokens=0')
-        return chunk_pages_word_safe(pages, max_tokens=max_tokens, encoding_name=encoding_name)
+        return chunk_pages_word_safe(pages, max_tokens=max_tokens, encoding_name=encoding_name,
+                                     encoding=encoding)
     if strategy == 'fixed_token':
         chunker = chunk_pages
     elif strategy == 'recursive':
@@ -154,6 +158,7 @@ def build_corpus_artifacts(
     overlap_tokens: int,
     encoding_name: str = 'cl100k_base',
     extraction_mode: ExtractionMode = 'plain',
+    encoding=None,
 ) -> dict[str, object]:
     """Build one deterministic, multi-document evidence store."""
     if not sources:
@@ -169,6 +174,11 @@ def build_corpus_artifacts(
         raise ValueError('all corpus sources must have a pinned sha256')
     if extraction_mode not in {'plain', 'coordinate_sorted', 'table_structured'}:
         raise ValueError('unsupported PDF extraction mode')
+    if encoding is not None:
+        if strategy != 'word_safe':
+            raise ValueError('encoding injection requires word_safe strategy')
+        if type(getattr(encoding, 'name', None)) is not str or encoding.name != encoding_name:
+            raise ValueError('supplied encoding name differs from encoding_name')
     protected_default = Path(__file__).resolve().parents[2] / 'artifacts' / 'annual-fy2022-fy2026-fixed-400-50'
     if output_dir.resolve() == protected_default.resolve() and any(
         source.provenance is not None
@@ -199,6 +209,7 @@ def build_corpus_artifacts(
             max_tokens=max_tokens,
             overlap_tokens=overlap_tokens,
             encoding_name=encoding_name,
+            encoding=encoding,
         )
         table_candidate_count = 0
         if extraction_mode == 'table_structured':
