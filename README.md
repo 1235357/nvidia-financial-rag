@@ -12,7 +12,7 @@ The [expanded development comparison](docs/expanded-financial-comparator.md) add
 
 The expanded comparator release at `55a904b8ff018183531abf5b88e4d1deba5544bf` subsequently passed [workflow 38260699927](https://github.com/1235357/nvidia-financial-rag/actions/runs/38260699927), including 605 checkout tests on each platform, installed API checks and the Linux container job. That dated release is separate from later local changes.
 
-The [source-bound statement selector](docs/structured-income-selection.md) keeps table headers, rows, columns and amounts together in an opt-in source index. Its initial quarterly run extracted 204 cells and compared the same 35 original question/scope rows. All 24 positive selections matched exposed source-field targets; eleven provisional negative rows were withheld. The later [annual extension](docs/annual-income-selection.md) adds 327 annual cells and retains fiscal-year periods without assuming twelve calendar months. Human gold and generation remain zero. This path returns source candidates for review and is not yet composed into the default API or browser demo.
+The [source-bound statement selector](docs/structured-income-selection.md) keeps table headers, rows, columns and amounts together in an opt-in source index. Its initial quarterly run extracted 204 cells and compared the same 35 original question/scope rows. All 24 positive selections matched exposed source-field targets; eleven provisional negative rows were withheld. The later [annual extension](docs/annual-income-selection.md) adds 327 annual cells and retains fiscal-year periods without assuming twelve calendar months. Human gold and generation remain zero. The [explicit statement HTTP adapter](docs/statement-http-api.md) exposes this selector when an operator injects a source-built index at startup. It returns source candidates for review; the ordinary query service and browser demo remain separate.
 
 ## Run the generated-data API
 
@@ -87,6 +87,8 @@ Operational failures return an empty answer and `can_answer=false`; established 
 
 `GET /healthz` is liveness. Authenticated `/readyz` currently returns a constant startup marker; it is not a live dependency probe. OpenAPI is off by default. [The dated failure contract](docs/api-failure-contract.md) explains the adapter's tested boundaries.
 
+`POST /v1/statement-candidates` is an additional authenticated, explicitly configured interface. Supply `statement_index=build_income_index(reviewed_reports)` to `create_app`; without that index, authenticated calls return 503 with `STATEMENT_INDEX_NOT_CONFIGURED`. It accepts an original question and optional registered document IDs, then returns exact source-field candidates or a distinct clarification/refusal/unsupported outcome. It never calls the dense retriever or generator. See [the request, startup and consumer contract](docs/statement-http-api.md) before using this mode.
+
 ## CPU container demo
 
 ```bash
@@ -116,7 +118,7 @@ The generated-data release demo and CI do not run this financial model path. Bro
 
 ## Checks and CI
 
-The [API workflow](.github/workflows/api.yml) runs checkout contracts on Linux and Windows/Python 3.13, builds a wheel, installs only `[api]` into a fresh environment, verifies installed-module identity and eleven synthetic failure cases, checks real loopback HTTP and `pip check`, and uploads the wheel/test/dependency receipts. A dependent Linux job builds the nonroot image and checks actual generated-data HTTP. Actions use immutable commit references. No private corpus, raw report or model inference is part of pull-request CI.
+The [API workflow](.github/workflows/api.yml) runs checkout contracts on Linux and Windows/Python 3.13, builds a wheel, installs only `[api]` into a fresh environment, verifies installed-module identity and eleven synthetic failure cases, checks real loopback query and statement HTTP plus `pip check`, and uploads the wheel/test/dependency receipts. The statement check generates native PDF table fixtures and starts its own temporary loopback service. A dependent Linux job builds the nonroot image and checks actual generated-data HTTP. Actions use immutable commit references. No private corpus, raw report or model inference is part of pull-request CI.
 
 Equivalent checkout commands:
 
@@ -132,6 +134,7 @@ Install the resulting wheel with its `[api]` extra into a second fresh environme
 python -I -B <repository>/acceptance/wheel_smoke.py
 python -I -B <repository>/acceptance/api_failure_contract.py --output <new-receipt.json>
 python -I -B <repository>/acceptance/http_loopback.py
+python -I -B <repository>/acceptance/statement_http.py --output <absolute-new-statement-receipt.json>
 python -m pip check
 ```
 

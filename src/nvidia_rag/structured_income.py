@@ -551,9 +551,19 @@ def parse_statement_request(query: str, *, operator_document_ids: tuple[str, ...
                          tuple(sorted(mentions, key=lambda m: (m.start, m.end, m.field))), tuple(sorted(set(issues))))
 
 
+def validate_income_index(index: IncomeIndex) -> None:
+    """Require a source-built snapshot, without reading PDFs or issuing a query.
+
+    This retains the selector's factory ownership contract. It is not a sandbox
+    against arbitrary trusted Python code mutating private object attributes.
+    """
+    require(type(index) is IncomeIndex and index._construction_token is _BUILT_INDEX,
+            'INVALID_SELECTION_INPUT')
+
+
 def select_statement_candidates(index: IncomeIndex, request: ParsedRequest) -> Selection:
-    require(type(index) is IncomeIndex and index._construction_token is _BUILT_INDEX
-            and type(request) is ParsedRequest, 'INVALID_SELECTION_INPUT')
+    validate_income_index(index)
+    require(type(request) is ParsedRequest, 'INVALID_SELECTION_INPUT')
     require(request == parse_statement_request(request.query,
             operator_document_ids=request.operator_document_ids, index=index),
             'REQUEST_PARSE_IDENTITY_MISMATCH')

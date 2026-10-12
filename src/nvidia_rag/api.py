@@ -21,6 +21,8 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 from .core import GroundedContext
 from .generation import GeneratedResponse
 from .sources import _reviewed_provenance
+from .structured_income import IncomeIndex
+from .statement_api import attach_statement_route
 
 LOGGER = logging.getLogger("nvidia_rag.api")
 _SAFE_REQUEST_ID = re.compile(r"[A-Za-z0-9._:-]{1,64}\Z")
@@ -118,6 +120,7 @@ def create_app(
     api_token: str,
     expose_docs: bool = False,
     source_provenance: Mapping[str, Mapping[str, object]] | None = None,
+    statement_index: IncomeIndex | None = None,
 ) -> FastAPI:
     """Build an injected, testable API without loading models at import time."""
     if len(api_token) < 32:
@@ -156,7 +159,12 @@ def create_app(
                 headers={"WWW-Authenticate": "Bearer"},
             )
         supplied = authorization.removeprefix("Bearer ")
-        if not secrets.compare_digest(supplied, api_token):
+        try:
+            matches = secrets.compare_digest(supplied, api_token)
+        except TypeError:
+            # A non-ASCII header must be an authentication refusal, not a 500.
+            matches = False
+        if not matches:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="invalid bearer token",
@@ -269,4 +277,7 @@ def create_app(
             evidence=evidence,
         )
 
+    attach_statement_route(
+        app, index=statement_index, require_bearer=require_bearer, logger=LOGGER,
+    )
     return app

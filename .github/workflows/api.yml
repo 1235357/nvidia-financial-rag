@@ -62,6 +62,8 @@ jobs:
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -I -B (Join-Path $workspace 'acceptance/http_loopback.py')
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
+            & $consumerPython -I -B (Join-Path $workspace 'acceptance/statement_http.py') --output (Join-Path $workspace 'installed-statement-contract.json')
+            if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -m pip check
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -m pip freeze | Set-Content -LiteralPath (Join-Path $workspace 'resolved-api.txt')
@@ -73,6 +75,7 @@ jobs:
             dist/*.whl
             checkout-tests.xml
             installed-api-contract.json
+            installed-statement-contract.json
             resolved-api.txt
           retention-days: 14
 
