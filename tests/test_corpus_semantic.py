@@ -6,6 +6,7 @@ import importlib.util
 import json
 from pathlib import Path
 import sys
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
@@ -80,6 +81,11 @@ def prepare(tmp_path, monkeypatch, model=None):
     module = script()
     monkeypatch.setattr(module, "verify_installed_wheel", lambda path: identity)
     monkeypatch.setattr(module, "_load_cached_model", lambda cache: model or UnitModel())
+    # The injected UnitModel has no installed semantic distribution. Keep the
+    # receipt's version lookup local to this double, including lightweight CI.
+    versions = {"numpy": np.__version__, "sentence-transformers": "synthetic",
+                "torch": "synthetic", "transformers": "synthetic"}
+    monkeypatch.setattr(module, "metadata", SimpleNamespace(version=versions.__getitem__))
     options = dict(artifact_dir=a.directory, source_registry=a.registry, vector_dir=vector,
                    candidates=candidates, wheel=wheel, model_cache_dir=cache, output=tmp_path / "result.json")
     return module, options, a, snapshot

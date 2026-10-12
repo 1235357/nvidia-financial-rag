@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import runpy
 import sys
+from types import SimpleNamespace
 import zipfile
 
 from fastapi.testclient import TestClient
@@ -276,6 +277,9 @@ def test_comparison_binds_input_snapshot_before_loading(tmp_path, monkeypatch, w
         target.write_bytes(target.read_bytes() + b"\n")
         return corpus
     globals_ = ns["run_comparison"].__globals__
+    # This snapshot test supplies its own wheel identity; model the isolated
+    # interpreter boundary without mutating the pytest process's global sys.
+    globals_["sys"] = SimpleNamespace(prefix="synthetic-venv", base_prefix="synthetic-base")
     globals_["verify_installed_wheel"] = lambda path: {"identity": "controlled"}
     globals_["load_verified_corpus"] = changing_load
     monkeypatch.setattr(ns["runpy"], "run_path", lambda path: {"load_candidates": lambda p: []})
@@ -291,6 +295,9 @@ def test_comparison_rechecks_corpus_completion_state_after_query_work(tmp_path, 
     a, _, _, _, candidates, wheel, identity = case(tmp_path, monkeypatch)
     ns = script("acceptance/corpus_consumer.py")
     globals_ = ns["run_comparison"].__globals__
+    # The scope work below is controlled, so its interpreter identity must be
+    # controlled too even when CI runs checkout tests with the base interpreter.
+    globals_["sys"] = SimpleNamespace(prefix="synthetic-venv", base_prefix="synthetic-base")
     globals_["verify_installed_wheel"] = lambda path: identity
     frozen_questions = script("acceptance/source_binding_replay.py")["load_candidates"]
     monkeypatch.setattr(ns["runpy"], "run_path", lambda path: {
