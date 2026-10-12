@@ -12,7 +12,7 @@ The [expanded development comparison](docs/expanded-financial-comparator.md) add
 
 The expanded comparator release at `55a904b8ff018183531abf5b88e4d1deba5544bf` subsequently passed [workflow 38260699927](https://github.com/1235357/nvidia-financial-rag/actions/runs/38260699927), including 605 checkout tests on each platform, installed API checks and the Linux container job. That dated release is separate from later local changes.
 
-The new [quarterly statement selector](docs/structured-income-selection.md) keeps table headers, rows, columns and amounts together in an opt-in source index. Its actual local run extracted 204 cells from four quarterly PDFs and compared the same 35 original question/scope rows. All 24 positive selections matched exposed source-field targets; eleven provisional negative rows were withheld. Six annual layouts remain unimplemented, and human gold and generation remain zero. This path returns source candidates for review and is not yet composed into the default API or browser demo.
+The [source-bound statement selector](docs/structured-income-selection.md) keeps table headers, rows, columns and amounts together in an opt-in source index. Its initial quarterly run extracted 204 cells and compared the same 35 original question/scope rows. All 24 positive selections matched exposed source-field targets; eleven provisional negative rows were withheld. The later [annual extension](docs/annual-income-selection.md) adds 327 annual cells and retains fiscal-year periods without assuming twelve calendar months. Human gold and generation remain zero. This path returns source candidates for review and is not yet composed into the default API or browser demo.
 
 ## Run the generated-data API
 

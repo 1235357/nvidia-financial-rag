@@ -1,0 +1,135 @@
+{
+  "annual_source_derived_queries": {
+    "dispositions": {
+      "clarify": 3,
+      "refuse": 2,
+      "source_candidate": 36,
+      "unsupported": 1
+    },
+    "earlier_identical_rows_review_checks": 925,
+    "earlier_review_sha256": "5ea04564b34056c3ebb5563358ae3d7a4ebe6a69407721dd4dd94f537058278a",
+    "freeze_sha256": "7ac4672b22e857d3d066c101a83c03904ef03e9aa65c0273b66a7ee38cbfc428",
+    "held_out_count": 0,
+    "human_gold_count": 0,
+    "queries": 42,
+    "receipt_sha256": "5cfa63ce5fceada3e02e66c55fb2cd8e7176588a5422be68eb62f61c11c18a38",
+    "scope": "source-derived-exposed-development-questions;not-financial-accuracy"
+  },
+  "case_freeze_sha256": "e125e9b9cf4cb1768c2f282943eed2e6d55cb439626b019ad260487dcf407767",
+  "cases_sha256": "ff60a7d30a2914c6bd2fcaaa1266634bd6e666361d804678e69528c1525030cc",
+  "cells": 531,
+  "checkout_tests": {
+    "errors": 0,
+    "failures": 0,
+    "seconds": 100.746,
+    "skipped": 0,
+    "tests": 661,
+    "xml_sha256": "3236fa3bf8c076aa09ae78c313cff921d81ce46d9c221cf57a37eda1ea024285"
+  },
+  "comparison_receipt_sha256": "37d2a411dfcc5133da939fea8ac7420741e6695d230cbeb6cb0d3128c5bac0c6",
+  "created_at": "2026-10-12T17:29:49.668347+00:00",
+  "default_api_and_browser_integration": "not-implemented-by-this-increment",
+  "dispositions": {
+    "clarify": 4,
+    "refuse": 5,
+    "source_candidate": 24,
+    "unsupported": 2
+  },
+  "encoder_runs": 0,
+  "experiment_sha256": "283dd1d3b0806809e0553e28db59e99b1da050511863b672d484c5386dbf40f7",
+  "exposed_positive_source_field_matches": 24,
+  "financial_correctness": "unestablished",
+  "financial_readiness": "unestablished",
+  "fresh_run_equivalence": {
+    "annual_query_rows_identical": 42,
+    "original_query_rows_identical": 35,
+    "scope": "finite-payload-equivalence-after-runner-closure-fixes",
+    "source_index_bytes_identical_to_independently_replayed_index": true
+  },
+  "generation_runs": 0,
+  "human_gold_count": 0,
+  "implementation_sha256": "dfc4ea156cd3c7243a6817ab3c469fc3915af3838908b1219c36420147b652f6",
+  "independent_native_source_replay": {
+    "checks": 14466,
+    "quarterly_serialized_cells_preserved": 204,
+    "scope": "prior-byte-identical-index;all-pinned-native-sources;no-financial-verdict",
+    "sha256": "ebf95b049cf802909a581a4b6159be0a022f4d2db65c55b6985c3930269387fb",
+    "source_cells": 531
+  },
+  "index_sha256": "cb38468d4c9aa485156ef4319fcc60ba394d23d2b030119157b4bf3a3bb2fb93",
+  "metadata_scope": "sanitized-local-annual-and-quarterly-source-development-observation",
+  "omissions": [
+    {
+      "document_id": "nvidia-fy2025-annual",
+      "physical_page": 144,
+      "reason": "UNSUPPORTED_VALUE_COLUMN_1",
+      "row_literal": "Acquisition termination cost"
+    },
+    {
+      "document_id": "nvidia-fy2025-annual",
+      "physical_page": 144,
+      "reason": "UNSUPPORTED_VALUE_COLUMN_2",
+      "row_literal": "Acquisition termination cost"
+    },
+    {
+      "document_id": "nvidia-fy2024-annual",
+      "physical_page": 150,
+      "reason": "UNSUPPORTED_VALUE_COLUMN_1",
+      "row_literal": "Acquisition termination cost"
+    },
+    {
+      "document_id": "nvidia-fy2024-annual",
+      "physical_page": 150,
+      "reason": "UNSUPPORTED_VALUE_COLUMN_3",
+      "row_literal": "Acquisition termination cost"
+    },
+    {
+      "document_id": "nvidia-fy2023-annual",
+      "physical_page": 135,
+      "reason": "UNSUPPORTED_VALUE_COLUMN_2",
+      "row_literal": "Acquisition termination cost"
+    },
+    {
+      "document_id": "nvidia-fy2023-annual",
+      "physical_page": 135,
+      "reason": "UNSUPPORTED_VALUE_COLUMN_3",
+      "row_literal": "Acquisition termination cost"
+    }
+  ],
+  "ordered_requests": 35,
+  "period_kind_counts": {
+    "fiscal_year": 327,
+    "months": 204
+  },
+  "public_distribution": "metadata-only;no-PDF-page-bodies-corpus-vectors-models-or-private-paths",
+  "registered_reports": 10,
+  "registry_sha256": "4c570d9c8a8dd47afde9ad0a8c2245bd875c23c98bf409c0b3d828a775d3ebc5",
+  "report_cell_counts": {
+    "nvidia-fy2021-annual": 54,
+    "nvidia-fy2022-annual": 54,
+    "nvidia-fy2023-annual": 55,
+    "nvidia-fy2024-annual": 55,
+    "nvidia-fy2025-annual": 55,
+    "nvidia-fy2025-q1": 36,
+    "nvidia-fy2025-q2": 72,
+    "nvidia-fy2026-annual": 54,
+    "nvidia-fy2027-q1": 36,
+    "nvidia-fy2027-q2": 60
+  },
+  "runner_closure_review": {
+    "independent_probe_sha256": "4fcde65571cbba7b34b4e3835cf6e11a16239c759de3a6452903ceffbea53942",
+    "regression_tests": 6,
+    "scope": "validated-input-baseline;owned-index-bytes;completed-index-markers;finite-probes",
+    "verification_sha256": "4830c00e1385004dd66ae9b325713a9fd5bfb063249d5ca1230781053545617f"
+  },
+  "runner_sha256": "6eed5777b0d35e65bdc93a378939c1d5d25887f00086234adf61171b267a5903",
+  "schema_version": 1,
+  "scope_semantics": "same-registered-document-scopes;source-bound-income-layouts;no-dense-fallback",
+  "section_cell_counts": {
+    "count": 60,
+    "monetary": 411,
+    "per_share": 60
+  },
+  "source_fiscal_metadata": "operator-declaration;not-inferred-from-calendar-year",
+  "supported_statement_reports": 10
+}

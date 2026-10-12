@@ -1,6 +1,8 @@
-# Literal quarterly income-statement selection
+# Literal source-bound income-statement selection
 
 `nvidia_rag.structured_income` adds an opt-in source-bound table index and a narrow literal-query selector. It reads pinned local PDF bytes and keeps each amount with its statement, row, date, duration, column role, unit section and printed currency occurrence. It returns a `source_candidate`, `clarify`, `refuse` or `unsupported` result. A source candidate is ready for source review; it is not an accepted financial answer.
+
+The later [annual-statement extension](annual-income-selection.md) adds the six registered annual layouts while preserving the original quarterly cell identities. The dated 204-cell/35-query observation below remains the initial quarterly checkpoint at `224d02d`; it does not describe the broader annual index.
 
 The existing dense retriever, evidence threshold, generator and HTTP service remain separate. This increment does not insert a table candidate into their results, manufacture a cosine score or silently fall back to dense retrieval. Consumers must explicitly choose and review this interface before composing it into an application.
 
@@ -12,7 +14,7 @@ It scans exact standalone statement headings, preserves the three-month and six-
 
 Monetary, earnings-per-share and weighted-average-share rows have separate section paths. Printed `$` is recorded as a dollar symbol with **ISO currency unverified**. It does not establish USD or authorize currency conversion. The literal-query interface currently selects monetary rows only; EPS and share-count lookup need a section-qualified adapter. The index is an in-process object built by this factory; this release provides no serialized-index loader or Python security sandbox.
 
-Quarterly layouts with two or four dated columns are supported. Registered annual reports retain their source hash and scope identity, but record `ANNUAL_LAYOUT_NOT_IMPLEMENTED`. A known report whose layout is unsupported must not be described as missing source data. Other layouts require further parser development and actual source review.
+Quarterly layouts with two or four dated columns are supported. The later annual parser supports three `Year Ended` columns with complete or split native dates and retains a null month duration. At the initial quarterly checkpoint, registered annual reports retained their hash and scope identity but recorded `ANNUAL_LAYOUT_NOT_IMPLEMENTED`. A known report whose layout is unsupported must not be described as missing source data. Other layouts require further parser development and actual source review.
 
 ## Use the installed library
 
@@ -65,9 +67,9 @@ The CLI verifies registry and case-file identities, builds and closes the source
 
 Both JSON outputs use exclusive creation and completion guards. PDF, input, implementation and runner identities are checked during closure. A failed late check retains failure evidence. A reused output path is refused without invalidating its previous completed receipt. Preserve failed and superseded runs separately.
 
-## Observed local result on October 12
+## Initial quarterly checkpoint at 224d02d on October 12
 
-The final local run registered ten pinned reports and extracted **204 source cells from four quarterly statements**: 156 monetary, 24 EPS and 24 share-count cells. The six annual layouts were explicitly recorded as unsupported. An independent program reopened the four actual PDFs and completed **8,531 source-value, column, period, section, span, rectangle and identity checks** on the earlier identical cell payload; its finite audit is mechanical provenance evidence.
+The final local run for the initial quarterly checkpoint at `224d02d` registered ten pinned reports and extracted **204 source cells from four quarterly statements**: 156 monetary, 24 EPS and 24 share-count cells. The six annual layouts were explicitly recorded as unsupported at that checkpoint. An independent program reopened the four actual PDFs and completed **8,531 source-value, column, period, section, span, rectangle and identity checks** on the earlier identical cell payload; its finite audit is mechanical provenance evidence.
 
 | Original query scope | Requests | Source candidates | Refuse | Clarify | Unsupported |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -79,6 +81,6 @@ All 24 positive candidate selections matched the exposed expected source-field t
 
 The [earlier dense diagnostic](expanded-financial-comparator.md) remains preserved: positive joint Top-5 source coverage was 1/12 globally and 10/12 with explicit report scope, while accepted evidence jointly covered 0/12 in both scopes. Its `0.78` gate accepted 5/6 global and 2/5 scoped negative candidates. These methods have different output semantics; a literal source-field match is not a replacement cosine score or financial-readiness certificate.
 
-The final local checkout passed **646 tests** with no failures, errors or skips. The new module and comparison boundaries account for 41 tests, including synthetic PDF geometry, decimal precision, unknown operations/currencies/symbols, parser ownership and late output-closure controls. The actual PDF observation is separate from synthetic tests and from CI. [Sanitized metadata](acceptance/structured-income-development-20261012.json) records hashes and outcomes without distributing report bodies or complete extracted pages.
+The initial quarterly checkout at `224d02d` passed **646 tests** with no failures, errors or skips. Its new module and comparison boundaries account for 41 tests, including synthetic PDF geometry, decimal precision, unknown operations/currencies/symbols, parser ownership and late output-closure controls. The actual PDF observation is separate from synthetic tests and from CI. [Historical sanitized metadata](acceptance/structured-income-development-20261012.json) records hashes and outcomes without distributing report bodies or complete extracted pages. The broader annual index and its later checks are documented in the [annual extension](annual-income-selection.md).
 
-Before integrating this path into the full RAG UI/API, extend annual and other financial statements, add section-qualified input for EPS/share counts, compare unseen independently reviewed requests, and evaluate generated outputs and observed operational performance. Financial readiness remains unestablished.
+Before integrating this path into the full RAG UI/API, extend other financial statements, add section-qualified input for EPS/share counts, compare unseen independently reviewed requests, and evaluate generated outputs and observed operational performance. The annual extension is recorded separately above. Financial readiness remains unestablished.

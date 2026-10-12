@@ -1,4 +1,4 @@
-"""Opt-in source-bound quarterly income tables, separate from dense retrieval.
+"""Opt-in source-bound income tables, separate from dense retrieval.
 
 Build from pinned PDFs, never evaluation cases. Selection returns source
 candidates, not generated answers or independently adjudicated financial facts.
@@ -25,6 +25,9 @@ EPS = 'Net income per share:'
 SHARES = 'Weighted average shares used in per share computation:'
 FOOTER = 'See accompanying Notes to Condensed Consolidated Financial Statements.'
 PROFILE = 'quarter-income-source-v1;PyMuPDF;text-sort-true;no-normalization;code-points'
+ANNUAL_PROFILE = 'annual-income-source-v1;PyMuPDF;text-sort-true;no-normalization;code-points'
+ANNUAL_TITLE = 'Consolidated Statements of Income'
+ANNUAL_FOOTER = 'See accompanying Notes to the Consolidated Financial Statements.'
 _BUILT_INDEX = object()
 MONTHS = {name: number for number, name in enumerate(
     ('jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'), 1)}
@@ -65,7 +68,7 @@ class IncomeCell:
     physical_page: int
     pdf_page_label: str | None
     fiscal_year: int
-    fiscal_quarter: int
+    fiscal_quarter: int | None
     parser_profile: str
     pymupdf_version: str
     page_text_sha256: str
@@ -74,7 +77,7 @@ class IncomeCell:
     column_number: int
     column_role: str
     period_end: str
-    duration_months: int
+    duration_months: int | None
     amount: str
     value_literal: str
     unit_kind: str
@@ -82,6 +85,12 @@ class IncomeCell:
     currency_literal: str | None
     currency_normalization: str
     bindings: tuple[tuple[str, SourceSpan], ...]
+
+    @property
+    def period_kind(self):
+        # Keep quarterly serialized fields and identities unchanged. A fiscal
+        # year is source-qualified by its profile and Year Ended binding.
+        return 'fiscal_year' if self.parser_profile == ANNUAL_PROFILE else 'months'
 
 
 @dataclass(frozen=True, slots=True)
@@ -238,6 +247,14 @@ def _parse_table(page, spec, physical_page):
                             'current' if role == 0 else 'prior_comparison',
                             _span(text, groups, g[2]), _span(text, groups, period[2])))
     require(len({value[0] for value in columns[::2]}) == 1, 'CURRENT_DATE_CONFLICT')
+    return _parse_statement_rows(page, spec, physical_page, text, groups, title,
+                                 unit, footer, revenue, bands, header_values, columns, currencies)
+
+
+def _parse_statement_rows(page, spec, physical_page, text, groups, title, unit,
+                          footer, revenue, bands, header_values, columns, currencies,
+                          *, profile=PROFILE, extra_date_bindings=()):
+    count = len(columns)
     eps = _unique(groups, EPS)
     shares = _unique(groups, SHARES)
     require(revenue[1][1] < eps[1][1] < shares[1][1] < footer[1][1], 'UNIT_SECTION_ORDER')
@@ -266,7 +283,19 @@ def _parse_table(page, spec, physical_page):
                 values = [w for w in column_words if w[4] != '$']
                 require(len(values) == 1 and abs(values[0][2] - header_values[i][2]) <= 3,
                         'AMBIGUOUS_ROW_COLUMN')
-                amounts.append((values[0], _amount(values[0][4], section)))
+                try:
+                    value = _amount(values[0][4], section)
+                except ValueError as error:
+                    if profile != ANNUAL_PROFILE:
+                        raise
+                    # A source placeholder with unambiguous column geometry
+                    # does not invalidate a neighboring numeric annual cell.
+                    omissions.append(Omission(spec.document_id, physical_page, label[0],
+                                              str(error) + '_COLUMN_' + str(i + 1)))
+                    amounts.append(None)
+                    signs.append(None)
+                    continue
+                amounts.append((values[0], value))
                 glyphs = [w for w in column_words if w[4] == '$']
                 require(len(glyphs) <= 1 and (section != 'count' or not glyphs),
                         'AMBIGUOUS_ROW_CURRENCY')
@@ -274,10 +303,15 @@ def _parse_table(page, spec, physical_page):
             if section != 'monetary':
                 section_binding = _span(text, groups, (eps if section == 'per_share' else shares)[2])
             row_cells = []
-            for i, ((value_word, value), column) in enumerate(zip(amounts, columns)):
+            for i, (amount, column) in enumerate(zip(amounts, columns)):
+                if amount is None:
+                    continue
+                value_word, value = amount
                 period_end, duration, role, date_span, duration_span = column
                 bindings = (*shared, ('row', row_binding), ('date', date_span),
                             ('duration', duration_span), ('value', _span(text, groups, (value_word,))))
+                if extra_date_bindings:
+                    bindings += extra_date_bindings[i]
                 if section != 'monetary':
                     bindings += (('section', section_binding),)
                 if section != 'count':
@@ -285,7 +319,7 @@ def _parse_table(page, spec, physical_page):
                 cell = IncomeCell(
                     '', spec.document_id, spec.pdf_sha256,
                     physical_page, page.get_label() or None, spec.fiscal_year, spec.fiscal_quarter,
-                    PROFILE, pymupdf.version[0], sha256(text.encode()).hexdigest(), row_path, label[0],
+                    profile, pymupdf.version[0], sha256(text.encode()).hexdigest(), row_path, label[0],
                     i + 1, role, period_end, duration, value, value_word[4], section,
                     '1' if section == 'per_share' else '1000000',
                     None if section == 'count' else '$',
@@ -300,6 +334,80 @@ def _parse_table(page, spec, physical_page):
             omissions.append(Omission(spec.document_id, physical_page, label[0], str(error)))
     require(bool(cells), 'NO_RELIABLE_CELLS')
     return cells, omissions
+
+
+def _parse_annual_table(page, spec, physical_page):
+    """Three Year Ended columns; no assumed calendar-month duration."""
+    text = page.get_text('text', sort=True)
+    require(0 < len(text) <= 200_000, 'PAGE_TEXT_BUDGET')
+    groups = _groups(page.get_text('words', sort=True))
+    def unique_folded(literal):
+        found = [g for g in groups if g[0].casefold() == literal.casefold()]
+        require(len(found) == 1, 'AMBIGUOUS_HEADER')
+        return found[0]
+    title = unique_folded(ANNUAL_TITLE)
+    unit = unique_folded(UNIT)
+    footer = unique_folded(ANNUAL_FOOTER)
+    revenue = _unique(groups, 'Revenue')
+    require(title[1][3] <= unit[1][1] + 1 < revenue[1][1]
+            and revenue[1][3] < footer[1][1], 'INVALID_STATEMENT_LAYOUT')
+    period = _unique(groups, 'Year Ended')
+    require(unit[1][3] < period[1][1] and period[1][3] < revenue[1][1],
+            'UNSUPPORTED_DURATION_LAYOUT')
+    currencies = sorted((w for g in groups for w in g[2] if w[4] == '$'
+                         and abs(w[1] - revenue[1][1]) <= 1.5), key=lambda w: w[0])
+    require(len(currencies) == 3 and all(w[0] > revenue[1][2] for w in currencies),
+            'AMBIGUOUS_CURRENCY_COLUMNS')
+    bands = [(w[0] - .5, currencies[i+1][0] - .5 if i < 2 else page.rect.x1)
+             for i,w in enumerate(currencies)]
+    header_values = []
+    for band in bands:
+        values = [w for g in groups for w in g[2] if band[0] <= w[0] and w[2] <= band[1]
+                  and abs(w[1] - revenue[1][1]) <= 1.5 and NUMBER.fullmatch(w[4])]
+        require(len(values) == 1, 'AMBIGUOUS_REVENUE_COLUMNS')
+        header_values.append(values[0])
+    months = '|'.join(sorted(QUERY_MONTHS, key=len, reverse=True))
+    full_pattern = re.compile('(' + months + r') (\d{1,2}), (\d{4})\Z', re.I)
+    partial_pattern = re.compile('(' + months + r') (\d{1,2}),\Z', re.I)
+    headers = [g for g in groups if period[1][3] < g[1][1] < revenue[1][1]]
+    full = sorted((g for g in headers if full_pattern.fullmatch(g[0])), key=lambda g: _center(g[1]))
+    parts = sorted((g for g in headers if partial_pattern.fullmatch(g[0])), key=lambda g: _center(g[1]))
+    years = sorted((g for g in headers if re.fullmatch(r'\d{4}', g[0])), key=lambda g: _center(g[1]))
+    require((len(full) == 3 and not parts and not years)
+            or (not full and len(parts) == len(years) == 3), 'AMBIGUOUS_DATE_COLUMNS')
+    first_line = full or parts
+    require(max(g[1][1] for g in first_line)-min(g[1][1] for g in first_line) <= 1.5,
+            'AMBIGUOUS_DATE_COLUMNS')
+    if years:
+        require(max(g[1][1] for g in years)-min(g[1][1] for g in years) <= 1.5,
+                'AMBIGUOUS_DATE_COLUMNS')
+    require(abs(sum(_center(g[1]) for g in first_line)/3 - _center(period[1])) <= 10,
+            'DURATION_COLUMN_MISMATCH')
+    columns, extra_bindings, parsed_dates = [], [], []
+    period_span = _span(text, groups, period[2])
+    for i,(band,g) in enumerate(zip(bands,first_line)):
+        require(band[0] <= g[1][0] < g[1][2] <= band[1], 'DATE_COLUMN_MISMATCH')
+        match = (full_pattern if full else partial_pattern).fullmatch(g[0])
+        extras = ()
+        if full:
+            year = int(match[3])
+        else:
+            year_group = years[i]
+            require(band[0] <= year_group[1][0] < year_group[1][2] <= band[1]
+                    and g[1][1] < year_group[1][1] < revenue[1][1]
+                    and abs(_center(g[1]) - _center(year_group[1])) <= 12,
+                    'DATE_COLUMN_MISMATCH')
+            year = int(year_group[0])
+            extras = (('date_year', _span(text,groups,year_group[2])),)
+        normalized = date(year, QUERY_MONTHS[match[1].lower()], int(match[2])).isoformat()
+        parsed_dates.append(normalized)
+        columns.append((normalized,None,'current' if i == 0 else 'prior_comparison',
+                        _span(text,groups,g[2]),period_span))
+        extra_bindings.append(extras)
+    require(parsed_dates[0] > parsed_dates[1] > parsed_dates[2], 'COMPARISON_DATE_ORDER')
+    return _parse_statement_rows(page,spec,physical_page,text,groups,title,unit,footer,
+        revenue,bands,header_values,columns,currencies,profile=ANNUAL_PROFILE,
+        extra_date_bindings=tuple(extra_bindings))
 
 
 def build_income_index(reports: tuple[ReportInput, ...]) -> IncomeIndex:
@@ -332,24 +440,29 @@ def build_income_index(reports: tuple[ReportInput, ...]) -> IncomeIndex:
         records.append((report.document_id, report.pdf_sha256, report.fiscal_year, report.fiscal_quarter))
         with pymupdf.open(stream=body, filetype='pdf') as pdf:
             require(not pdf.needs_pass and 0 < len(pdf) <= 2048, 'UNSUPPORTED_PDF')
-            if report.fiscal_quarter is None:
-                # Retain source availability and scope without treating an
-                # unimplemented annual statement parser as absent source data.
-                omissions.append(Omission(report.document_id, None, None, 'ANNUAL_LAYOUT_NOT_IMPLEMENTED'))
-                continue
+            matched_statement = False
             for number, page in enumerate(pdf, 1):
                 # Check exact title groups before attempting the table parser.
                 words = page.get_text('words', sort=True)
-                if not words or not any(g[0] == TITLE for g in _groups(words)):
+                annual = report.fiscal_quarter is None
+                wanted = ANNUAL_TITLE if annual else TITLE
+                if not words or not any((g[0].casefold() == wanted.casefold() if annual
+                                         else g[0] == wanted) for g in _groups(words)):
                     continue
+                matched_statement = True
                 try:
-                    new_cells, new_omissions = _parse_table(page, report, number)
+                    parser = _parse_annual_table if annual else _parse_table
+                    new_cells, new_omissions = parser(page, report, number)
                     cells.extend(new_cells)
                     omissions.extend(new_omissions)
                 except (ValueError, OverflowError) as error:
                     code = str(error)
                     omissions.append(Omission(report.document_id, number, None,
                         code if re.fullmatch('[A-Z_]{1,80}', code) else 'UNSUPPORTED_STATEMENT_LAYOUT'))
+            if not matched_statement:
+                omissions.append(Omission(report.document_id,None,None,
+                    'ANNUAL_STATEMENT_NOT_FOUND' if report.fiscal_quarter is None
+                    else 'QUARTER_STATEMENT_NOT_FOUND'))
         require(sha256(path.read_bytes()).hexdigest() == report.pdf_sha256, 'SOURCE_CHANGED_DURING_BUILD')
     keys = [(c.document_id, c.row_path, c.duration_months, c.period_end) for c in cells]
     require(len(keys) == len(set(keys)), 'AMBIGUOUS_STATEMENT_IDENTITY')
@@ -394,6 +507,7 @@ def parse_statement_request(query: str, *, operator_document_ids: tuple[str, ...
     durations = {'one': 1, 'two': 2, 'three': 3, 'six': 6, 'nine': 9, 'twelve': 12}
     collect('duration_months', r'(?<![\w.])(one|two|three|six|nine|twelve|\d{1,2})[-\s]+months?\b',
             lambda m: durations[m[1].lower()] if m[1].lower() in durations else int(m[1]))
+    collect('period_kind', r'\bannual\b|\byear\s+ended\b', lambda m: 'fiscal_year')
     collect('period_end', r'\bended\s+([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})\b',
             lambda m: date(int(m[3]), QUERY_MONTHS[m[1].lower()], int(m[2])).isoformat())
     collect('currency', r'\b(?:US(?:\s+|\.)?dollars?|USD)\b', lambda m: 'USD')
@@ -451,6 +565,8 @@ def select_statement_candidates(index: IncomeIndex, request: ParsedRequest) -> S
         fields['currency'].remove('$')
     if any(len(values) > 1 for values in fields.values()):
         return Selection('clarify', 'REQUEST_CONFLICT')
+    if fields['period_kind'] and fields['duration_months']:
+        return Selection('clarify', 'REQUEST_CONFLICT')
     if request.issues:
         return Selection('unsupported', request.issues[0])
     reports = {row[0]: row for row in index.reports}
@@ -468,12 +584,13 @@ def select_statement_candidates(index: IncomeIndex, request: ParsedRequest) -> S
         return Selection('clarify', 'REPORT_SCOPE_CONFLICT')
     for field, reason in (('row_path', 'METRIC_REQUIRED'), ('period_end', 'DATE_REQUIRED'),
                           ('duration_months', 'DURATION_REQUIRED')):
-        if not fields[field]:
+        if not fields[field] and not (field == 'duration_months' and fields['period_kind']):
             return Selection('clarify', reason)
     value = lambda field: next(iter(fields[field]))
     candidates = tuple(c for c in index.cells if c.document_id in chosen_reports
                        and c.row_path == value('row_path') and c.period_end == value('period_end')
-                       and str(c.duration_months) == value('duration_months'))
+                       and ((c.period_kind == 'fiscal_year' and c.duration_months is None)
+                            if fields['period_kind'] else str(c.duration_months) == value('duration_months')))
     if not candidates:
         return Selection('refuse', 'NO_INDEXED_CELL_MATCH')
     if len(candidates) != 1:

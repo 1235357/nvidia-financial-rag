@@ -199,7 +199,7 @@ def test_registered_annual_source_availability_is_distinct_from_parser_support(t
     annual = replace(report, document_id='nvidia-fy2025-annual', fiscal_quarter=None)
     index = build_income_index((report, annual))
     assert len(index.reports) == 2 and len(index.cells) == 36
-    assert index.omissions[0].reason == 'ANNUAL_LAYOUT_NOT_IMPLEMENTED'
+    assert index.omissions[0].reason == 'ANNUAL_STATEMENT_NOT_FOUND'
     assert index.omissions[0].physical_page is None
     assert select(index, query()).disposition == 'source_candidate'
     assert select(index, query(), scope=(annual.document_id,)).reason == 'REPORT_SCOPE_CONFLICT'

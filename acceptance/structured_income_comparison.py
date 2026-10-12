@@ -116,6 +116,15 @@ def run_comparison(*, source_dir: Path, source_registry: Path, cases: Path,
     watched = {str(path): path for path in (source_registry, cases, case_freeze, experiment,
                implementation, Path(__file__).resolve(), *(r.pdf_path for r in reports))}
     before = snapshot(watched)
+    validated_inputs = {
+        str(experiment): config.sha256,
+        str(source_registry): sha256(registry_body).hexdigest(),
+        str(cases): config.data['input_sha256']['cases'],
+        str(case_freeze): config.data['input_sha256']['case_freeze'],
+        **{str(report.pdf_path): report.pdf_sha256 for report in reports},
+    }
+    require(all(before[name] == expected for name, expected in validated_inputs.items()),
+            'INITIAL_INPUT_IDENTITY_MISMATCH')
     def unchanged():
         require(snapshot(watched) == before, 'COMPARISON_INPUT_CHANGED')
     output_dir.mkdir(exist_ok=False)
@@ -125,7 +134,14 @@ def run_comparison(*, source_dir: Path, source_registry: Path, cases: Path,
     index_data.pop('_construction_token')  # Ephemeral factory ownership never serializes.
     write_completed(output_dir / 'index.json', index_data, unchanged)
     index_body = read_body(output_dir / 'index.json', 16_000_000)
+    require(index_body == canonical_bytes(index_data) + b'\n', 'OWNED_INDEX_CHANGED')
     index_sha = sha256(index_body).hexdigest()
+    def final_check():
+        unchanged()
+        require(read_completed_replay(output_dir / 'index.json') == plain(index_data),
+                'COMPLETED_INDEX_CHANGED')
+        require(sha256(read_body(output_dir / 'index.json', 16_000_000)).hexdigest() == index_sha,
+                'INDEX_OUTPUT_CHANGED')
     # Only now load case annotations. RetrievalInput excludes every target field.
     bundle = load_case_bundle(cases, case_freeze, config)
     inputs = bundle.retrieval_inputs()
@@ -145,9 +161,7 @@ def run_comparison(*, source_dir: Path, source_registry: Path, cases: Path,
     by_id = {case.case_id: case for case in bundle.cases}
     for trace, selected in zip(traces, selections, strict=True):
         trace['posthoc_development_assessment'] = compare_source_candidate(by_id[trace['case_id']], selected)
-    unchanged()
-    require(sha256(read_body(output_dir/'index.json', 16_000_000)).hexdigest() == index_sha,
-            'INDEX_OUTPUT_CHANGED')
+    final_check()
     receipt = {'schema_version': 1, 'status': 'source-index-and-original-query-comparison',
         'created_at': datetime.now(timezone.utc).isoformat(), 'index_sha256': index_sha,
         'registry_sha256': sha256(registry_body).hexdigest(), 'cases_sha256': bundle.cases_sha256,
@@ -157,17 +171,14 @@ def run_comparison(*, source_dir: Path, source_registry: Path, cases: Path,
         'registered_reports': len(index.reports), 'supported_statement_reports': len({c.document_id for c in index.cells}),
         'cells': len(index.cells), 'report_cell_counts': dict(Counter(c.document_id for c in index.cells)),
         'section_cell_counts': dict(Counter(c.unit_kind for c in index.cells)),
+        'period_kind_counts': dict(Counter(c.period_kind for c in index.cells)),
         'omissions': [asdict(o) for o in index.omissions], 'ordered_requests': len(traces),
         'dispositions': dict(Counter(s.disposition for s in selections)),
         'human_gold_count': 0, 'encoder_runs': 0, 'generation_runs': 0,
         'financial_readiness': 'unestablished',
         'source_fiscal_metadata': 'operator-declaration;not-inferred-from-calendar-year',
-        'scope_semantics': 'same-registered-document-scopes;quarterly-table-parser-only;no-dense-fallback',
+        'scope_semantics': 'same-registered-document-scopes;source-bound-income-layouts;no-dense-fallback',
         'rows': traces}
-    def final_check():
-        unchanged()
-        require(sha256(read_body(output_dir/'index.json', 16_000_000)).hexdigest() == index_sha,
-                'INDEX_OUTPUT_CHANGED')
     write_completed(output_dir / 'comparison.json', receipt, final_check)
     return receipt
 
