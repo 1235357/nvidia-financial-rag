@@ -12,7 +12,7 @@ A question such as “three-month net income ended July 28, 2024” refers to on
 
 Source review and corpus extraction have separate coordinates. The current review uses sorted, unstripped page text; the prepared corpus uses unsorted, stripped text. The tool re-extracts both profiles and maps exact source occurrences into the corpus profile. Each same-page chunk must occur exactly once to acquire a range. Missing or repeated matches remain unresolved. Coverage uses the union of accepted ranges from that same source page and cell; other pages cannot supply its missing headers or amount.
 
-## Current local evidence
+## Preserved checkpoint before the expanded query run
 
 The finite local freeze contains **18 exposed development cases**: twelve preserved positive candidates, four provisional refusal candidates and two provisional clarification candidates. The twelve prior original record strings and their digests were retained. Before any new model query, the negative candidates were tied to frozen source-column inventory, registry absence, declared currency/FX capability or a declared contradictory duration request.
 
@@ -27,7 +27,7 @@ Applying these mappings to the previously saved 24 retrieval traces gives:
 
 This retrospective computation verifies candidate identities, text hashes and threshold filtering against the stored traces and current unchanged corpus. It does not rerun encoders. The old run did not save query vector values, so its cosine arithmetic cannot be independently reproduced from those records. The six new negative questions have not yet been queried. No new model, query or generation action ran, and human gold remains zero.
 
-The latest focused case/source suite passed **120 tests**, including 67 case-contract controls, 41 new source-replay controls and the twelve original source-replay controls. Independent review reproduced the focused result after the configuration-snapshot and late completion-marker fixes. Public CI has not yet checked this new increment.
+The focused case/source suite at that checkpoint passed **120 tests**, including 67 case-contract controls, 41 new source-replay controls and the twelve original source-replay controls. Independent review reproduced the focused result after the configuration-snapshot and late completion-marker fixes. At this checkpoint, public CI had not yet checked the increment; the later query run and published release follow below.
 
 ## Actual expanded diagnostic
 
@@ -45,6 +45,8 @@ The unavailable FY2035 report has only a global scope, so the negative denominat
 The positive observations reproduce the earlier stored-trace breakdown. Explicit report scope improves Top-5 source-coordinate coverage but does not automatically preserve every field after threshold filtering. No positive accepted evidence set jointly covers all required statement, date, duration, metric, column, amount, currency and unit source roles. The fixed threshold also accepts negative candidates. Financial readiness remains **FAILED**; generation and independent human gold remain zero.
 
 The final local checkout suite passed **605 tests**, with no failures/errors/skips and the existing Starlette/httpx deprecation warning. The producer/baseline focused suite passed 103 controls; the independent arithmetic suite passed 62. These software checks and the actual local model observation are separate from CI. [Sanitized runtime metadata](acceptance/expanded-development-runtime-20261012.json) retains exact hashes, runtime, all 35 row observations and the failure denominators, without report text, tensors, weights or private paths.
+
+The subsequently published source at `55a904b8ff018183531abf5b88e4d1deba5544bf` passed [official workflow 38260699927](https://github.com/1235357/nvidia-financial-rag/actions/runs/38260699927): 605 checkout tests on Linux and Windows, fresh installed API checks, and actual generated-data container HTTP. The downloaded acceptance archives were separately inspected. Their rebuilt wheels are release artifacts, not replacements for the original vector-bound wheel in this frozen model experiment.
 
 ## Run the source replay
 
@@ -116,5 +118,7 @@ Ties at the Top-K boundary and scores within tolerance of the threshold are repo
 ## Remaining comparison gates
 
 Keep `0.78` and Top-5 fixed for the first diagnostic. The new negative denominator is measured only when those requests actually run. The [published candidate metadata](../evaluation/source-candidates/ten-report-v2/README.md) preserves case bytes and exposure; it does not distribute the private prepared corpus, weights or tensors.
+
+The next actual variant is now recorded in [literal quarterly statement selection](structured-income-selection.md). It builds a source-only table index before consuming the same original queries. Its source-candidate outcomes remain separate from dense evidence-gate outcomes, and its exposed targets do not become independent human gold.
 
 Use that evidence to compare report routing and header/row/column-preserving retrieval on the same frozen development set. Development calibration needs its own declared operating points. Independently authored and adjudicated unseen cases are still required before a financial-readiness claim. A successful source replay of a failed retrieval remains a failed retrieval.

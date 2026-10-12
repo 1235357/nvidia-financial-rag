@@ -10,6 +10,10 @@ The [expanded development comparison](docs/expanded-financial-comparator.md) add
 
 [Workflow 38205272181](https://github.com/1235357/nvidia-financial-rag/actions/runs/38205272181) passed Linux/Windows checkout, fresh installed API and nonroot generated-data container HTTP checks at `155758ca536354933a1f29075eb9cc48ada78932`. [The independent archive review](docs/acceptance/ci-api-acceptance-20261012.json) verifies both 362-test results and each rebuilt wheel's modules/RECORD. CI uses synthetic evidence and does not run the actual BGE experiment or establish financial readiness.
 
+The expanded comparator release at `55a904b8ff018183531abf5b88e4d1deba5544bf` subsequently passed [workflow 38260699927](https://github.com/1235357/nvidia-financial-rag/actions/runs/38260699927), including 605 checkout tests on each platform, installed API checks and the Linux container job. That dated release is separate from later local changes.
+
+The new [quarterly statement selector](docs/structured-income-selection.md) keeps table headers, rows, columns and amounts together in an opt-in source index. Its actual local run extracted 204 cells from four quarterly PDFs and compared the same 35 original question/scope rows. All 24 positive selections matched exposed source-field targets; eleven provisional negative rows were withheld. Six annual layouts remain unimplemented, and human gold and generation remain zero. This path returns source candidates for review and is not yet composed into the default API or browser demo.
+
 ## Run the generated-data API
 
 Python package metadata permits Python 3.11 and later. The dated local acceptance used Windows/Python 3.13; the release workflow checks Python 3.13 on Linux and Windows. Read the actual workflow result before treating either platform as accepted for a particular commit.

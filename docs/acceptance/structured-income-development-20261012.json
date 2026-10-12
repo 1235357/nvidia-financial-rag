@@ -1,0 +1,731 @@
+{
+  "case_freeze_sha256": "e125e9b9cf4cb1768c2f282943eed2e6d55cb439626b019ad260487dcf407767",
+  "cases_sha256": "ff60a7d30a2914c6bd2fcaaa1266634bd6e666361d804678e69528c1525030cc",
+  "cells": 204,
+  "checkout_tests": {
+    "errors": 0,
+    "failures": 0,
+    "seconds": 95.252,
+    "skipped": 0,
+    "tests": 646,
+    "xml_sha256": "ca9f9455c995fbda86a8a94fcb4b0c266cab52c3bbc04874d919cf357b33d34f"
+  },
+  "comparison_receipt_sha256": "f2c730622614e0660c42c1e504544262d23cd555ed424d8f85b65cec617e6726",
+  "created_at": "2026-10-12T15:00:11.353821+00:00",
+  "dispositions": {
+    "clarify": 4,
+    "refuse": 5,
+    "source_candidate": 24,
+    "unsupported": 2
+  },
+  "encoder_runs": 0,
+  "experiment_sha256": "283dd1d3b0806809e0553e28db59e99b1da050511863b672d484c5386dbf40f7",
+  "exposed_positive_source_field_matches": 24,
+  "financial_readiness": "unestablished",
+  "generation_runs": 0,
+  "human_gold_count": 0,
+  "implementation_sha256": "54f882254be4a99c7671d027a44453fed7b0e1a14d324cffb38108edd8ccf3d6",
+  "independent_pdf_review": {
+    "checks": 8531,
+    "scope": "earlier-identical-cell-payload;mechanical-provenance;no-human-financial-verdict",
+    "sha256": "19308b755a83f0613bdd06327f5e014e6a2de1b7cf933d3b7caee35fd21e0119",
+    "source_cells": 204
+  },
+  "index_sha256": "4dede0b90e721475aa947125fc783d0f1b98b68b9cab62ee2fb3d5947d84e8ad",
+  "metadata_scope": "sanitized-local-source-index-development-observation",
+  "omissions": [
+    {
+      "document_id": "nvidia-fy2021-annual",
+      "physical_page": null,
+      "reason": "ANNUAL_LAYOUT_NOT_IMPLEMENTED",
+      "row_literal": null
+    },
+    {
+      "document_id": "nvidia-fy2026-annual",
+      "physical_page": null,
+      "reason": "ANNUAL_LAYOUT_NOT_IMPLEMENTED",
+      "row_literal": null
+    },
+    {
+      "document_id": "nvidia-fy2025-annual",
+      "physical_page": null,
+      "reason": "ANNUAL_LAYOUT_NOT_IMPLEMENTED",
+      "row_literal": null
+    },
+    {
+      "document_id": "nvidia-fy2024-annual",
+      "physical_page": null,
+      "reason": "ANNUAL_LAYOUT_NOT_IMPLEMENTED",
+      "row_literal": null
+    },
+    {
+      "document_id": "nvidia-fy2023-annual",
+      "physical_page": null,
+      "reason": "ANNUAL_LAYOUT_NOT_IMPLEMENTED",
+      "row_literal": null
+    },
+    {
+      "document_id": "nvidia-fy2022-annual",
+      "physical_page": null,
+      "reason": "ANNUAL_LAYOUT_NOT_IMPLEMENTED",
+      "row_literal": null
+    }
+  ],
+  "ordered_requests": 35,
+  "public_distribution": "metadata-only;no-PDF-page-bodies-corpus-vectors-models-or-private-paths",
+  "registered_reports": 10,
+  "registry_sha256": "4c570d9c8a8dd47afde9ad0a8c2245bd875c23c98bf409c0b3d828a775d3ebc5",
+  "report_cell_counts": {
+    "nvidia-fy2025-q1": 36,
+    "nvidia-fy2025-q2": 72,
+    "nvidia-fy2027-q1": 36,
+    "nvidia-fy2027-q2": 60
+  },
+  "rows": [
+    {
+      "case_id": "nvidia-fy2025-q1_revenue_current_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "9333d1a6958100e3415fc0d645f7aab26e6c1901112612e13f6eef8160f27f4f",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "f0f5e0809c8d391eacf28286642b2f593839e07a1b6c8a28dc2e8c0f30e375f5"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2025-q1_revenue_current_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q1"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "9333d1a6958100e3415fc0d645f7aab26e6c1901112612e13f6eef8160f27f4f",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2025-q1",
+      "selected_cell_ids": [
+        "f0f5e0809c8d391eacf28286642b2f593839e07a1b6c8a28dc2e8c0f30e375f5"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2025-q1_revenue_prior_comparison_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "b4708cab2f635ee5de1a477da47f6e51c3b2a9ac0db58fd7bb95c8c24848912f",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "6d6699cb6208f4b758b5911082b16f63745939ddbb0392e9f62e67547dc3c07d"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2025-q1_revenue_prior_comparison_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q1"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "b4708cab2f635ee5de1a477da47f6e51c3b2a9ac0db58fd7bb95c8c24848912f",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2025-q1",
+      "selected_cell_ids": [
+        "6d6699cb6208f4b758b5911082b16f63745939ddbb0392e9f62e67547dc3c07d"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2025-q1_net_income_current_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "aafd518669fbbe7de11a949e4c24690808195c118392bee0bcff873709c953f2",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "e1d717d53bda12042d3be76c68135815af306f805196c413cb754fb5968e1f24"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2025-q1_net_income_current_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q1"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "aafd518669fbbe7de11a949e4c24690808195c118392bee0bcff873709c953f2",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2025-q1",
+      "selected_cell_ids": [
+        "e1d717d53bda12042d3be76c68135815af306f805196c413cb754fb5968e1f24"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2025-q1_net_income_prior_comparison_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "66c6a6cf0bf7de0a92fefaebc1b50490f2c942eb5495974fc18473838d91a7d8",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "dce059ea4ffb7b0e30da419e886c0169c4b6366190ac199fd0048365665f7dc8"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2025-q1_net_income_prior_comparison_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q1"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "66c6a6cf0bf7de0a92fefaebc1b50490f2c942eb5495974fc18473838d91a7d8",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2025-q1",
+      "selected_cell_ids": [
+        "dce059ea4ffb7b0e30da419e886c0169c4b6366190ac199fd0048365665f7dc8"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2027-q1_revenue_current_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "71038f827a280ddbd1a677d22615e5e7970cf1f206e9d027403b4539b2b25ef3",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "e1e713f5325ae43c74ac15123cf1a804b9d5d2e37e3115a9f0cd6b4b80d1013c"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2027-q1_revenue_current_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2027-q1"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "71038f827a280ddbd1a677d22615e5e7970cf1f206e9d027403b4539b2b25ef3",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2027-q1",
+      "selected_cell_ids": [
+        "e1e713f5325ae43c74ac15123cf1a804b9d5d2e37e3115a9f0cd6b4b80d1013c"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2027-q1_revenue_prior_comparison_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "68056400487708f9f5abcd977a26c1a8c97ad6be6eee35bddd60a32537b966f3",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "4d9149e8409c442e4f36679d8dbb7bbdf6687f75cd84f8705546c863c652487b"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2027-q1_revenue_prior_comparison_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2027-q1"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "68056400487708f9f5abcd977a26c1a8c97ad6be6eee35bddd60a32537b966f3",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2027-q1",
+      "selected_cell_ids": [
+        "4d9149e8409c442e4f36679d8dbb7bbdf6687f75cd84f8705546c863c652487b"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2027-q1_net_income_current_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "d562fe0371f45c932548ce9893b25d1e06645a300966b718a2128f4aa0b4f502",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "8b3f3f8a0eeebfb2d04932eca5a2ea532a70a9c41a26a3de5cda5711ba31421d"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2027-q1_net_income_current_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2027-q1"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "d562fe0371f45c932548ce9893b25d1e06645a300966b718a2128f4aa0b4f502",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2027-q1",
+      "selected_cell_ids": [
+        "8b3f3f8a0eeebfb2d04932eca5a2ea532a70a9c41a26a3de5cda5711ba31421d"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2027-q1_net_income_prior_comparison_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "e890fe939e8ddce5fc98904f2e43aa8c9ce6c8a5175eab8273f3d39f402ffbd9",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "f798b678d9ba98f7b873a2505701b0b16b4e84a5d9755d7b04d198c23d06fd18"
+      ]
+    },
+    {
+      "case_id": "nvidia-fy2027-q1_net_income_prior_comparison_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2027-q1"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "e890fe939e8ddce5fc98904f2e43aa8c9ce6c8a5175eab8273f3d39f402ffbd9",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2027-q1",
+      "selected_cell_ids": [
+        "f798b678d9ba98f7b873a2505701b0b16b4e84a5d9755d7b04d198c23d06fd18"
+      ]
+    },
+    {
+      "case_id": "q2_regression_revenue_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "8eba561010ed55e9a49d1251afa3dc7c1554d858298be696f26729d5b970338c",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "f1389cb70128a4b2368550f0c3c238051b3fd755ebfc97e6ebae8c567d7baec2"
+      ]
+    },
+    {
+      "case_id": "q2_regression_revenue_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q2"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "8eba561010ed55e9a49d1251afa3dc7c1554d858298be696f26729d5b970338c",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2025-q2",
+      "selected_cell_ids": [
+        "f1389cb70128a4b2368550f0c3c238051b3fd755ebfc97e6ebae8c567d7baec2"
+      ]
+    },
+    {
+      "case_id": "q2_regression_revenue_six_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "3e093fcab4d9bb4ef288f402eb86cbf08748bed1a3b4c6292b62b7c3843cfec2",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "8e1ba02e823080afe280b1043c69fa65d1244e29ef8383a4809ba91d083bec19"
+      ]
+    },
+    {
+      "case_id": "q2_regression_revenue_six_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q2"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "3e093fcab4d9bb4ef288f402eb86cbf08748bed1a3b4c6292b62b7c3843cfec2",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2025-q2",
+      "selected_cell_ids": [
+        "8e1ba02e823080afe280b1043c69fa65d1244e29ef8383a4809ba91d083bec19"
+      ]
+    },
+    {
+      "case_id": "q2_regression_net_income_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "4248a5387d9ad702bb1f199af07165987ce574d05e8043a854f1deb202197a0a",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "11865bf9beadab4654f101c2e3cbaf046083a513b219cafff20d4caead40ecaa"
+      ]
+    },
+    {
+      "case_id": "q2_regression_net_income_three_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q2"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "4248a5387d9ad702bb1f199af07165987ce574d05e8043a854f1deb202197a0a",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2025-q2",
+      "selected_cell_ids": [
+        "11865bf9beadab4654f101c2e3cbaf046083a513b219cafff20d4caead40ecaa"
+      ]
+    },
+    {
+      "case_id": "q2_regression_net_income_six_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "6a9e7a86a6ea73f4628601ab9e540288842a950e4a2c10ccc6cb2d687f6cf158",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": [
+        "c64b7e5ba5db1f095784043c82a269f5816bbe01d6ff9a17f30a06b87cb32f4b"
+      ]
+    },
+    {
+      "case_id": "q2_regression_net_income_six_months",
+      "disposition": "source_candidate",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q2"
+      ],
+      "posthoc_development_assessment": {
+        "currency_basis": "printed-literal-only;no-ISO-currency-verdict",
+        "financial_correctness": "unestablished",
+        "human_gold": false,
+        "kind": "mechanical-exposed-source-target-comparison",
+        "source_fields_match": true
+      },
+      "query_sha256": "6a9e7a86a6ea73f4628601ab9e540288842a950e4a2c10ccc6cb2d687f6cf158",
+      "reason": "EXACT_LITERAL_FIELDS_MATCH",
+      "scope_id": "nvidia-fy2025-q2",
+      "selected_cell_ids": [
+        "c64b7e5ba5db1f095784043c82a269f5816bbe01d6ff9a17f30a06b87cb32f4b"
+      ]
+    },
+    {
+      "case_id": "missing-report-fy2035-q2",
+      "disposition": "refuse",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "human_gold": false,
+        "kind": "provisional-negative-withholding",
+        "withheld": true
+      },
+      "query_sha256": "ff4535bfe06a8802e72a0c76d5abd259571b1baba03bfabf9be82e93c1ca09af",
+      "reason": "REPORT_UNAVAILABLE",
+      "scope_id": "all-reports",
+      "selected_cell_ids": []
+    },
+    {
+      "case_id": "q2-wrong-end-date",
+      "disposition": "refuse",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "human_gold": false,
+        "kind": "provisional-negative-withholding",
+        "withheld": true
+      },
+      "query_sha256": "45a991626ee595f83a49bd3b0b2b4fac564bc25fecf96388ebac9f012d715950",
+      "reason": "NO_INDEXED_CELL_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": []
+    },
+    {
+      "case_id": "q2-wrong-end-date",
+      "disposition": "refuse",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q2"
+      ],
+      "posthoc_development_assessment": {
+        "human_gold": false,
+        "kind": "provisional-negative-withholding",
+        "withheld": true
+      },
+      "query_sha256": "45a991626ee595f83a49bd3b0b2b4fac564bc25fecf96388ebac9f012d715950",
+      "reason": "NO_INDEXED_CELL_MATCH",
+      "scope_id": "nvidia-fy2025-q2",
+      "selected_cell_ids": []
+    },
+    {
+      "case_id": "q2-monthly-net-income",
+      "disposition": "refuse",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "human_gold": false,
+        "kind": "provisional-negative-withholding",
+        "withheld": true
+      },
+      "query_sha256": "c51cb7042fe9965b9fa0d8779cf8c07d7520cbbf701f0350187690da64b6fea5",
+      "reason": "NO_INDEXED_CELL_MATCH",
+      "scope_id": "all-reports",
+      "selected_cell_ids": []
+    },
+    {
+      "case_id": "q2-monthly-net-income",
+      "disposition": "refuse",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q2"
+      ],
+      "posthoc_development_assessment": {
+        "human_gold": false,
+        "kind": "provisional-negative-withholding",
+        "withheld": true
+      },
+      "query_sha256": "c51cb7042fe9965b9fa0d8779cf8c07d7520cbbf701f0350187690da64b6fea5",
+      "reason": "NO_INDEXED_CELL_MATCH",
+      "scope_id": "nvidia-fy2025-q2",
+      "selected_cell_ids": []
+    },
+    {
+      "case_id": "q1-eur-conversion",
+      "disposition": "unsupported",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "human_gold": false,
+        "kind": "provisional-negative-withholding",
+        "withheld": true
+      },
+      "query_sha256": "07f1a9e7a85828dca2e47a5d2cdaf835c1907e2e3465b2fdb4f1648e83bdcb39",
+      "reason": "ISO_CURRENCY_UNVERIFIED_NO_FX",
+      "scope_id": "all-reports",
+      "selected_cell_ids": []
+    },
+    {
+      "case_id": "q1-eur-conversion",
+      "disposition": "unsupported",
+      "original_operator_document_ids": [
+        "nvidia-fy2027-q1"
+      ],
+      "posthoc_development_assessment": {
+        "human_gold": false,
+        "kind": "provisional-negative-withholding",
+        "withheld": true
+      },
+      "query_sha256": "07f1a9e7a85828dca2e47a5d2cdaf835c1907e2e3465b2fdb4f1648e83bdcb39",
+      "reason": "ISO_CURRENCY_UNVERIFIED_NO_FX",
+      "scope_id": "nvidia-fy2027-q1",
+      "selected_cell_ids": []
+    },
+    {
+      "case_id": "q2-missing-duration",
+      "disposition": "clarify",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "human_gold": false,
+        "kind": "provisional-negative-withholding",
+        "withheld": true
+      },
+      "query_sha256": "bb1dbf8ca436b8d3408eb3b4463f76d12ac256d5897de8ceb5b9a69188e1d0c5",
+      "reason": "DURATION_REQUIRED",
+      "scope_id": "all-reports",
+      "selected_cell_ids": []
+    },
+    {
+      "case_id": "q2-missing-duration",
+      "disposition": "clarify",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q2"
+      ],
+      "posthoc_development_assessment": {
+        "human_gold": false,
+        "kind": "provisional-negative-withholding",
+        "withheld": true
+      },
+      "query_sha256": "bb1dbf8ca436b8d3408eb3b4463f76d12ac256d5897de8ceb5b9a69188e1d0c5",
+      "reason": "DURATION_REQUIRED",
+      "scope_id": "nvidia-fy2025-q2",
+      "selected_cell_ids": []
+    },
+    {
+      "case_id": "q2-date-duration-contradiction",
+      "disposition": "clarify",
+      "original_operator_document_ids": null,
+      "posthoc_development_assessment": {
+        "human_gold": false,
+        "kind": "provisional-negative-withholding",
+        "withheld": true
+      },
+      "query_sha256": "b38d8910ceb6f12804b9b6e61e48947c7aadce4237bb6b68bed02a158949c0fe",
+      "reason": "REQUEST_CONFLICT",
+      "scope_id": "all-reports",
+      "selected_cell_ids": []
+    },
+    {
+      "case_id": "q2-date-duration-contradiction",
+      "disposition": "clarify",
+      "original_operator_document_ids": [
+        "nvidia-fy2025-q2"
+      ],
+      "posthoc_development_assessment": {
+        "human_gold": false,
+        "kind": "provisional-negative-withholding",
+        "withheld": true
+      },
+      "query_sha256": "b38d8910ceb6f12804b9b6e61e48947c7aadce4237bb6b68bed02a158949c0fe",
+      "reason": "REQUEST_CONFLICT",
+      "scope_id": "nvidia-fy2025-q2",
+      "selected_cell_ids": []
+    }
+  ],
+  "runner_sha256": "c672422be8c97dd4b52654c6d0e8b4f25ff62ec48d355c260aaff2ec5984b419",
+  "schema_version": 1,
+  "scope_outcomes": {
+    "all-reports": {
+      "clarify": 2,
+      "refuse": 3,
+      "source_candidate": 12,
+      "unsupported": 1
+    },
+    "explicit-requested-report": {
+      "clarify": 2,
+      "refuse": 2,
+      "source_candidate": 12,
+      "unsupported": 1
+    }
+  },
+  "scope_semantics": "same-registered-document-scopes;quarterly-table-parser-only;no-dense-fallback",
+  "section_cell_counts": {
+    "count": 24,
+    "monetary": 156,
+    "per_share": 24
+  },
+  "source_fiscal_metadata": "operator-declaration;not-inferred-from-calendar-year",
+  "status": "source-index-and-original-query-comparison",
+  "supported_statement_reports": 4
+}
