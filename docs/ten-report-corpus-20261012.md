@@ -2,6 +2,8 @@
 
 The local Python corpus now contains ten NVIDIA issuer reports and 3,240 source-linked chunks. Two first-quarter Form 10-Q reports were appended to the preserved eight-report baseline. The installed reviewed wheel built the corpus, a pinned cached BGE encoder built a separate passage matrix, and 24 diagnostic queries completed. The expansion is operationally reproducible at the recorded local scope. Financial answer readiness failed: retrieval still selects the wrong reporting period or rejects the intended statement page, and no generator or independent human gold evaluation ran.
 
+The later [35-request expanded diagnostic](expanded-financial-comparator.md) preserves this corpus and passage matrix, adds pre-query refusal/clarification candidates and saves actual query vectors for independent arithmetic replay. Its additional source-span coverage and negative observations retain the failed financial-readiness result; the 24-request record below remains the original historical experiment.
+
 This document records a local Python experiment for consumers of the source repository. The GitHub Pages browser demo uses the reader's selected PDF; the ten-report corpus is a separate prepared Python artifact. No public API hosts these artifacts, and CI did not independently run this real model experiment.
 
 ## What was added

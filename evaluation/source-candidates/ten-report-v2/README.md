@@ -1,0 +1,9 @@
+# Frozen ten-report development candidates
+
+These metadata files preserve eighteen assistant source-reviewed **development** cases: twelve evidence candidates, four refusal candidates and two clarification candidates. They select thirty-five case/scope inputs. Human gold and held-out counts are zero. A prior-year comparison cell remains in the report that prints it; its calendar period does not change the report identity.
+
+`cases.jsonl` preserves the original twelve record strings and their hashes. `case-freeze.json` binds exact file bytes, case order, exposure status and counts. `experiment.json` is the configuration frozen before the expanded query run, including the exact corpus, passage matrix, original reviewed wheel and source-replay digests. All cases remain exposed; no accuracy or financial-readiness claim follows from these candidate labels.
+
+The metadata includes public issuer URLs, source hashes, short printed field labels, facts and coordinates. It distributes no PDF bodies, whole-page extracted text, passage/query tensors or model weights. Obtain and review the source bodies and prepare the corpus, vectors and source-binding packets separately. Configuration identities refer to the recorded local artifacts; a fresh installation must verify its own files and cannot assume a rebuilt wheel or matrix has the same bytes.
+
+The original eight-report scripts and their earlier candidates are preserved. Use the new tools and the [expanded comparison guide](../../../docs/expanded-financial-comparator.md) for this schema. Source-coordinate replay, stored-vector arithmetic, software gate acceptance and independently adjudicated financial quality are separate results. A negative candidate accepted by the similarity gate remains a diagnostic failure observation, not a human-validated false-accept rate.
