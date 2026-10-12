@@ -1,0 +1,79 @@
+{
+  "all_watched_files_unchanged": true,
+  "annual_cells": 327,
+  "canonical_index_sha256": "cb38468d4c9aa485156ef4319fcc60ba394d23d2b030119157b4bf3a3bb2fb93",
+  "checks": 1823,
+  "complete_candidate_json_matches": true,
+  "completed_receipt_reload": {
+    "audit_receipt_sha256": "914b7ae95b458367fdd0e91b3a5efde6c28a354b772c99ce8b59430049ba0f3d",
+    "audit_script_sha256": "929808f71e3efbd8b51f6633bc2d9bb9635ddffd65c070840e6522cbe722d482",
+    "candidate_responses": 60,
+    "checks": 619,
+    "native_binding_replays": 438,
+    "receipt_sha256": "e1e04ed0e2f01dc40829dda6fcaaa09ab477a5635828db1724e19cc05e6520ca",
+    "requests": 77,
+    "scope": "finite-record-reload;no-new-HTTP-model-or-financial-verdict",
+    "status": "passed-completed-receipt-reload",
+    "summary_sha256": "d6ff68a899c37b171a4fa3beefed832cca12b5fb55c42a6859607cc77467fafb"
+  },
+  "created_at": "2026-10-12T18:54:05.254903+00:00",
+  "encoder_runs": 0,
+  "financial_correctness": "unestablished",
+  "generation_runs": 0,
+  "held_out_count": 0,
+  "human_gold_count": 0,
+  "native_binding_replays": 438,
+  "native_pages_replayed": 9,
+  "not_accepted": [
+    "financial accuracy",
+    "held-out generalization",
+    "human adjudication",
+    "encoder or generation",
+    "public hosting",
+    "browser integration",
+    "load or TLS"
+  ],
+  "ordinary_query_service_calls": 0,
+  "original_query_scope_request_id_matches": true,
+  "original_reports": 10,
+  "quarterly_cells": 204,
+  "real_http_requests": 77,
+  "receipt_sha256": "e1e04ed0e2f01dc40829dda6fcaaa09ab477a5635828db1724e19cc05e6520ca",
+  "release_commit": "1fb5a50dc48645dbbf4fc50159d2986bcf12d687",
+  "request_banks": [
+    {
+      "dispositions": {
+        "clarify": 4,
+        "refuse": 5,
+        "source_candidate": 24,
+        "unsupported": 2
+      },
+      "name": "original-exposed-development",
+      "requests": 35
+    },
+    {
+      "dispositions": {
+        "clarify": 3,
+        "refuse": 2,
+        "source_candidate": 36,
+        "unsupported": 1
+      },
+      "name": "annual-source-derived-exposed",
+      "requests": 42
+    }
+  ],
+  "runner_sha256": "4ebd67a2b39de07eec9373735e9d4feb2290d5eaffc0a842f75a24b3aac0dcc6",
+  "schema_version": 1,
+  "scope": "installed-API-wheel;hash-pinned-original-reports;exposed-source-observation;real-loopback-HTTP",
+  "source_candidates": 60,
+  "source_cells": 531,
+  "source_omissions": 6,
+  "source_summary_sha256": "d6ff68a899c37b171a4fa3beefed832cca12b5fb55c42a6859607cc77467fafb",
+  "status": "passed-source-transport-observation",
+  "temporary_listener_closed": true,
+  "temporary_server_stopped": true,
+  "transport_elapsed_boundary": "whole finite HTTP/replay/closure sequence including native span checks;not request-only latency or a distribution",
+  "transport_elapsed_seconds": 11.378,
+  "watched_files": 88,
+  "wheel_sha256": "f5bbd5528692cdb976f258b4657d380fa46f7155565fadfd41f3df3bec2d9ece"
+}
