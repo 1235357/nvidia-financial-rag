@@ -123,7 +123,6 @@ jobs:
             financial-rag-demo:ci python -I -B /workspace/acceptance/serving_startup.py \
             --wheel /wheels/nvidia_financial_rag-0.1.0-py3-none-any.whl \
             --create-fixture-dir /fixture-output/native
-          chmod -R a+rX "$fixture_parent/native"
           trap 'docker rm --force startup-configured startup-unconfigured >/dev/null' EXIT
           docker run --detach --name startup-configured --read-only --cap-drop ALL \
             --security-opt no-new-privileges:true --publish 127.0.0.1:8002:8000 \
