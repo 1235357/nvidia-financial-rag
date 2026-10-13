@@ -97,7 +97,7 @@ docker run --rm --read-only --cap-drop ALL --security-opt no-new-privileges:true
   --publish 127.0.0.1:8000:8000 --env NVIDIA_RAG_API_TOKEN financial-rag-demo
 ```
 
-Supply `NVIDIA_RAG_API_TOKEN` privately in the invoking environment first. The image installs the built API wheel, runs as UID/GID `10001:10001`, serves only the generated-data evidence demo, and binds port 8000 inside the container. The host mapping above remains loopback. The health check probes liveness. The Docker build context is explicitly limited to package source, license/readme, the example and constraints; it excludes reports, indexes, receipts, credentials and runtime directories.
+Supply `NVIDIA_RAG_API_TOKEN` privately in the invoking environment first. The image installs the built API wheel, runs as UID/GID `10001:10001`, defaults to the generated-data evidence demo, and binds port 8000 inside the container. Its command can be overridden for [installed corpus mode with read-only external inputs](docs/verified-corpus-startup.md#run-the-existing-image-with-read-only-external-inputs). The host mapping above remains loopback. The health check probes liveness. The Docker build context is explicitly limited to package source, license/readme, the example and constraints; it excludes reports, indexes, receipts, credentials and runtime directories.
 
 The demo has a 16-connection Uvicorn concurrency bound and a five-second keep-alive limit. These are demo settings, not load acceptance or a whole-request execution deadline. No public API infrastructure, GPU, paid model account or cloud subscription is required. Docker execution must be verified on a host with a working engine; the Linux workflow performs that gate.
 
