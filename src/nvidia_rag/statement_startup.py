@@ -90,6 +90,36 @@ class StatementSnapshot:
         for identity in self.input_identities:
             identity.verify_unchanged()
 
+    def verify_report_bindings(self):
+        """Recheck the selected index against its retained fiscal declarations.
+
+        The loader records registry then declaration identity before optional
+        model inputs and PDFs. Replaying their strict metadata prevents replacing
+        a source-built index with different FY/Q declarations after startup.
+        It does not reparse PDF tables or establish financial correctness.
+        """
+        from .structured_income import validate_income_index
+        validate_income_index(self.index)
+        self.verify_unchanged()
+        _require(len(self.input_identities) >= 2, 'statement declaration identities are missing')
+        registry_identity, declaration_identity = self.input_identities[:2]
+        registry_body, current_registry = _read(registry_identity.path)
+        declaration_body, current_declaration = _read(declaration_identity.path)
+        _require(current_registry == registry_identity and current_declaration == declaration_identity,
+                 'statement declaration input identity changed')
+        _require(_registry(registry_identity.path, registry_body) == self.sources,
+                 'statement registry differs from retained source declaration')
+        selected = _declarations(declaration_body, registry_hash=registry_identity.sha256,
+            sources=self.sources, document_ids=frozenset(record[0] for record in self.index.reports))
+        expected = tuple((source.document_id, source.sha256, year, quarter)
+                         for source, year, quarter in selected)
+        _require(self.index.reports == expected, 'source index differs from retained fiscal declaration')
+        for source, _, _ in selected:
+            pdf_inputs = [identity for identity in self.input_identities[2:]
+                          if identity.path.name == source.filename and identity.sha256 == source.sha256]
+            _require(len(pdf_inputs) == 1 and pdf_inputs[0].bytes > 0,
+                     'selected report PDF input identity is missing or ambiguous')
+
 
 def _read(path, *, limit=_JSON_LIMIT):
     _safe_path(path)

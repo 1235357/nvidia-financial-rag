@@ -93,6 +93,8 @@ def parse_args() -> argparse.Namespace:
             option is not None for option in statement_options):
         parser.error('all three --statement-source-registry, --statement-source-dir and '
                      '--statement-fiscal-declarations must be supplied together')
+    if args.source_task is not None and args.statement_source_registry is not None:
+        parser.error('--source-task cannot be combined with source-bound statement report routing')
     return args
 
 
@@ -134,6 +136,11 @@ if __name__ == "__main__":
         source_records = load_task_registry(args.source_registry,
             corpus_manifest=corpus_manifest, chunks_path=args.chunks)
     chunks = load_chunks(args.chunks)
+    report_catalog = None
+    if statement_snapshot is not None:
+        from nvidia_rag.period_routing import build_report_catalog
+        report_catalog = build_report_catalog(statement_snapshot,
+            corpus_manifest=corpus_manifest.absolute(), chunks_path=args.chunks.absolute())
     # Optional runtimes are imported only after configured source preflight.
     from sentence_transformers import SentenceTransformer
     import uvicorn
@@ -156,10 +163,11 @@ if __name__ == "__main__":
         model=embedding_model,
         threshold=args.threshold,
         top_k=args.top_k,
-        route_fiscal_year=args.source_task is None,
+        route_fiscal_year=args.source_task is None and report_catalog is None,
         passage_embeddings=passage_embeddings,
         source_task=args.source_task,
         source_records=source_records,
+        report_catalog=report_catalog,
     )
     service = evidence_service
     if args.generator == "qwen-local":

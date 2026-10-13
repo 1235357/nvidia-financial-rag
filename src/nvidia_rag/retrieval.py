@@ -28,6 +28,9 @@ class DenseInspection:
     considered_chunks: int
     considered_scores: tuple[float, ...]
     routed_document_id: str | None = None
+    routed_document_ids: tuple[str, ...] = ()
+    route_disposition: str | None = None
+    route_reason: str | None = None
 
 
 def _validate_chunks(chunks: Sequence[Chunk]) -> tuple[Chunk, ...]:
@@ -182,6 +185,11 @@ class DenseRetriever:
         if np.any(norms == 0):
             raise ValueError("encoder returned a zero vector")
         return matrix / norms
+
+    @property
+    def chunks(self) -> tuple[Chunk, ...]:
+        """Immutable ranking inputs for source-bound composition validation."""
+        return self._chunks
 
     def retrieve(self, query: str, *, top_k: int) -> list[ScoredChunk]:
         return self.retrieve_from_documents(query, top_k=top_k, document_ids=None)

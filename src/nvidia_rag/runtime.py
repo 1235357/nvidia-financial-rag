@@ -10,6 +10,7 @@ import numpy as np
 
 from .core import Chunk
 from .retrieval import DenseRetriever, FiscalYearRoutingRetriever, TaskSourceRetriever
+from .period_routing import ReportCatalog, SourceBoundPeriodRetriever, validate_report_catalog
 from .sources import SourceRecord
 from .service import EvidenceService
 
@@ -32,8 +33,18 @@ def build_bge_service(
     passage_embeddings: Sequence[Sequence[float]] | np.ndarray | None = None,
     source_task: str | None = None,
     source_records: list[SourceRecord] | None = None,
+    report_catalog: ReportCatalog | None = None,
 ) -> EvidenceService:
     """Wire BGE's passage/query conventions into the generic dense retriever."""
+
+    if source_task is not None and (route_fiscal_year or report_catalog is not None):
+        raise ValueError('source task cannot be combined with automatic report routing')
+    if report_catalog is not None:
+        if route_fiscal_year:
+            raise ValueError('source-bound period routing cannot be combined with annual-only routing')
+        validate_report_catalog(report_catalog, chunks=chunks)
+    if source_task is not None and source_records is None:
+        raise ValueError('source task requires reviewed source records')
 
     def encode_passages(texts: list[str]):
         return model.encode(
@@ -58,11 +69,9 @@ def build_bge_service(
         precomputed_embeddings=passage_embeddings,
     )
     if source_task is not None:
-        if route_fiscal_year:
-            raise ValueError('source task cannot be combined with annual-only routing')
-        if source_records is None:
-            raise ValueError('source task requires reviewed source records')
         retriever = TaskSourceRetriever(dense_retriever, sources=source_records, task=source_task)
+    elif report_catalog is not None:
+        retriever = SourceBoundPeriodRetriever(dense_retriever, report_catalog=report_catalog)
     elif route_fiscal_year:
         year_to_document_id: dict[int, str] = {}
         for chunk in chunks:

@@ -89,6 +89,35 @@ def test_token_refusal_precedes_optional_statement_snapshot_io(tmp_path, monkeyp
         runpy.run_path(str(LAUNCHER), run_name='__main__')
 
 
+def test_model_launcher_refuses_conflicting_catalog_identity_before_model_import(tmp_path, monkeypatch):
+    inputs = Inputs(tmp_path)
+    inputs.payload['reports'][1]['fiscal_quarter'] = None  # Both now claim the same annual FY2025 identity.
+    inputs.sync()
+    monkeypatch.setenv('NVIDIA_RAG_API_TOKEN', 'synthetic-model-startup-'+'x'*32)
+    monkeypatch.setattr(sys, 'argv', [str(LAUNCHER)] + options(inputs))
+    imported = []
+    original = builtins.__import__
+    def guarded(name, *args, **kwargs):
+        if name.split('.')[0] in {'sentence_transformers', 'uvicorn'}:
+            imported.append(name)
+            pytest.fail('conflicting report identities reached optional model import')
+        return original(name, *args, **kwargs)
+    monkeypatch.setattr(builtins, '__import__', guarded)
+    with pytest.raises(ValueError, match='duplicate report identity'):
+        runpy.run_path(str(LAUNCHER), run_name='__main__')
+    assert imported == []
+
+
+def test_statement_routing_and_explicit_source_task_are_rejected_before_runtime(tmp_path, monkeypatch):
+    inputs = Inputs(tmp_path)
+    monkeypatch.setattr(sys, 'argv', [str(LAUNCHER)] + options(inputs)
+        + ['--source-task', 'reported_results', '--source-registry', str(inputs.registry)])
+    ns = runpy.run_path(str(LAUNCHER))
+    with pytest.raises(SystemExit) as error:
+        ns['parse_args']()
+    assert error.value.code == 2
+
+
 @pytest.mark.parametrize('mutate', [False, True])
 def test_model_launcher_attaches_snapshot_and_rechecks_after_model_work(tmp_path, monkeypatch, mutate):
     from fastapi.testclient import TestClient
@@ -109,6 +138,9 @@ def test_model_launcher_attaches_snapshot_and_rechecks_after_model_work(tmp_path
         def query(self, question):
             return build_grounded_context(question, evidence=[])
     def build(**kwargs):
+        assert kwargs['report_catalog'] is not None
+        assert kwargs['route_fiscal_year'] is False
+        assert {r.document_id for r in kwargs['report_catalog'].reports} == {r.document_id for r in inputs.reports}
         if mutate:
             inputs.declarations.write_bytes(inputs.declarations.read_bytes() + b'\n')
         return Service()
