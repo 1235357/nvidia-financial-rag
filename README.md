@@ -52,7 +52,7 @@ The dependency constraints record a dated selection of direct core/API dependenc
 
 ## Integrate the installed library
 
-The wheel contains `nvidia_rag`, including `nvidia_rag.api.create_app`, `EvidenceService`, lexical/dense retrieval and optional generation adapters. The clone also contains source-tree launchers and examples; it does not install a console command or bundle a trained index.
+The wheel contains `nvidia_rag`, including `nvidia_rag.api.create_app`, `EvidenceService`, lexical/dense retrieval and optional generation adapters. It now installs `nvidia-rag-serve-corpus`, also available as `python -m nvidia_rag.serving`, for verified local corpus startup with optional reviewed statement declarations. The clone retains source-tree launchers and examples; trained indexes and original PDFs remain external. See [the installed startup guide](docs/verified-corpus-startup.md) for the declaration format, shared document scope and read-only container command.
 
 A consumer-owned retriever implements `retrieve(question, *, top_k)` and returns `ScoredChunk` records. The service enforces a selected evidence threshold before context construction:
 
@@ -118,7 +118,7 @@ The generated-data release demo and CI do not run this financial model path. Bro
 
 ## Checks and CI
 
-The [API workflow](.github/workflows/api.yml) runs checkout contracts on Linux and Windows/Python 3.13, builds a wheel, installs only `[api]` into a fresh environment, verifies installed-module identity and eleven synthetic failure cases, checks real loopback query and statement HTTP plus `pip check`, and uploads the wheel/test/dependency receipts. The statement check generates native PDF table fixtures and starts its own temporary loopback service. A dependent Linux job builds the nonroot image and checks actual generated-data HTTP. Actions use immutable commit references. No private corpus, raw report or model inference is part of pull-request CI.
+The [API workflow](.github/workflows/api.yml) runs checkout contracts on Linux and Windows/Python 3.13, builds a wheel, installs only `[api]` into a fresh environment, verifies installed-module identity and eleven synthetic failure cases, checks real loopback query and statement HTTP plus `pip check`, and uploads the wheel/test/dependency receipts. The additional installed-startup check launches the packaged corpus CLI in three owned processes and checks both routes against native PDF fixtures. The Linux job retains generated-demo checks and additionally runs the installed corpus command as nonroot with read-only source mounts, a read-only root filesystem and dropped capabilities. Workflow wiring is separate from a completed run and inspected receipt. Actions use immutable commit references. No private corpus, raw report or model inference is part of pull-request CI.
 
 Equivalent checkout commands:
 
@@ -135,6 +135,7 @@ python -I -B <repository>/acceptance/wheel_smoke.py
 python -I -B <repository>/acceptance/api_failure_contract.py --output <new-receipt.json>
 python -I -B <repository>/acceptance/http_loopback.py
 python -I -B <repository>/acceptance/statement_http.py --output <absolute-new-statement-receipt.json>
+python -I -B <repository>/acceptance/serving_startup.py --wheel <absolute-built-wheel> --output <absolute-new-startup-receipt.json>
 python -m pip check
 ```
 

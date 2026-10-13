@@ -64,6 +64,8 @@ jobs:
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -I -B (Join-Path $workspace 'acceptance/statement_http.py') --output (Join-Path $workspace 'installed-statement-contract.json')
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
+            & $consumerPython -I -B (Join-Path $workspace 'acceptance/serving_startup.py') --wheel $wheel.FullName --output (Join-Path $workspace 'installed-serving-startup.json')
+            if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -m pip check
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -m pip freeze | Set-Content -LiteralPath (Join-Path $workspace 'resolved-api.txt')
@@ -76,6 +78,7 @@ jobs:
             checkout-tests.xml
             installed-api-contract.json
             installed-statement-contract.json
+            installed-serving-startup.json
             resolved-api.txt
           retention-days: 14
 
@@ -104,3 +107,57 @@ jobs:
             --env NVIDIA_RAG_API_TOKEN financial-rag-demo:ci
           trap 'docker rm --force generated-demo >/dev/null' EXIT
           python -I -B acceptance/demo_http.py
+      - name: Nonroot installed corpus CLI and source-candidate HTTP
+        shell: bash
+        env:
+          NVIDIA_RAG_API_TOKEN: synthetic-ci-startup-token-0123456789abcdef
+        run: |
+          set -euo pipefail
+          fixture_parent="$RUNNER_TEMP/statement-startup-fixtures"
+          result_parent="$RUNNER_TEMP/statement-startup-results"
+          mkdir "$fixture_parent" "$result_parent"
+          chmod 777 "$fixture_parent" "$result_parent"
+          docker run --rm --read-only --cap-drop ALL --security-opt no-new-privileges:true \
+            --mount "type=bind,source=$fixture_parent,target=/fixture-output" \
+            --mount "type=bind,source=$GITHUB_WORKSPACE/acceptance,target=/workspace/acceptance,readonly" \
+            financial-rag-demo:ci python -I -B /workspace/acceptance/serving_startup.py \
+            --wheel /wheels/nvidia_financial_rag-0.1.0-py3-none-any.whl \
+            --create-fixture-dir /fixture-output/native
+          chmod -R a+rX "$fixture_parent/native"
+          trap 'docker rm --force startup-configured startup-unconfigured >/dev/null' EXIT
+          docker run --detach --name startup-configured --read-only --cap-drop ALL \
+            --security-opt no-new-privileges:true --publish 127.0.0.1:8002:8000 \
+            --env NVIDIA_RAG_API_TOKEN \
+            --mount "type=bind,source=$fixture_parent/native,target=/fixtures,readonly" \
+            financial-rag-demo:ci python -I -B -m nvidia_rag.serving --host 0.0.0.0 --port 8000 \
+            --artifact-dir /fixtures/corpus --source-registry /fixtures/sources.json --threshold 0.01 \
+            --statement-source-dir /fixtures/pdfs --statement-fiscal-declarations /fixtures/fiscal-declarations.json
+          docker run --detach --name startup-unconfigured --read-only --cap-drop ALL \
+            --security-opt no-new-privileges:true --publish 127.0.0.1:8003:8000 \
+            --env NVIDIA_RAG_API_TOKEN \
+            --mount "type=bind,source=$fixture_parent/native,target=/fixtures,readonly" \
+            financial-rag-demo:ci python -I -B -m nvidia_rag.serving --host 0.0.0.0 --port 8000 \
+            --artifact-dir /fixtures/corpus --source-registry /fixtures/sources.json --threshold 0.01
+          docker inspect startup-configured startup-unconfigured > container-serving-config.json
+          docker run --rm --read-only --cap-drop ALL --security-opt no-new-privileges:true \
+            --network host --tmpfs /tmp:rw,noexec,nosuid,size=64m,mode=1777 --env NVIDIA_RAG_API_TOKEN \
+            --mount "type=bind,source=$fixture_parent/native,target=/fixtures,readonly" \
+            --mount "type=bind,source=$result_parent,target=/results" \
+            --mount "type=bind,source=$GITHUB_WORKSPACE/acceptance,target=/workspace/acceptance,readonly" \
+            financial-rag-demo:ci python -I -B /workspace/acceptance/serving_startup.py \
+            --wheel /wheels/nvidia_financial_rag-0.1.0-py3-none-any.whl --fixture-dir /fixtures \
+            --base-url http://127.0.0.1:8002 --unconfigured-base-url http://127.0.0.1:8003 \
+            --output /results/container-serving-startup.json
+          cp "$result_parent/container-serving-startup.json" .
+          docker stop startup-configured startup-unconfigured >/dev/null
+          test "$(docker inspect startup-configured --format '{{.State.Running}}')" = false
+          test "$(docker inspect startup-unconfigured --format '{{.State.Running}}')" = false
+          docker inspect startup-configured startup-unconfigured > container-serving-stopped.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: api-container-serving-startup
+          path: |
+            container-serving-startup.json
+            container-serving-config.json
+            container-serving-stopped.json
+          retention-days: 14

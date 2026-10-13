@@ -4,6 +4,8 @@
 
 This interface supports the selector's existing monetary row and literal-period vocabulary. The [annual guide](annual-income-selection.md) explains fiscal-year periods, and the [quarterly guide](structured-income-selection.md) explains row, column and span bindings. EPS/share-count natural-language lookup, arithmetic, currency conversion and unseen financial accuracy remain outside the accepted scope. A returned cell remains a source candidate with `financial_correctness="unestablished"`.
 
+For a complete packaged startup path, use [the verified corpus startup guide](verified-corpus-startup.md). It documents the installed command and Python factory, strict registry/PDF-bound fiscal declarations, shared document scope, model-launcher options and read-only container composition. The custom application injection below remains supported.
+
 ## Configure a consumer-owned application
 
 Install the selected wheel with `[api]`. The application continues to require a consumer-owned ordinary query service implementing `query(question)`; the statement route is an additional explicitly configured interface:

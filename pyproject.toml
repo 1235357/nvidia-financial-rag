@@ -33,6 +33,9 @@ generation = ["httpx>=0.27,<1", "transformers>=4.37,<5"]
 [project.urls]
 Repository = "https://github.com/1235357/nvidia-financial-rag"
 
+[project.scripts]
+nvidia-rag-serve-corpus = "nvidia_rag.serving:main"
+
 [tool.setuptools]
 include-package-data = false
 

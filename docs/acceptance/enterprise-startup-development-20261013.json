@@ -1,0 +1,76 @@
+{
+  "encoder_runs": 0,
+  "financial_correctness": "unestablished",
+  "generator_runs": 0,
+  "human_gold_count": 0,
+  "installed_http": {
+    "checks": 44,
+    "input_unchanged": true,
+    "installed_modules": 20,
+    "modes": [
+      "all-sources",
+      "quarter-only",
+      "unconfigured"
+    ],
+    "owned_processes_and_listeners_closed": true,
+    "receipt_sha256": "5dc50f638943156fde89e4b4098562f34c095b9a6b65825bec44ed667e66b240"
+  },
+  "not_accepted": [
+    "official CI for this source commit",
+    "container execution for this commit",
+    "original financial reports through this launcher",
+    "held-out financial accuracy",
+    "public API hosting",
+    "model runtime",
+    "browser integration",
+    "load/TLS",
+    "whole goal completion"
+  ],
+  "review": {
+    "followup_02_sha256": "331fcd92b569c7e0ec3e2b685fca2fcd4b50647508b7074284a691aa208f7575",
+    "resolved_findings": [
+      "complete source provenance including rehashed mutation controls",
+      "exact native expected index digest"
+    ],
+    "scope": "read-only source and saved receipt review; independently ran109 then29 focus checks",
+    "source_review_01_sha256": "72dd7b0845c28e7a710832e8264d0ad4905b3260a2137db8adcf6598bf91f4a8"
+  },
+  "schema_version": 1,
+  "scope": "local installed enterprise startup over synthetic native PDF consistency fixtures",
+  "tests": {
+    "dependency_warning": "Existing Starlette/httpx TestClient deprecation warning; no ignored failure.",
+    "errors": 0,
+    "failures": 0,
+    "junit_sha256": "2d9b11bcd721b43a081630076b1601e9bb9dd94f552e8a99f3eee7578a827e48",
+    "log_sha256": "4efc1ac7978e34287afb7abd55fbc6c363a623a09ded1f29cf9f56cdb0836491",
+    "passed": 842,
+    "skipped": 0
+  },
+  "tokenizer_runs": 0,
+  "wheel": {
+    "bytes": 127106,
+    "module_sha256": {
+      "nvidia_rag/__init__.py": "7813b376c6630a10dbcc47d3aab8391d1d6d352ee33947ac59667907da107ab7",
+      "nvidia_rag/api.py": "5de26f15ebda2f0e54c1a47cbf80504ab938768e13cc3aaf79366ca767d3e6e4",
+      "nvidia_rag/conversation.py": "bb0b745c4afeb204b07959cbba744e71bdf16df0870ca3ae8b483481ea5521ed",
+      "nvidia_rag/core.py": "aa057293545956c7de9c233ae41432d9b6daffc23640fe9fc2869d89d91ad438",
+      "nvidia_rag/corpus.py": "00fb1c1c3360875fb6d6d1e06040388276eb9672a352d382f7195b81147e8e7f",
+      "nvidia_rag/corpus_embeddings.py": "a340decf0e1435b7ecb5efe21cb6211fc4d5a8e9e71644c6fc403ed460ecdbcb",
+      "nvidia_rag/demo.py": "6e649bde9413d2106569d8bc66abcba190f9cfdbc878f777bfbda0b94e10af8e",
+      "nvidia_rag/embedding_store.py": "7922b538ab9206b8a81670d7f1ee9a49484eb3141bba933c871dc549314075f4",
+      "nvidia_rag/evaluation.py": "295f2cc64dce5d0adce28c4e675c113d95c33d154a5c9b2a76bc8c26b71807ab",
+      "nvidia_rag/generation.py": "6672737f8de809e3536535e738133f758d858e00ecde1eba103de2c7b1daf0a5",
+      "nvidia_rag/ingest.py": "6f9e91715a789046c1c7fa827de205948da6cce9e05a3f6e7a1b3d171738838f",
+      "nvidia_rag/retrieval.py": "fe72d9a2b3e04078972db26cb528af7982e1c284f000be334e4c8f827c0933dc",
+      "nvidia_rag/runtime.py": "486198cc3c508d5a5092a9d39aab2f00b5c7fb8e05b5f505aa05ec0c757f6646",
+      "nvidia_rag/service.py": "afe876f279080d8b74774a59b286c8d8847dab75be0472a33771ffbddddc218e",
+      "nvidia_rag/serving.py": "8ccc41dc79c5a04c8fc876b1851fae123247af0229171c0e1626e641f5fb1444",
+      "nvidia_rag/sources.py": "4007e680e42a4df0a5f71f27094073686d3eebe94f8d61552e2c0f088fec1d2a",
+      "nvidia_rag/statement_api.py": "a8f625a8b5889dd137952712f1dcb46f0ac7367d6482421f34224faf45885973",
+      "nvidia_rag/statement_startup.py": "c25e4ee5d3527bda25674df3dee17087a86e78244615eb4bbd8636c8662e7df0",
+      "nvidia_rag/structured_income.py": "c26c829b763ea196fc40d8384b4c93837ef2f8716585c5f066ab8e2ab47ddad8",
+      "nvidia_rag/table_structure.py": "bce239ee844ec5a172b2a658fdf39e1eec27078da83027925a846319544ecefa"
+    },
+    "sha256": "55c6db32409ea6d0dde8cd84f7004984e22effe1b9e8f6e655744cdb51f082e4"
+  }
+}

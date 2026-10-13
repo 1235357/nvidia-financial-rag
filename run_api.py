@@ -78,9 +78,21 @@ def parse_args() -> argparse.Namespace:
                         default=None, help='Opt-in explicit source scope; disables annual-only routing.')
     parser.add_argument('--source-registry', type=Path, default=None,
                         help='Reviewed schema-v2 source registry matching the isolated corpus provenance.')
+    parser.add_argument('--statement-source-registry', type=Path,
+                        help='Pinned source registry for the optional statement index.')
+    parser.add_argument('--statement-source-dir', type=Path,
+                        help='Absolute local directory containing registered PDFs; no download.')
+    parser.add_argument('--statement-fiscal-declarations', type=Path,
+                        help='Explicit reviewed fiscal declarations bound to registry and PDF hashes.')
     args = parser.parse_args()
     if (args.source_task is None) != (args.source_registry is None):
         parser.error('--source-task and --source-registry must be supplied together')
+    statement_options = (args.statement_source_registry, args.statement_source_dir,
+                         args.statement_fiscal_declarations)
+    if any(option is not None for option in statement_options) and not all(
+            option is not None for option in statement_options):
+        parser.error('all three --statement-source-registry, --statement-source-dir and '
+                     '--statement-fiscal-declarations must be supplied together')
     return args
 
 
@@ -98,14 +110,22 @@ def load_task_registry(registry_path: Path, *, corpus_manifest: Path, chunks_pat
     return records
 
 
+def load_configured_statement(args):
+    """Bind optional statement startup to the exact configured model corpus."""
+    if args.statement_source_registry is None:
+        return None
+    from nvidia_rag.statement_startup import load_statement_snapshot
+    manifest = args.corpus_manifest or args.chunks.parent / 'manifest.json'
+    return load_statement_snapshot(source_registry=args.statement_source_registry,
+        source_dir=args.statement_source_dir, fiscal_declarations=args.statement_fiscal_declarations,
+        corpus_manifest=manifest.absolute(), chunks_path=args.chunks.absolute())
+
+
 if __name__ == "__main__":
     args = parse_args()
     # Reject missing credentials before corpus IO or expensive model loading.
     api_token = resolve_api_token(os.environ)
-    # Optional serving/model dependencies are required only after configuration
-    # is valid; importing this launcher must not eagerly load their runtimes.
-    from sentence_transformers import SentenceTransformer
-    import uvicorn
+    statement_snapshot = load_configured_statement(args)
 
     corpus_manifest = args.corpus_manifest or args.chunks.parent / "manifest.json"
     source_provenance = load_api_provenance(corpus_manifest, chunks_path=args.chunks)
@@ -114,6 +134,9 @@ if __name__ == "__main__":
         source_records = load_task_registry(args.source_registry,
             corpus_manifest=corpus_manifest, chunks_path=args.chunks)
     chunks = load_chunks(args.chunks)
+    # Optional runtimes are imported only after configured source preflight.
+    from sentence_transformers import SentenceTransformer
+    import uvicorn
     embedding_model = SentenceTransformer(
         args.embedding_model,
         revision=args.embedding_model_revision,
@@ -163,7 +186,10 @@ if __name__ == "__main__":
         api_token=api_token,
         expose_docs=args.expose_docs,
         source_provenance=source_provenance,
+        statement_index=None if statement_snapshot is None else statement_snapshot.index,
     )
+    if statement_snapshot is not None:
+        statement_snapshot.verify_unchanged()
     uvicorn.run(
         app,
         host=args.host,
