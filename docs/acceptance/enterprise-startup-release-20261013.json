@@ -1,0 +1,89 @@
+{
+  "commit": "9687491a8c006a91ae2902689c1594a28cfe3e2c",
+  "container": {
+    "actual_http_checks": 26,
+    "archive_bytes": 11090,
+    "archive_sha256": "bad152b28cc2b3fb4e478d14e78cd5beb896bad15f68984c5fbb75a0893b7c70",
+    "artifact_id": 11830232965,
+    "commit": "9687491a8c006a91ae2902689c1594a28cfe3e2c",
+    "encoder_runs": 0,
+    "financial_correctness": "unestablished",
+    "generator_runs": 0,
+    "health_limitation": "Docker healthcheck status at stop is not an operational health acceptance claim; actual external HTTP checks passed before owned stop.",
+    "human_gold_count": 0,
+    "input_unchanged": true,
+    "installed_production_modules": 20,
+    "run_id": 38428973799,
+    "schema_version": 1,
+    "scope": "Exact official synthetic corpus container startup and owned teardown; not deployment or financial acceptance",
+    "status": "passed",
+    "transports": [
+      {
+        "capabilities_dropped": "ALL",
+        "docker_health_acceptance": false,
+        "loopback_port": "8002",
+        "name": "/startup-configured",
+        "no_new_privileges": true,
+        "readonly_fixtures": true,
+        "readonly_root": true,
+        "statement_configured": true,
+        "stopped_exit_code": 0,
+        "user": "10001:10001"
+      },
+      {
+        "capabilities_dropped": "ALL",
+        "docker_health_acceptance": false,
+        "loopback_port": "8003",
+        "name": "/startup-unconfigured",
+        "no_new_privileges": true,
+        "readonly_fixtures": true,
+        "readonly_root": true,
+        "statement_configured": false,
+        "stopped_exit_code": 0,
+        "user": "10001:10001"
+      }
+    ]
+  },
+  "encoder_runs": 0,
+  "financial_correctness": "unestablished",
+  "first_failed_run": 38427779437,
+  "generator_runs": 0,
+  "human_gold_count": 0,
+  "not_accepted": [
+    "Public API hosting",
+    "load/TLS",
+    "browser-to-API integration",
+    "human-heldout financial evaluation",
+    "whole project goal"
+  ],
+  "package_platforms": [
+    {
+      "archive_bytes": 145598,
+      "archive_sha256": "58b83a9b7e68869e428b6e6aabf5a4fe81815dad044f1346003f90dd91f66d5b",
+      "artifact_id": 11829827793,
+      "installed_startup_checks": 44,
+      "platform": "Linux",
+      "production_modules": 20,
+      "startup_modes": 3,
+      "tests": 842,
+      "wheel_records": 27,
+      "wheel_sha256": "30b57f6c4b7a711f0c157886e949e21558f1590025a7a150fdf38c8be7e8beab"
+    },
+    {
+      "archive_bytes": 146363,
+      "archive_sha256": "8f6b0521cabae9b81ef6047d8f8746430ee08da0a793d04206390f193cc248da",
+      "artifact_id": 11830452452,
+      "installed_startup_checks": 44,
+      "platform": "Windows",
+      "production_modules": 20,
+      "startup_modes": 3,
+      "tests": 842,
+      "wheel_records": 27,
+      "wheel_sha256": "16f465f1320e04d601bc691ae56985c21777a69e436575a289345ea81cb7a10c"
+    }
+  ],
+  "run_id": 38428973799,
+  "run_url": "https://github.com/1235357/nvidia-financial-rag/actions/runs/38428973799",
+  "schema_version": 1,
+  "scope": "Independent exact official archives after CI permissions correction; original financial quality and deployment are separate gates"
+}
