@@ -1,0 +1,407 @@
+{
+  "attempts": [
+    {
+      "closures": {
+        "dependency_metadata_unchanged": true,
+        "harness_unchanged": true,
+        "inputs_unchanged": true,
+        "listener_closed": true,
+        "snapshot_unchanged": true
+      },
+      "complete_http_responses": 0,
+      "completed_native_queries": 0,
+      "completed_statement_requests": 0,
+      "exit_module_origins_claimed": false,
+      "failures": [
+        {
+          "message": "startup observation timeout; cause not established",
+          "stage": "attempt",
+          "type": "ValueError"
+        }
+      ],
+      "frozen_identity_counts": {
+        "harness_identities": 6,
+        "input_identities": 74,
+        "snapshot_identities": 22
+      },
+      "graceful_exit_claimed": false,
+      "http_archive": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "model_observations": null,
+      "owned_launcher_closed": true,
+      "owned_native_process_closed": true,
+      "protocol": {
+        "bytes": 38880,
+        "sha256": "0d0dba7e30fb4364d290368261ae27269f5bec6f30c8b59278b5f2b60fd11298"
+      },
+      "source_commit": "28746b03dab43ddbbbef1e17efc65f6ca8710c90",
+      "startup_observation_seconds": 180,
+      "task": "model-startup-20261013-03",
+      "terminal_receipt": {
+        "bytes": 7246,
+        "sha256": "2c49a37b611154b8ebd27bf23386b223e28a6df99be892954ca1946bdfd5cc38"
+      },
+      "terminal_status": "failed",
+      "threshold": 0.78,
+      "top_k": 5
+    },
+    {
+      "catalog": {
+        "column_periods": 30,
+        "exact_index_declaration_registry_metadata": true,
+        "human_review_claimed": false,
+        "reports": 10
+      },
+      "closures": {
+        "dependency_metadata_unchanged": true,
+        "harness_unchanged": true,
+        "inputs_unchanged": true,
+        "listener_closed": true,
+        "snapshot_unchanged": true
+      },
+      "complete_http_responses": 16,
+      "completed_native_queries": 3,
+      "completed_statement_requests": 6,
+      "exit_module_origins_claimed": false,
+      "failures": [],
+      "frozen_identity_counts": {
+        "harness_identities": 7,
+        "input_identities": 74,
+        "snapshot_identities": 22
+      },
+      "graceful_exit_claimed": false,
+      "http_archive": {
+        "bytes": 59350,
+        "sha256": "81f88d0b06b7e19769e1de9c4add8b7fd57f629fcbe951accd2df52ffda8af48"
+      },
+      "independent_arithmetic_audit": {
+        "bytes": 5893,
+        "sha256": "08cbcaa2c05810c1ff11429246930fdb1ee6cdfa88c6e1dee1a7772e1f84f4fb"
+      },
+      "model_observations": {
+        "constructor_entries": 1,
+        "constructor_returns": 1,
+        "encode_entries": 3,
+        "encode_returns": 3
+      },
+      "owned_launcher_closed": true,
+      "owned_native_process_closed": true,
+      "protocol": {
+        "bytes": 39123,
+        "sha256": "2711190c5532c3bd40bdce827f9a458a2d191742e8ed529f4047da4e28965140"
+      },
+      "queries": [
+        {
+          "can_answer": true,
+          "considered_chunks": 465,
+          "document_id": "nvidia-fy2025-annual",
+          "dot_product_absolute_tolerance": 1e-12,
+          "financial_correctness": "unestablished",
+          "max_absolute_score_error": 0.0,
+          "pre_gate_candidates": [
+            {
+              "chunk_id": "nvidia-fy2025-annual:p18:w:06d067540d62ec70",
+              "physical_page": 18,
+              "score": 0.8072567820374194
+            },
+            {
+              "chunk_id": "nvidia-fy2025-annual:p162:w:17adcf036e9211d3",
+              "physical_page": 162,
+              "score": 0.7967086992987858
+            },
+            {
+              "chunk_id": "nvidia-fy2025-annual:p144:w:cc95cfb11957fd3b",
+              "physical_page": 144,
+              "score": 0.7842640467697088
+            },
+            {
+              "chunk_id": "nvidia-fy2025-annual:p149:w:b43044da5a678433",
+              "physical_page": 149,
+              "score": 0.765803465853871
+            },
+            {
+              "chunk_id": "nvidia-fy2025-annual:p171:w:b1d2d321732f99f8",
+              "physical_page": 171,
+              "score": 0.7651271309678174
+            }
+          ],
+          "query": "What was NVIDIA annual revenue in FY2025?",
+          "query_vector_sha256_float64_le": "a3c6ee12460fbb861e3f92675406cfb65c36edfa7f27a9085c5ec7cb4a46a81a",
+          "threshold": 0.78,
+          "top_passage_vector_exact_frozen_row": true,
+          "wire_evidence_count": 3
+        },
+        {
+          "can_answer": true,
+          "considered_chunks": 211,
+          "document_id": "nvidia-fy2025-q2",
+          "dot_product_absolute_tolerance": 1e-12,
+          "financial_correctness": "unestablished",
+          "max_absolute_score_error": 0.0,
+          "pre_gate_candidates": [
+            {
+              "chunk_id": "nvidia-fy2025-q2:p4:w:ef892839a7ad4d2e",
+              "physical_page": 4,
+              "score": 0.7871779930975538
+            },
+            {
+              "chunk_id": "nvidia-fy2025-q2:p23:w:929a47909571474e",
+              "physical_page": 23,
+              "score": 0.7728691445742111
+            },
+            {
+              "chunk_id": "nvidia-fy2025-q2:p3:w:1d2e7a0a5c5d723a",
+              "physical_page": 3,
+              "score": 0.7723891516852646
+            },
+            {
+              "chunk_id": "nvidia-fy2025-q2:p8:w:7319f6cfebf23240",
+              "physical_page": 8,
+              "score": 0.7651485921154171
+            },
+            {
+              "chunk_id": "nvidia-fy2025-q2:p5:w:dbe38ec4d71b3693",
+              "physical_page": 5,
+              "score": 0.7610252680964615
+            }
+          ],
+          "query": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the three-month period ended July 28, 2024, in millions of dollars?",
+          "query_vector_sha256_float64_le": "5cc149f2496299b6fce9d9dce69ba79ff83daa36d1eac57d0d3a5485a76718ae",
+          "threshold": 0.78,
+          "top_passage_vector_exact_frozen_row": true,
+          "wire_evidence_count": 1
+        },
+        {
+          "can_answer": false,
+          "considered_chunks": 211,
+          "document_id": "nvidia-fy2025-q2",
+          "dot_product_absolute_tolerance": 1e-12,
+          "financial_correctness": "unestablished",
+          "max_absolute_score_error": 0.0,
+          "pre_gate_candidates": [
+            {
+              "chunk_id": "nvidia-fy2025-q2:p3:w:1d2e7a0a5c5d723a",
+              "physical_page": 3,
+              "score": 0.7783780363757585
+            },
+            {
+              "chunk_id": "nvidia-fy2025-q2:p8:w:7319f6cfebf23240",
+              "physical_page": 8,
+              "score": 0.7762881910065225
+            },
+            {
+              "chunk_id": "nvidia-fy2025-q2:p4:w:ef892839a7ad4d2e",
+              "physical_page": 4,
+              "score": 0.7750537297945084
+            },
+            {
+              "chunk_id": "nvidia-fy2025-q2:p28:w:3e638e5f1fb79908",
+              "physical_page": 28,
+              "score": 0.7725685713757477
+            },
+            {
+              "chunk_id": "nvidia-fy2025-q2:p23:w:929a47909571474e",
+              "physical_page": 23,
+              "score": 0.7660618202837184
+            }
+          ],
+          "query": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the six-month period ended July 28, 2024, in millions of dollars?",
+          "query_vector_sha256_float64_le": "1ca6e379d1b0264e2239efd975c326decd67a517a84afef9dffc601c4a352a7e",
+          "threshold": 0.78,
+          "top_passage_vector_exact_frozen_row": true,
+          "wire_evidence_count": 0
+        }
+      ],
+      "retrieval_trace": {
+        "bytes": 94261,
+        "sha256": "091351a005c75f13883f9ded51d70468c345d04bf69626f09359e19691919b8c"
+      },
+      "source_commit": "28746b03dab43ddbbbef1e17efc65f6ca8710c90",
+      "source_report_catalog": {
+        "bytes": 5125,
+        "sha256": "aa0ad3d92b1d507f39104b48fd16cf06d90563456a8f487839fab311158f4828"
+      },
+      "startup_observation_seconds": 180,
+      "statement_responses_equal_prior_except_request_id": 6,
+      "task": "model-startup-20261013-04",
+      "terminal_receipt": {
+        "bytes": 7826,
+        "sha256": "149685d3f2bea84b0940523c9924d88c2e4a58395bc44d2bee343af23cd2de67"
+      },
+      "terminal_status": "passed",
+      "threshold": 0.78,
+      "top_k": 5
+    }
+  ],
+  "comparison": {
+    "before_quarter_scope": "annual overview; requested Q2 report absent in both exposed questions",
+    "before_record": "current-source-model-http-20261013.json",
+    "device": "cpu",
+    "generator_runs": 0,
+    "model": "BAAI/bge-small-en-v1.5",
+    "offline_cache_only": true,
+    "original_corpus_chunks": 3240,
+    "original_questions_unchanged": true,
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "threshold": 0.78,
+    "top_k": 5
+  },
+  "financial_correctness": "unestablished",
+  "human_gold_count": 0,
+  "limitations": [
+    "Only already exposed development questions; no held-out quality or independent human adjudication.",
+    "Native source-snapshot execution differs from API-only installed wheel acceptance.",
+    "Passive observer callback controls do not establish an application performance distribution or the sole timeout cause.",
+    "Report scope and cosine gate do not establish the requested metric, period, unit or generated answer.",
+    "No public API hosting, TLS, tenant authorization, API browser bridge, load distribution or physical-device acceptance."
+  ],
+  "official_run": 38485959415,
+  "official_terminal_state": {
+    "bytes": 6616,
+    "sha256": "70b718ac80a8855b6c6d6f1bc97d82ed0ec4f05efb857bbd022df85f4e073c6b"
+  },
+  "schema_version": 1,
+  "scope": "source-bound annual/quarter routing; exposed same-question development comparison",
+  "source_commit": "28746b03dab43ddbbbef1e17efc65f6ca8710c90",
+  "verified_official_archives": [
+    {
+      "archive_bytes": 152955,
+      "archive_sha256": "dcd25ff4d7ff1de39c84990ac74868a353e794d139ec5163a4baf7e80604fd5b",
+      "artifact_id": 11859882015,
+      "commit": "28746b03dab43ddbbbef1e17efc65f6ca8710c90",
+      "encoder_runs": 0,
+      "financial_correctness": "unestablished",
+      "generator_runs": 0,
+      "heavyweight_dependencies": [],
+      "human_gold_count": 0,
+      "installed_existing_api_cases": 11,
+      "installed_existing_statement_cells": 42,
+      "installed_existing_statement_checks": 28,
+      "installed_startup_checks": 44,
+      "installed_startup_sha256": "2f35b323395478d952450ba431bd95eb9fd3098f99f664225f391b0985a90cec",
+      "not_accepted": [
+        "original sources in CI",
+        "public API hosting",
+        "load/TLS",
+        "model execution",
+        "held-out financial accuracy",
+        "whole goal"
+      ],
+      "platform": "Linux",
+      "production_module_sha256": {
+        "nvidia_rag/__init__.py": "7813b376c6630a10dbcc47d3aab8391d1d6d352ee33947ac59667907da107ab7",
+        "nvidia_rag/api.py": "5de26f15ebda2f0e54c1a47cbf80504ab938768e13cc3aaf79366ca767d3e6e4",
+        "nvidia_rag/conversation.py": "bb0b745c4afeb204b07959cbba744e71bdf16df0870ca3ae8b483481ea5521ed",
+        "nvidia_rag/core.py": "aa057293545956c7de9c233ae41432d9b6daffc23640fe9fc2869d89d91ad438",
+        "nvidia_rag/corpus.py": "00fb1c1c3360875fb6d6d1e06040388276eb9672a352d382f7195b81147e8e7f",
+        "nvidia_rag/corpus_embeddings.py": "a340decf0e1435b7ecb5efe21cb6211fc4d5a8e9e71644c6fc403ed460ecdbcb",
+        "nvidia_rag/demo.py": "6e649bde9413d2106569d8bc66abcba190f9cfdbc878f777bfbda0b94e10af8e",
+        "nvidia_rag/embedding_store.py": "7922b538ab9206b8a81670d7f1ee9a49484eb3141bba933c871dc549314075f4",
+        "nvidia_rag/evaluation.py": "295f2cc64dce5d0adce28c4e675c113d95c33d154a5c9b2a76bc8c26b71807ab",
+        "nvidia_rag/generation.py": "6672737f8de809e3536535e738133f758d858e00ecde1eba103de2c7b1daf0a5",
+        "nvidia_rag/ingest.py": "6f9e91715a789046c1c7fa827de205948da6cce9e05a3f6e7a1b3d171738838f",
+        "nvidia_rag/period_routing.py": "a11dcbe99ecb1e5a5bdacf543b21ec222c9ee41886692b4086aa103c3337ec9f",
+        "nvidia_rag/retrieval.py": "c887abb2b2d8eed620738f084f4a73d0b4a37f00448684aef09f1cb08ed9fbec",
+        "nvidia_rag/runtime.py": "e23d8fcb0c8e9f071da007c616c6309c2fac725b0b38a0be069cde24c12b3573",
+        "nvidia_rag/service.py": "afe876f279080d8b74774a59b286c8d8847dab75be0472a33771ffbddddc218e",
+        "nvidia_rag/serving.py": "8ccc41dc79c5a04c8fc876b1851fae123247af0229171c0e1626e641f5fb1444",
+        "nvidia_rag/sources.py": "4007e680e42a4df0a5f71f27094073686d3eebe94f8d61552e2c0f088fec1d2a",
+        "nvidia_rag/statement_api.py": "a8f625a8b5889dd137952712f1dcb46f0ac7367d6482421f34224faf45885973",
+        "nvidia_rag/statement_startup.py": "cd753c20f8f0f10148dc0827987a84476deb7c1a6ee9bc27b5f13e1bd529cfe7",
+        "nvidia_rag/structured_income.py": "c26c829b763ea196fc40d8384b4c93837ef2f8716585c5f066ab8e2ab47ddad8",
+        "nvidia_rag/table_structure.py": "bce239ee844ec5a172b2a658fdf39e1eec27078da83027925a846319544ecefa"
+      },
+      "production_modules": 21,
+      "run_id": 38485959415,
+      "schema_version": 1,
+      "scope": "exact official enterprise startup package archive",
+      "startup_modes": 3,
+      "status": "passed",
+      "test_identities_match_local": true,
+      "tests": 905,
+      "wheel_bytes": 133077,
+      "wheel_records": 28,
+      "wheel_sha256": "46a0e70f0f868f73665978c9064fad81d429aca0372ef83107df54ee2479ccd0"
+    },
+    {
+      "archive_bytes": 153892,
+      "archive_sha256": "2485b3bb0d0c53872980c5c25ea877b8b3ac6e04c647e61b2bcaf8f86ffdf86a",
+      "artifact_id": 11859682523,
+      "commit": "28746b03dab43ddbbbef1e17efc65f6ca8710c90",
+      "encoder_runs": 0,
+      "financial_correctness": "unestablished",
+      "generator_runs": 0,
+      "heavyweight_dependencies": [],
+      "human_gold_count": 0,
+      "installed_existing_api_cases": 11,
+      "installed_existing_statement_cells": 42,
+      "installed_existing_statement_checks": 28,
+      "installed_startup_checks": 44,
+      "installed_startup_sha256": "0ec699ac898ba2e46c02bee037ac937e2d8268e15dc52d293fae301ca8efc07c",
+      "not_accepted": [
+        "original sources in CI",
+        "public API hosting",
+        "load/TLS",
+        "model execution",
+        "held-out financial accuracy",
+        "whole goal"
+      ],
+      "platform": "Windows",
+      "production_module_sha256": {
+        "nvidia_rag/__init__.py": "7813b376c6630a10dbcc47d3aab8391d1d6d352ee33947ac59667907da107ab7",
+        "nvidia_rag/api.py": "5de26f15ebda2f0e54c1a47cbf80504ab938768e13cc3aaf79366ca767d3e6e4",
+        "nvidia_rag/conversation.py": "bb0b745c4afeb204b07959cbba744e71bdf16df0870ca3ae8b483481ea5521ed",
+        "nvidia_rag/core.py": "aa057293545956c7de9c233ae41432d9b6daffc23640fe9fc2869d89d91ad438",
+        "nvidia_rag/corpus.py": "00fb1c1c3360875fb6d6d1e06040388276eb9672a352d382f7195b81147e8e7f",
+        "nvidia_rag/corpus_embeddings.py": "a340decf0e1435b7ecb5efe21cb6211fc4d5a8e9e71644c6fc403ed460ecdbcb",
+        "nvidia_rag/demo.py": "6e649bde9413d2106569d8bc66abcba190f9cfdbc878f777bfbda0b94e10af8e",
+        "nvidia_rag/embedding_store.py": "7922b538ab9206b8a81670d7f1ee9a49484eb3141bba933c871dc549314075f4",
+        "nvidia_rag/evaluation.py": "295f2cc64dce5d0adce28c4e675c113d95c33d154a5c9b2a76bc8c26b71807ab",
+        "nvidia_rag/generation.py": "6672737f8de809e3536535e738133f758d858e00ecde1eba103de2c7b1daf0a5",
+        "nvidia_rag/ingest.py": "6f9e91715a789046c1c7fa827de205948da6cce9e05a3f6e7a1b3d171738838f",
+        "nvidia_rag/period_routing.py": "a11dcbe99ecb1e5a5bdacf543b21ec222c9ee41886692b4086aa103c3337ec9f",
+        "nvidia_rag/retrieval.py": "c887abb2b2d8eed620738f084f4a73d0b4a37f00448684aef09f1cb08ed9fbec",
+        "nvidia_rag/runtime.py": "e23d8fcb0c8e9f071da007c616c6309c2fac725b0b38a0be069cde24c12b3573",
+        "nvidia_rag/service.py": "afe876f279080d8b74774a59b286c8d8847dab75be0472a33771ffbddddc218e",
+        "nvidia_rag/serving.py": "8ccc41dc79c5a04c8fc876b1851fae123247af0229171c0e1626e641f5fb1444",
+        "nvidia_rag/sources.py": "4007e680e42a4df0a5f71f27094073686d3eebe94f8d61552e2c0f088fec1d2a",
+        "nvidia_rag/statement_api.py": "a8f625a8b5889dd137952712f1dcb46f0ac7367d6482421f34224faf45885973",
+        "nvidia_rag/statement_startup.py": "cd753c20f8f0f10148dc0827987a84476deb7c1a6ee9bc27b5f13e1bd529cfe7",
+        "nvidia_rag/structured_income.py": "c26c829b763ea196fc40d8384b4c93837ef2f8716585c5f066ab8e2ab47ddad8",
+        "nvidia_rag/table_structure.py": "bce239ee844ec5a172b2a658fdf39e1eec27078da83027925a846319544ecefa"
+      },
+      "production_modules": 21,
+      "run_id": 38485959415,
+      "schema_version": 1,
+      "scope": "exact official enterprise startup package archive",
+      "startup_modes": 3,
+      "status": "passed",
+      "test_identities_match_local": true,
+      "tests": 905,
+      "wheel_bytes": 133111,
+      "wheel_records": 28,
+      "wheel_sha256": "cf9243a763a9d41d41023a282c04cfdeac9380bbe785bdb915be4b87cb8f7518"
+    },
+    {
+      "actual_http_checks": 26,
+      "archive_bytes": 10356,
+      "archive_sha256": "4f41237ccbccf1632fa58dca7cfe6222046bc5fda22c8d5f7c9b7bc9b3dfc715",
+      "artifact_id": 11859442746,
+      "commit": "28746b03dab43ddbbbef1e17efc65f6ca8710c90",
+      "financial_correctness": "unestablished",
+      "installed_modules": 21,
+      "modes": 2,
+      "owned_stop_exit_codes": [
+        0,
+        0
+      ],
+      "readonly_root_and_mount": true,
+      "run_id": 38485959415,
+      "scope": "Exact current archive identities, reported HTTP checks, installed source hashes, container restrictions and stopped states; not deployment health or financial accuracy",
+      "status": "passed",
+      "uid_gid": "10001:10001"
+    }
+  ]
+}
