@@ -1,0 +1,661 @@
+{
+  "attempts": [
+    {
+      "annual_routing_retained": true,
+      "attempted_native_query_http_count": 3,
+      "attempted_statement_http_count": 6,
+      "closures": {
+        "dependency_metadata_unchanged": true,
+        "harness_unchanged": true,
+        "inputs_unchanged": true,
+        "listener_closed": true,
+        "snapshot_unchanged": true
+      },
+      "complete_http_response_count": 16,
+      "completed_native_query_http_count": 3,
+      "completed_statement_http_count": 6,
+      "controls": [
+        {
+          "body_sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+          "route": "/readyz",
+          "status": 200
+        },
+        {
+          "body_sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288",
+          "route": "/healthz",
+          "status": 200
+        },
+        {
+          "body_sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d",
+          "route": "/docs",
+          "status": 404
+        },
+        {
+          "body_sha256": "1eb7871186196f8d5c516d98d278c574c999601ef8064dfe1ed60af9ac451dc5",
+          "route": "/v1/query",
+          "status": 401
+        },
+        {
+          "body_sha256": "260da00f4494ff788c812371202821ac5e5c44434626ffdc2f4a16c9d6c8debc",
+          "route": "/v1/query",
+          "status": 422
+        },
+        {
+          "body_sha256": "1eb7871186196f8d5c516d98d278c574c999601ef8064dfe1ed60af9ac451dc5",
+          "route": "/v1/statement-candidates",
+          "status": 401
+        },
+        {
+          "body_sha256": "1b94b150e7ef8d72bb4bcfb42b4bab374ef9c7b1736950574d469949f128d077",
+          "route": "/v1/query",
+          "status": 422
+        }
+      ],
+      "elapsed_seconds_instrumented": 78.80809930001851,
+      "failures": [
+        {
+          "stage": "attempt",
+          "type": "FileNotFoundError"
+        }
+      ],
+      "frozen_input_count": 71,
+      "harness_file_count": 4,
+      "http_archive": {
+        "bytes": 64411,
+        "sha256": "80f276aa8f4f851a02cfc6f86a65c6bc35fb1f0a0d4da29026b749785aedc59b"
+      },
+      "loaded_source_module_count": 14,
+      "model": {
+        "device": "cpu",
+        "generation": "none",
+        "name": "BAAI/bge-small-en-v1.5",
+        "offline": true,
+        "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a"
+      },
+      "model_call_observations": null,
+      "protocol": {
+        "bytes": 36460,
+        "sha256": "d2fd117572e0c15aad19b6524ff7b0210215a272d7b5ab425a751196747ee9ff"
+      },
+      "queries": [
+        {
+          "answer_empty": true,
+          "body_sha256": "67a263a4502db9e53f924456b5a04ff629013c9d09b5137739a350fa94e7c1cc",
+          "can_answer": true,
+          "evidence": [
+            {
+              "chunk_id": "nvidia-fy2025-annual:p18:w:06d067540d62ec70",
+              "document_id": "nvidia-fy2025-annual",
+              "pdf_page": 18,
+              "rank": 1,
+              "score": 0.8072567820374194,
+              "text_sha256": "26fbbaeb71c39b05ea3a3d858c581c80e8997d06372ee94b78a8769515d1933d"
+            },
+            {
+              "chunk_id": "nvidia-fy2025-annual:p162:w:17adcf036e9211d3",
+              "document_id": "nvidia-fy2025-annual",
+              "pdf_page": 162,
+              "rank": 2,
+              "score": 0.7967086992987858,
+              "text_sha256": "ea8516116f40344a38992aa8c7414fd2e69afcd98dd177ae3fed45bb87bb2c08"
+            },
+            {
+              "chunk_id": "nvidia-fy2025-annual:p144:w:cc95cfb11957fd3b",
+              "document_id": "nvidia-fy2025-annual",
+              "pdf_page": 144,
+              "rank": 3,
+              "score": 0.7842640467697088,
+              "text_sha256": "30df4ede0c993e468499f1211a5c41fec1b2c72da3bd29632dd211dc5275dc8e"
+            }
+          ],
+          "evidence_passed": true,
+          "question": "What was NVIDIA annual revenue in FY2025?",
+          "requested_report_present": true,
+          "source_check": "annual revenue text present; not independently adjudicated",
+          "status": 200
+        },
+        {
+          "answer_empty": true,
+          "body_sha256": "043d96d33538af149e4a780cb01381b581e884119af8d26fe0fb24887b545602",
+          "can_answer": true,
+          "evidence": [
+            {
+              "chunk_id": "nvidia-fy2025-annual:p18:w:06d067540d62ec70",
+              "document_id": "nvidia-fy2025-annual",
+              "pdf_page": 18,
+              "rank": 1,
+              "score": 0.7834572223281784,
+              "text_sha256": "26fbbaeb71c39b05ea3a3d858c581c80e8997d06372ee94b78a8769515d1933d"
+            }
+          ],
+          "evidence_passed": true,
+          "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the three-month period ended July 28, 2024, in millions of dollars?",
+          "requested_report_present": false,
+          "source_check": "requested Q2 report absent; returned annual overview does not supply requested Net income period",
+          "status": 200
+        },
+        {
+          "answer_empty": true,
+          "body_sha256": "12ee6713f6a927bcaa4b10aedd0f499cb506bce46221d231f7516e05f1be3693",
+          "can_answer": true,
+          "evidence": [
+            {
+              "chunk_id": "nvidia-fy2025-annual:p18:w:06d067540d62ec70",
+              "document_id": "nvidia-fy2025-annual",
+              "pdf_page": 18,
+              "rank": 1,
+              "score": 0.7835832219064509,
+              "text_sha256": "26fbbaeb71c39b05ea3a3d858c581c80e8997d06372ee94b78a8769515d1933d"
+            }
+          ],
+          "evidence_passed": true,
+          "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the six-month period ended July 28, 2024, in millions of dollars?",
+          "requested_report_present": false,
+          "source_check": "requested Q2 report absent; returned annual overview does not supply requested Net income period",
+          "status": 200
+        }
+      ],
+      "requested_native_query_count": 3,
+      "requested_statement_count": 6,
+      "snapshot_file_count": 21,
+      "source_commit": "06b319e3e40c37fbf5cbc55670b044456920d608",
+      "statements": [
+        {
+          "body_sha256": "f4fcc009cba55c3088bd8a2e64d85d8c7f050d50b0b65a813412e240eba36fdd",
+          "cells": [
+            {
+              "cell_id": "11865bf9beadab4654f101c2e3cbaf046083a513b219cafff20d4caead40ecaa",
+              "currency_literal": "$",
+              "currency_normalization": "dollar-symbol;ISO-currency-unverified",
+              "document_id": "nvidia-fy2025-q2",
+              "duration_months": 3,
+              "pdf_sha256": "35d94221f0ed30f974b4fe6536fa54ff40945265d8b354b0ae17066c8856a861",
+              "period_end": "2024-07-28",
+              "period_kind": "months",
+              "physical_page": 3,
+              "row_literal": "Net income",
+              "scale": "1000000",
+              "value_literal": "16,599"
+            }
+          ],
+          "disposition": "source_candidate",
+          "document_ids": [
+            "nvidia-fy2025-q2"
+          ],
+          "historical_exposed_row": 21,
+          "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the three-month period ended July 28, 2024, in millions of dollars?",
+          "status": 200
+        },
+        {
+          "body_sha256": "fc385b9704f03c056eeea4f868fc2b9a47fc64038e17a777d71ca93cbb4faca0",
+          "cells": [
+            {
+              "cell_id": "c64b7e5ba5db1f095784043c82a269f5816bbe01d6ff9a17f30a06b87cb32f4b",
+              "currency_literal": "$",
+              "currency_normalization": "dollar-symbol;ISO-currency-unverified",
+              "document_id": "nvidia-fy2025-q2",
+              "duration_months": 6,
+              "pdf_sha256": "35d94221f0ed30f974b4fe6536fa54ff40945265d8b354b0ae17066c8856a861",
+              "period_end": "2024-07-28",
+              "period_kind": "months",
+              "physical_page": 3,
+              "row_literal": "Net income",
+              "scale": "1000000",
+              "value_literal": "31,480"
+            }
+          ],
+          "disposition": "source_candidate",
+          "document_ids": [
+            "nvidia-fy2025-q2"
+          ],
+          "historical_exposed_row": 23,
+          "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the six-month period ended July 28, 2024, in millions of dollars?",
+          "status": 200
+        },
+        {
+          "body_sha256": "0a8a8389ef9a52a8efbdbf94d2285d86cd7998acc14f0a2a1bde650af3f96972",
+          "cells": [
+            {
+              "cell_id": "cb819a75ae9e06dca49928fe4c110a80a91ddc8b18aa430d83c89147c463bea1",
+              "currency_literal": "$",
+              "currency_normalization": "dollar-symbol;ISO-currency-unverified",
+              "document_id": "nvidia-fy2025-annual",
+              "duration_months": null,
+              "pdf_sha256": "757b344ab62ba282f6e44e0702e8ce5f190d88fb23b5e0a2beaf4cb277a395cc",
+              "period_end": "2025-01-26",
+              "period_kind": "fiscal_year",
+              "physical_page": 144,
+              "row_literal": "Net income",
+              "scale": "1000000",
+              "value_literal": "72,880"
+            }
+          ],
+          "disposition": "source_candidate",
+          "document_ids": [
+            "nvidia-fy2021-annual",
+            "nvidia-fy2027-q2",
+            "nvidia-fy2026-annual",
+            "nvidia-fy2025-annual",
+            "nvidia-fy2025-q2",
+            "nvidia-fy2024-annual",
+            "nvidia-fy2023-annual",
+            "nvidia-fy2022-annual",
+            "nvidia-fy2025-q1",
+            "nvidia-fy2027-q1"
+          ],
+          "historical_exposed_row": 47,
+          "question": "According to NVIDIA fiscal 2025 annual report, what was net income for the year ended January 26, 2025, in millions of dollars?",
+          "status": 200
+        },
+        {
+          "body_sha256": "2775617ec7b8f3086724c2b79c1535d974f9da403b85f99885392ef1cfecd080",
+          "cells": [],
+          "disposition": "clarify",
+          "document_ids": [
+            "nvidia-fy2021-annual",
+            "nvidia-fy2027-q2",
+            "nvidia-fy2026-annual",
+            "nvidia-fy2025-annual",
+            "nvidia-fy2025-q2",
+            "nvidia-fy2024-annual",
+            "nvidia-fy2023-annual",
+            "nvidia-fy2022-annual",
+            "nvidia-fy2025-q1",
+            "nvidia-fy2027-q1"
+          ],
+          "historical_exposed_row": 72,
+          "question": "What was annual net income for the three-month period ended January 26, 2025?",
+          "status": 200
+        },
+        {
+          "body_sha256": "a603737aedd4ca5297a452ed039cc734853f9d85ef6f3ad64393fbf22294fbd7",
+          "cells": [],
+          "disposition": "refuse",
+          "document_ids": [
+            "nvidia-fy2021-annual",
+            "nvidia-fy2027-q2",
+            "nvidia-fy2026-annual",
+            "nvidia-fy2025-annual",
+            "nvidia-fy2025-q2",
+            "nvidia-fy2024-annual",
+            "nvidia-fy2023-annual",
+            "nvidia-fy2022-annual",
+            "nvidia-fy2025-q1",
+            "nvidia-fy2027-q1"
+          ],
+          "historical_exposed_row": 74,
+          "question": "According to NVIDIA fiscal 2025 annual report, what was net income for the year ended January 27, 2025?",
+          "status": 200
+        },
+        {
+          "body_sha256": "51f488f5c94d9b0b67b440d19c25652783da849407727e5159779f3bde0d79e6",
+          "cells": [],
+          "disposition": "unsupported",
+          "document_ids": [
+            "nvidia-fy2021-annual",
+            "nvidia-fy2027-q2",
+            "nvidia-fy2026-annual",
+            "nvidia-fy2025-annual",
+            "nvidia-fy2025-q2",
+            "nvidia-fy2024-annual",
+            "nvidia-fy2023-annual",
+            "nvidia-fy2022-annual",
+            "nvidia-fy2025-q1",
+            "nvidia-fy2027-q1"
+          ],
+          "historical_exposed_row": 75,
+          "question": "According to NVIDIA fiscal 2025 annual report, what was net income for the year ended January 26, 2025, in millions of USD?",
+          "status": 200
+        }
+      ],
+      "task": "model-startup-20261013-01",
+      "teardown": {
+        "errors": [],
+        "graceful_exit_claimed": false,
+        "launcher_closed": true,
+        "native_process_closed": true
+      },
+      "terminal_receipt": {
+        "bytes": 7462,
+        "sha256": "17b0301356540bf2a789dd1dc04d9f946b137ad835ea50a73d150cb98d579233"
+      },
+      "terminal_status": "failed",
+      "threshold": 0.78,
+      "top_k": 5
+    },
+    {
+      "annual_routing_retained": true,
+      "attempted_native_query_http_count": 3,
+      "attempted_statement_http_count": 6,
+      "closures": {
+        "dependency_metadata_unchanged": true,
+        "harness_unchanged": true,
+        "inputs_unchanged": true,
+        "listener_closed": true,
+        "snapshot_unchanged": true
+      },
+      "complete_http_response_count": 16,
+      "completed_native_query_http_count": 3,
+      "completed_statement_http_count": 6,
+      "controls": [
+        {
+          "body_sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+          "route": "/readyz",
+          "status": 200
+        },
+        {
+          "body_sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288",
+          "route": "/healthz",
+          "status": 200
+        },
+        {
+          "body_sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d",
+          "route": "/docs",
+          "status": 404
+        },
+        {
+          "body_sha256": "1eb7871186196f8d5c516d98d278c574c999601ef8064dfe1ed60af9ac451dc5",
+          "route": "/v1/query",
+          "status": 401
+        },
+        {
+          "body_sha256": "260da00f4494ff788c812371202821ac5e5c44434626ffdc2f4a16c9d6c8debc",
+          "route": "/v1/query",
+          "status": 422
+        },
+        {
+          "body_sha256": "1eb7871186196f8d5c516d98d278c574c999601ef8064dfe1ed60af9ac451dc5",
+          "route": "/v1/statement-candidates",
+          "status": 401
+        },
+        {
+          "body_sha256": "1b94b150e7ef8d72bb4bcfb42b4bab374ef9c7b1736950574d469949f128d077",
+          "route": "/v1/query",
+          "status": 422
+        }
+      ],
+      "elapsed_seconds_instrumented": 82.99664009991102,
+      "failures": [],
+      "frozen_input_count": 73,
+      "harness_file_count": 5,
+      "http_archive": {
+        "bytes": 64411,
+        "sha256": "37b08ffe0f994273cb53d11f325d9a3bc59ca9a173611b1f18001303b7f3b5fb"
+      },
+      "loaded_source_module_count": 14,
+      "model": {
+        "device": "cpu",
+        "generation": "none",
+        "name": "BAAI/bge-small-en-v1.5",
+        "offline": true,
+        "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a"
+      },
+      "model_call_observations": {
+        "constructor_entries": 1,
+        "constructor_returns": 1,
+        "encode_entries": 3,
+        "encode_returns": 3
+      },
+      "protocol": {
+        "bytes": 37897,
+        "sha256": "ec1b8071ec461096d6215e5771d0609d951b16a2133409694379579d54a76605"
+      },
+      "queries": [
+        {
+          "answer_empty": true,
+          "body_sha256": "67a263a4502db9e53f924456b5a04ff629013c9d09b5137739a350fa94e7c1cc",
+          "can_answer": true,
+          "evidence": [
+            {
+              "chunk_id": "nvidia-fy2025-annual:p18:w:06d067540d62ec70",
+              "document_id": "nvidia-fy2025-annual",
+              "pdf_page": 18,
+              "rank": 1,
+              "score": 0.8072567820374194,
+              "text_sha256": "26fbbaeb71c39b05ea3a3d858c581c80e8997d06372ee94b78a8769515d1933d"
+            },
+            {
+              "chunk_id": "nvidia-fy2025-annual:p162:w:17adcf036e9211d3",
+              "document_id": "nvidia-fy2025-annual",
+              "pdf_page": 162,
+              "rank": 2,
+              "score": 0.7967086992987858,
+              "text_sha256": "ea8516116f40344a38992aa8c7414fd2e69afcd98dd177ae3fed45bb87bb2c08"
+            },
+            {
+              "chunk_id": "nvidia-fy2025-annual:p144:w:cc95cfb11957fd3b",
+              "document_id": "nvidia-fy2025-annual",
+              "pdf_page": 144,
+              "rank": 3,
+              "score": 0.7842640467697088,
+              "text_sha256": "30df4ede0c993e468499f1211a5c41fec1b2c72da3bd29632dd211dc5275dc8e"
+            }
+          ],
+          "evidence_passed": true,
+          "question": "What was NVIDIA annual revenue in FY2025?",
+          "requested_report_present": true,
+          "source_check": "annual revenue text present; not independently adjudicated",
+          "status": 200
+        },
+        {
+          "answer_empty": true,
+          "body_sha256": "043d96d33538af149e4a780cb01381b581e884119af8d26fe0fb24887b545602",
+          "can_answer": true,
+          "evidence": [
+            {
+              "chunk_id": "nvidia-fy2025-annual:p18:w:06d067540d62ec70",
+              "document_id": "nvidia-fy2025-annual",
+              "pdf_page": 18,
+              "rank": 1,
+              "score": 0.7834572223281784,
+              "text_sha256": "26fbbaeb71c39b05ea3a3d858c581c80e8997d06372ee94b78a8769515d1933d"
+            }
+          ],
+          "evidence_passed": true,
+          "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the three-month period ended July 28, 2024, in millions of dollars?",
+          "requested_report_present": false,
+          "source_check": "requested Q2 report absent; returned annual overview does not supply requested Net income period",
+          "status": 200
+        },
+        {
+          "answer_empty": true,
+          "body_sha256": "12ee6713f6a927bcaa4b10aedd0f499cb506bce46221d231f7516e05f1be3693",
+          "can_answer": true,
+          "evidence": [
+            {
+              "chunk_id": "nvidia-fy2025-annual:p18:w:06d067540d62ec70",
+              "document_id": "nvidia-fy2025-annual",
+              "pdf_page": 18,
+              "rank": 1,
+              "score": 0.7835832219064509,
+              "text_sha256": "26fbbaeb71c39b05ea3a3d858c581c80e8997d06372ee94b78a8769515d1933d"
+            }
+          ],
+          "evidence_passed": true,
+          "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the six-month period ended July 28, 2024, in millions of dollars?",
+          "requested_report_present": false,
+          "source_check": "requested Q2 report absent; returned annual overview does not supply requested Net income period",
+          "status": 200
+        }
+      ],
+      "requested_native_query_count": 3,
+      "requested_statement_count": 6,
+      "snapshot_file_count": 21,
+      "source_commit": "06b319e3e40c37fbf5cbc55670b044456920d608",
+      "statements": [
+        {
+          "body_sha256": "f4fcc009cba55c3088bd8a2e64d85d8c7f050d50b0b65a813412e240eba36fdd",
+          "cells": [
+            {
+              "cell_id": "11865bf9beadab4654f101c2e3cbaf046083a513b219cafff20d4caead40ecaa",
+              "currency_literal": "$",
+              "currency_normalization": "dollar-symbol;ISO-currency-unverified",
+              "document_id": "nvidia-fy2025-q2",
+              "duration_months": 3,
+              "pdf_sha256": "35d94221f0ed30f974b4fe6536fa54ff40945265d8b354b0ae17066c8856a861",
+              "period_end": "2024-07-28",
+              "period_kind": "months",
+              "physical_page": 3,
+              "row_literal": "Net income",
+              "scale": "1000000",
+              "value_literal": "16,599"
+            }
+          ],
+          "disposition": "source_candidate",
+          "document_ids": [
+            "nvidia-fy2025-q2"
+          ],
+          "historical_exposed_row": 21,
+          "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the three-month period ended July 28, 2024, in millions of dollars?",
+          "status": 200
+        },
+        {
+          "body_sha256": "fc385b9704f03c056eeea4f868fc2b9a47fc64038e17a777d71ca93cbb4faca0",
+          "cells": [
+            {
+              "cell_id": "c64b7e5ba5db1f095784043c82a269f5816bbe01d6ff9a17f30a06b87cb32f4b",
+              "currency_literal": "$",
+              "currency_normalization": "dollar-symbol;ISO-currency-unverified",
+              "document_id": "nvidia-fy2025-q2",
+              "duration_months": 6,
+              "pdf_sha256": "35d94221f0ed30f974b4fe6536fa54ff40945265d8b354b0ae17066c8856a861",
+              "period_end": "2024-07-28",
+              "period_kind": "months",
+              "physical_page": 3,
+              "row_literal": "Net income",
+              "scale": "1000000",
+              "value_literal": "31,480"
+            }
+          ],
+          "disposition": "source_candidate",
+          "document_ids": [
+            "nvidia-fy2025-q2"
+          ],
+          "historical_exposed_row": 23,
+          "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the six-month period ended July 28, 2024, in millions of dollars?",
+          "status": 200
+        },
+        {
+          "body_sha256": "0a8a8389ef9a52a8efbdbf94d2285d86cd7998acc14f0a2a1bde650af3f96972",
+          "cells": [
+            {
+              "cell_id": "cb819a75ae9e06dca49928fe4c110a80a91ddc8b18aa430d83c89147c463bea1",
+              "currency_literal": "$",
+              "currency_normalization": "dollar-symbol;ISO-currency-unverified",
+              "document_id": "nvidia-fy2025-annual",
+              "duration_months": null,
+              "pdf_sha256": "757b344ab62ba282f6e44e0702e8ce5f190d88fb23b5e0a2beaf4cb277a395cc",
+              "period_end": "2025-01-26",
+              "period_kind": "fiscal_year",
+              "physical_page": 144,
+              "row_literal": "Net income",
+              "scale": "1000000",
+              "value_literal": "72,880"
+            }
+          ],
+          "disposition": "source_candidate",
+          "document_ids": [
+            "nvidia-fy2021-annual",
+            "nvidia-fy2027-q2",
+            "nvidia-fy2026-annual",
+            "nvidia-fy2025-annual",
+            "nvidia-fy2025-q2",
+            "nvidia-fy2024-annual",
+            "nvidia-fy2023-annual",
+            "nvidia-fy2022-annual",
+            "nvidia-fy2025-q1",
+            "nvidia-fy2027-q1"
+          ],
+          "historical_exposed_row": 47,
+          "question": "According to NVIDIA fiscal 2025 annual report, what was net income for the year ended January 26, 2025, in millions of dollars?",
+          "status": 200
+        },
+        {
+          "body_sha256": "2775617ec7b8f3086724c2b79c1535d974f9da403b85f99885392ef1cfecd080",
+          "cells": [],
+          "disposition": "clarify",
+          "document_ids": [
+            "nvidia-fy2021-annual",
+            "nvidia-fy2027-q2",
+            "nvidia-fy2026-annual",
+            "nvidia-fy2025-annual",
+            "nvidia-fy2025-q2",
+            "nvidia-fy2024-annual",
+            "nvidia-fy2023-annual",
+            "nvidia-fy2022-annual",
+            "nvidia-fy2025-q1",
+            "nvidia-fy2027-q1"
+          ],
+          "historical_exposed_row": 72,
+          "question": "What was annual net income for the three-month period ended January 26, 2025?",
+          "status": 200
+        },
+        {
+          "body_sha256": "a603737aedd4ca5297a452ed039cc734853f9d85ef6f3ad64393fbf22294fbd7",
+          "cells": [],
+          "disposition": "refuse",
+          "document_ids": [
+            "nvidia-fy2021-annual",
+            "nvidia-fy2027-q2",
+            "nvidia-fy2026-annual",
+            "nvidia-fy2025-annual",
+            "nvidia-fy2025-q2",
+            "nvidia-fy2024-annual",
+            "nvidia-fy2023-annual",
+            "nvidia-fy2022-annual",
+            "nvidia-fy2025-q1",
+            "nvidia-fy2027-q1"
+          ],
+          "historical_exposed_row": 74,
+          "question": "According to NVIDIA fiscal 2025 annual report, what was net income for the year ended January 27, 2025?",
+          "status": 200
+        },
+        {
+          "body_sha256": "51f488f5c94d9b0b67b440d19c25652783da849407727e5159779f3bde0d79e6",
+          "cells": [],
+          "disposition": "unsupported",
+          "document_ids": [
+            "nvidia-fy2021-annual",
+            "nvidia-fy2027-q2",
+            "nvidia-fy2026-annual",
+            "nvidia-fy2025-annual",
+            "nvidia-fy2025-q2",
+            "nvidia-fy2024-annual",
+            "nvidia-fy2023-annual",
+            "nvidia-fy2022-annual",
+            "nvidia-fy2025-q1",
+            "nvidia-fy2027-q1"
+          ],
+          "historical_exposed_row": 75,
+          "question": "According to NVIDIA fiscal 2025 annual report, what was net income for the year ended January 26, 2025, in millions of USD?",
+          "status": 200
+        }
+      ],
+      "task": "model-startup-20261013-02",
+      "teardown": {
+        "errors": [],
+        "graceful_exit_claimed": false,
+        "launcher_closed": true,
+        "native_process_closed": true
+      },
+      "terminal_receipt": {
+        "bytes": 7443,
+        "sha256": "d635634fe8e488e49d383a2672cfe817bd93e811f8f2dc0990e6fb0c13de489f"
+      },
+      "terminal_status": "passed",
+      "threshold": 0.78,
+      "top_k": 5
+    }
+  ],
+  "classification": "exposed development integration diagnostic; financial quality unaccepted",
+  "limitations": [
+    "No installed-wheel model acceptance or historical 35-row experiment equivalence.",
+    "Queries and statement response targets were already exposed development inputs.",
+    "Financial correctness, independent human gold and held-out evaluation remain unestablished.",
+    "No generator, hosted service, TLS, tenant authorization, browser API bridge or load acceptance.",
+    "Elapsed values include passive instrumentation and are not performance distributions."
+  ],
+  "preserved_first_failure": "ST5.7 moved implementation path; old passive observer missed constructor and encode frames",
+  "schema_version": 1,
+  "scope": "current-source CPU BGE and optional statement actual loopback HTTP"
+}
