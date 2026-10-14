@@ -1,0 +1,501 @@
+{
+  "acceptance_record": false,
+  "artifact_kind": "sanitized-public-diagnostic",
+  "claim_boundaries": {
+    "financial_correctness_established": false,
+    "generation_evaluation_established": false,
+    "held_out_evaluation_established": false,
+    "held_out_question_count": 0,
+    "human_gold_count": 0,
+    "human_gold_established": false,
+    "installed_wheel_model_acceptance_established": false,
+    "production_api_acceptance_established": false,
+    "raw_spatial_table_relationships_adjudicated": false,
+    "successful_native_attempt_established": false
+  },
+  "evidence_sha256": {
+    "failed_attempt_log": "c341de0804e33c355582930ec4c58934c4f8868761abf336c9eefd486b06cbc6",
+    "failed_attempt_receipt": "b9b61e477627d97b01cbaa302fa72787a6226d13dbd19f793beaa1b26641e176",
+    "frozen_protocol": "b860aa897463e5a688d8321485407cbc4fe9e1e6daa8d4c6199d601b6ba453db",
+    "posthoc_arithmetic": "847e2304880295ca882f8a4cf04cf918bc9c043300b83fcf963a6823f41e6521",
+    "posthoc_receipt": "7b3616814dc3d7bce593535a7ca522291a10e37ed7947042707b3f003c927248",
+    "posthoc_script": "6cfe19a627f011d04fe4e7ae73750f44fa1fa85887b8f64a569cf90074e83475",
+    "posthoc_source_support": "60172056a45bcf0d5cb66633eed4df243ea71f3ba68fb1b4c08a0dbb93937ff5",
+    "retained_field_matrix_npy": "168bb9dfc8a10697dc0c48d4fe4cf2bc2f3c74801dc05318bfb4eea8911f511c",
+    "retained_model_observations": "de69a28ba4b2b2af129a7fa39d6adbb2d695befe05c4545f26771e3df9b5e603",
+    "retained_query_matrix_npy": "7ba030ae9a8ae6843b476934edbcd186364562232cfa90436e028327315b7914",
+    "retained_query_traces": "cbae19d11bc2445ac8084992aa21f9a2368ee6557b496e8e3b46a5602d2eebdd",
+    "retained_source_replay": "9678ac65581980afe6698393068ead365af2d984cf0ce647e980c9875f93b6b7",
+    "retained_untruncated_preflight": "2b835c92bbdce3b3a50237fa978e003ff752f96dac620f6d2f06bef022a315b9"
+  },
+  "execution_mode": "source-snapshot execution with historical dependency environment",
+  "limitations": [
+    "The original attempt remains failed with its pending guard retained.",
+    "Original child-final.json and complete actual loaded-module origins are absent.",
+    "Posthoc source replay and file identities cannot reconstruct original runtime loaded-module origins.",
+    "Only retained vectors, tokens, traces and native bindings are diagnosed; no model rerun occurred.",
+    "Three exposed development questions; human gold and held-out counts remain zero.",
+    "Mechanical source-field matching and cosine scores do not establish financial correctness.",
+    "No installed-wheel model, API, HTTP, generation, hosting or OS network-isolation acceptance.",
+    "Only the annual requested field survives Top5 and the cosine gate in these three exposed questions. The annual evidence also includes other metrics.",
+    "The three-month query passes five other-metric candidates while its requested current net-income field ranks 11 and remains below threshold.",
+    "The six-month requested current net-income field ranks 3 but remains below threshold; no Top5 candidate passes the gate.",
+    "No expected monetary amount or audit-only metric/current-role/date/duration/unit comparison was used to construct or rank model inputs.",
+    "This diagnostic is not an acceptance record or a loadable vector artifact."
+  ],
+  "model_configuration": {
+    "batch_size": 32,
+    "cosine_threshold": 0.78,
+    "device": "cpu",
+    "dimension": 384,
+    "dtype": "float32",
+    "local_only_offline_settings": true,
+    "name": "BAAI/bge-small-en-v1.5",
+    "os_network_isolation_established": false,
+    "query_instruction": "Represent this sentence for searching relevant passages: ",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "threads": 1,
+    "top_k": 5
+  },
+  "original_attempt": {
+    "automatic_model_rerun_performed": false,
+    "child_final_present": false,
+    "elapsed_seconds": 106.80073949997313,
+    "failure_stage": "Recording actual loaded-module origins after native model work and query traces completed.",
+    "loaded_module_origin_closure_established": false,
+    "loaded_module_origin_closure_reconstructable_posthoc": false,
+    "native_child_exit_code": 1,
+    "owned_launcher_and_native_absence_recorded": true,
+    "pending_retained": true,
+    "preserved_error": "FileNotFoundError while resolving a relative _ops.py virtual-module origin.",
+    "status": "failed"
+  },
+  "posthoc_diagnostics": {
+    "elapsed_seconds": 43.6132497000508,
+    "generation_runs": 0,
+    "http_calls": 0,
+    "listeners": 0,
+    "new_model_runs": 0,
+    "new_retrieval_calls": 0,
+    "new_tokenizer_runs": 0,
+    "numpy_version": "2.5.4",
+    "original_attempt_files_rechecked_unchanged": 23,
+    "protected_file_hash_groups_rechecked": {
+      "dependency_inventory_files": 6090,
+      "frozen_harness_bodies": 8,
+      "original_inputs": 85,
+      "source_snapshot_modules": 22
+    },
+    "runtime_origin_closure_repaired": false,
+    "status": "completed-diagnostics-original-attempt-remains-failed"
+  },
+  "production_loader_or_api_contract": false,
+  "publication_status": "reviewed-diagnostic-original-attempt-failed",
+  "questions": [
+    {
+      "all_top5_source_diagnostics": [
+        {
+          "chunk_id": "nvidia-fy2025-annual:p144:source-cell:8a96b90fa7d2b11ab546168d58566179aed7c847250d14b9f6223b1fff31ad30",
+          "column_role": "prior_comparison",
+          "duration_months": null,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": true,
+          "period_end": "2024-01-28",
+          "rank": 1,
+          "row_path": "monetary/cost_of_revenue",
+          "score": 0.7895817298097851,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-annual:p144:source-cell:c2be9889d26d0d278a836fe7d7e8b1719ad0cbab140efd71bb259f0c45f30153",
+          "column_role": "prior_comparison",
+          "duration_months": null,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": true,
+          "period_end": "2023-01-29",
+          "rank": 2,
+          "row_path": "monetary/cost_of_revenue",
+          "score": 0.7893506488126332,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-annual:p144:source-cell:6830d9dd2eece535ee53a77e0b1344646395ea5792a69b538fa2507736df1866",
+          "column_role": "current",
+          "duration_months": null,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": true,
+          "period_end": "2025-01-26",
+          "rank": 3,
+          "row_path": "monetary/cost_of_revenue",
+          "score": 0.7883674924410856,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-annual:p144:source-cell:ec4b57d7169395d692eb30c92593512326b0c079fe87fb3ac7f02b5e336c4cd1",
+          "column_role": "current",
+          "duration_months": null,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": true,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": true,
+          "period_end": "2025-01-26",
+          "rank": 4,
+          "row_path": "monetary/revenue",
+          "score": 0.7844318682811268,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-annual:p144:source-cell:21efac25d685fec07dc74f8668146bebd8b87a8d41c68aae94f9a9a353c047b6",
+          "column_role": "current",
+          "duration_months": null,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": true,
+          "period_end": "2025-01-26",
+          "rank": 5,
+          "row_path": "monetary/income_tax_expense_benefit",
+          "score": 0.7828405321519669,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        }
+      ],
+      "audit_only_requested_field": {
+        "column_role": "current",
+        "document_id": "nvidia-fy2025-annual",
+        "duration_months": null,
+        "fiscal_quarter": null,
+        "fiscal_year": 2025,
+        "period_end": "2025-01-26",
+        "row_path": "monetary/revenue",
+        "scale": "1000000",
+        "unit_kind": "monetary"
+      },
+      "comparison_to_prior_native04": {
+        "cross_run_equivalence_required_for_posthoc_diagnostic": false,
+        "query_max_abs_difference": 7.821340056168857e-08,
+        "score_max_abs_difference": 6.89262783515332e-08
+      },
+      "field_candidate_count": 55,
+      "maximum_posthoc_float64_errors": {
+        "considered_scores": 0.0,
+        "query_vector": 0.0
+      },
+      "ordinal": 0,
+      "question": "What was NVIDIA annual revenue in FY2025?",
+      "raw_replay_candidate_count": 465,
+      "requested_field_match": {
+        "cell_id": "b419634fad4e1421a816390cec1be506d792a684e527b6f53094cf0814d03c72",
+        "chunk_id": "nvidia-fy2025-annual:p144:source-cell:ec4b57d7169395d692eb30c92593512326b0c079fe87fb3ac7f02b5e336c4cd1",
+        "field_ordinal": 168,
+        "in_top5": true,
+        "passes_cosine_threshold": true,
+        "rank_in_all_scoped_fields": 4,
+        "score": 0.7844318682811268,
+        "survives_top5_and_threshold": true
+      },
+      "requested_field_survives_top5_and_threshold": true,
+      "same_query_vector_raw_replay": {
+        "candidates_passing_threshold": 3,
+        "new_encode_or_http": false,
+        "spatial_table_support_adjudicated": false,
+        "top_score": 0.8072567675190477
+      },
+      "selected_document_ids": [
+        "nvidia-fy2025-annual"
+      ],
+      "top5_candidates_passing_cosine_gate": 5
+    },
+    {
+      "all_top5_source_diagnostics": [
+        {
+          "chunk_id": "nvidia-fy2025-q2:p3:source-cell:cb48cc05262af280fc619114b9b425f5083b0931f92cc1d3039207c3d50158e4",
+          "column_role": "prior_comparison",
+          "duration_months": 3,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": true,
+          "period_end": "2023-07-30",
+          "rank": 1,
+          "row_path": "monetary/income_before_income_tax",
+          "score": 0.7855979489418753,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-q2:p3:source-cell:55eaa49a41634901b1d8a6e1c6cee735c58f89063b7af64d161fc7bc467c6713",
+          "column_role": "current",
+          "duration_months": 3,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": true,
+          "period_end": "2024-07-28",
+          "rank": 2,
+          "row_path": "monetary/income_before_income_tax",
+          "score": 0.7838235002480003,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-q2:p3:source-cell:f2c6ea4392f9c645f9ef1068cda48e988e892c9cc08b37219850009a6b3ad91e",
+          "column_role": "current",
+          "duration_months": 6,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": true,
+          "period_end": "2024-07-28",
+          "rank": 3,
+          "row_path": "monetary/income_before_income_tax",
+          "score": 0.7822470276969737,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-q2:p3:source-cell:a55470646c5270b23e48c3af98fc8c832fdad3fac269c5ddc9c8888b3c1f1a24",
+          "column_role": "prior_comparison",
+          "duration_months": 3,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": true,
+          "period_end": "2023-07-30",
+          "rank": 4,
+          "row_path": "monetary/gross_profit",
+          "score": 0.7821595569485615,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-q2:p3:source-cell:8a929b5f7d0888901dd80a34c50ffa2f49a2cd8a0f34091e489853043a512f9b",
+          "column_role": "prior_comparison",
+          "duration_months": 6,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": true,
+          "period_end": "2023-07-30",
+          "rank": 5,
+          "row_path": "monetary/income_before_income_tax",
+          "score": 0.7815898693899925,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        }
+      ],
+      "audit_only_requested_field": {
+        "column_role": "current",
+        "document_id": "nvidia-fy2025-q2",
+        "duration_months": 3,
+        "fiscal_quarter": 2,
+        "fiscal_year": 2025,
+        "period_end": "2024-07-28",
+        "row_path": "monetary/net_income",
+        "scale": "1000000",
+        "unit_kind": "monetary"
+      },
+      "comparison_to_prior_native04": {
+        "cross_run_equivalence_required_for_posthoc_diagnostic": false,
+        "query_max_abs_difference": 9.65057635384653e-08,
+        "score_max_abs_difference": 8.260013384386866e-08
+      },
+      "field_candidate_count": 72,
+      "maximum_posthoc_float64_errors": {
+        "considered_scores": 0.0,
+        "query_vector": 0.0
+      },
+      "ordinal": 1,
+      "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the three-month period ended July 28, 2024, in millions of dollars?",
+      "raw_replay_candidate_count": 211,
+      "requested_field_match": {
+        "cell_id": "11865bf9beadab4654f101c2e3cbaf046083a513b219cafff20d4caead40ecaa",
+        "chunk_id": "nvidia-fy2025-q2:p3:source-cell:379bf7fe53add6b2044122c7db14403faddc0c19b416a9ca88c214c93d6270c0",
+        "field_ordinal": 275,
+        "in_top5": false,
+        "passes_cosine_threshold": false,
+        "rank_in_all_scoped_fields": 11,
+        "score": 0.7781030010550101,
+        "survives_top5_and_threshold": false
+      },
+      "requested_field_survives_top5_and_threshold": false,
+      "same_query_vector_raw_replay": {
+        "candidates_passing_threshold": 1,
+        "new_encode_or_http": false,
+        "spatial_table_support_adjudicated": false,
+        "top_score": 0.7871780289122102
+      },
+      "selected_document_ids": [
+        "nvidia-fy2025-q2"
+      ],
+      "top5_candidates_passing_cosine_gate": 5
+    },
+    {
+      "all_top5_source_diagnostics": [
+        {
+          "chunk_id": "nvidia-fy2025-q2:p3:source-cell:8a929b5f7d0888901dd80a34c50ffa2f49a2cd8a0f34091e489853043a512f9b",
+          "column_role": "prior_comparison",
+          "duration_months": 6,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": false,
+          "period_end": "2023-07-30",
+          "rank": 1,
+          "row_path": "monetary/income_before_income_tax",
+          "score": 0.7779698928424158,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-q2:p3:source-cell:f2c6ea4392f9c645f9ef1068cda48e988e892c9cc08b37219850009a6b3ad91e",
+          "column_role": "current",
+          "duration_months": 6,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": false,
+          "period_end": "2024-07-28",
+          "rank": 2,
+          "row_path": "monetary/income_before_income_tax",
+          "score": 0.7772356264061807,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-q2:p3:source-cell:63b5fd9def035359480ae5775994b6dd090b97857310cc1c831bb28a9b437504",
+          "column_role": "current",
+          "duration_months": 6,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": true,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": false,
+          "period_end": "2024-07-28",
+          "rank": 3,
+          "row_path": "monetary/net_income",
+          "score": 0.774597872513654,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-q2:p3:source-cell:a01ecca8458bb9c2d8eef285ad6dbb8a47852547eeca0a96e8ec42918a5622e1",
+          "column_role": "prior_comparison",
+          "duration_months": 6,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": false,
+          "period_end": "2023-07-30",
+          "rank": 4,
+          "row_path": "monetary/net_income",
+          "score": 0.7743815271618587,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        },
+        {
+          "chunk_id": "nvidia-fy2025-q2:p3:source-cell:cb48cc05262af280fc619114b9b425f5083b0931f92cc1d3039207c3d50158e4",
+          "column_role": "prior_comparison",
+          "duration_months": 3,
+          "full_native_binding_replay_equal": true,
+          "mechanical_requested_field_match": false,
+          "page_and_character_spans_equal": true,
+          "passed_cosine_gate": false,
+          "period_end": "2023-07-30",
+          "rank": 5,
+          "row_path": "monetary/income_before_income_tax",
+          "score": 0.773447704211813,
+          "three_source_boxes_equal": true,
+          "unit_kind": "monetary"
+        }
+      ],
+      "audit_only_requested_field": {
+        "column_role": "current",
+        "document_id": "nvidia-fy2025-q2",
+        "duration_months": 6,
+        "fiscal_quarter": 2,
+        "fiscal_year": 2025,
+        "period_end": "2024-07-28",
+        "row_path": "monetary/net_income",
+        "scale": "1000000",
+        "unit_kind": "monetary"
+      },
+      "comparison_to_prior_native04": {
+        "cross_run_equivalence_required_for_posthoc_diagnostic": false,
+        "query_max_abs_difference": 8.747290496796678e-08,
+        "score_max_abs_difference": 8.52160006448166e-08
+      },
+      "field_candidate_count": 72,
+      "maximum_posthoc_float64_errors": {
+        "considered_scores": 0.0,
+        "query_vector": 0.0
+      },
+      "ordinal": 2,
+      "question": "According to NVIDIA's fiscal 2025 second-quarter report, what was net income for the six-month period ended July 28, 2024, in millions of dollars?",
+      "raw_replay_candidate_count": 211,
+      "requested_field_match": {
+        "cell_id": "c64b7e5ba5db1f095784043c82a269f5816bbe01d6ff9a17f30a06b87cb32f4b",
+        "chunk_id": "nvidia-fy2025-q2:p3:source-cell:63b5fd9def035359480ae5775994b6dd090b97857310cc1c831bb28a9b437504",
+        "field_ordinal": 277,
+        "in_top5": true,
+        "passes_cosine_threshold": false,
+        "rank_in_all_scoped_fields": 3,
+        "score": 0.774597872513654,
+        "survives_top5_and_threshold": false
+      },
+      "requested_field_survives_top5_and_threshold": false,
+      "same_query_vector_raw_replay": {
+        "candidates_passing_threshold": 0,
+        "new_encode_or_http": false,
+        "spatial_table_support_adjudicated": false,
+        "top_score": 0.778377998248223
+      },
+      "selected_document_ids": [
+        "nvidia-fy2025-q2"
+      ],
+      "top5_candidates_passing_cosine_gate": 0
+    }
+  ],
+  "retained_actual_observations": {
+    "all_534_native_occurrences_equal_untruncated_token_ids": true,
+    "constructor_entries": 1,
+    "constructor_returns": 1,
+    "context_entries": 3,
+    "context_returns": 3,
+    "dense_entries": 3,
+    "dense_returns": 3,
+    "encode_entries": 4,
+    "encode_returns": 4,
+    "gate_entries": 3,
+    "gate_returns": 3,
+    "maximum_sequence_tokens_including_special_tokens": 156,
+    "preprocess_entries": 20,
+    "preprocess_returns": 20,
+    "tokenizer_entries": 21,
+    "tokenizer_returns": 21,
+    "untruncated_effective_string_count": 534,
+    "untruncated_tokenizer_preflight_calls": 1
+  },
+  "schema_version": 1,
+  "scope": "standalone field-representation experiment using production report decisions, dense arithmetic and core evidence gate",
+  "source_commit": "7039b98daea7fd25c3f3d0f2e87284211605637a",
+  "source_only_replay": {
+    "complete_native_snapshot_equal": true,
+    "field_passages": 531,
+    "omissions": 6,
+    "raw_passages": 3240,
+    "reports": 10,
+    "separate_raw_bound_catalog_preserved": true,
+    "top5_candidates_audited_including_below_threshold": 15
+  },
+  "title": "Failed field-representation attempt: retained-output posthoc diagnostics"
+}
