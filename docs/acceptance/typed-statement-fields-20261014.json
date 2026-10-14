@@ -1,0 +1,118 @@
+{
+  "base_source_commit": "e7cae56ac3700d80522f02975814bf592cd6d9ee",
+  "checkout_tests": {
+    "duration_seconds": 187.99,
+    "errors": 0,
+    "failures": 0,
+    "junit": {
+      "bytes": 155968,
+      "sha256": "8b555c341a6d3240c025c90093681570228e28f665d63b8af6421667694e07f3"
+    },
+    "skipped": 0,
+    "tests": 1038,
+    "warning_kind": "existing Starlette/httpx deprecation",
+    "warnings": 1
+  },
+  "claim_boundaries": {
+    "browser_integration_established": false,
+    "current_commit_remote_ci": "not claimed by this local acceptance record",
+    "financial_correctness": "unestablished",
+    "generation_quality_established": false,
+    "held_out_financial_questions": 0,
+    "hosted_api_established": false,
+    "human_gold": 0,
+    "semantic_retrieval_improvement_established": false
+  },
+  "independent_synthetic_installed_http": {
+    "all_owned_listeners_closed": true,
+    "assertion_count": 254,
+    "mode_names": [
+      "configured",
+      "unconfigured",
+      "selector-fault",
+      "selector-http-fault",
+      "dto-fault",
+      "render-fault"
+    ],
+    "modes": 6,
+    "native_cells": 60,
+    "receipt": {
+      "bytes": 35275,
+      "sha256": "4f645e023ac12fc87620c1e10e93c295b7f2c172b73fee52e67d27d312aa4d86"
+    },
+    "script": {
+      "bytes": 36562,
+      "sha256": "83e690f230fe3e60563cf4f8b7f316912730f7743a4ff949bee57c6277ad5326"
+    },
+    "windows_teardown": "Owned launcher trees stopped with taskkill /T /F; process return codes 1. This is forced owned teardown, not graceful shutdown."
+  },
+  "installed_corpus_startup": {
+    "assertion_count": 57,
+    "includes_typed_units": [
+      "monetary",
+      "per_share",
+      "count"
+    ],
+    "modes": 3,
+    "receipt": {
+      "bytes": 20137,
+      "sha256": "1505f75a57734d15d9a71beab2edd0ce0ffec5629669ae10f04bac6e3cac2e29"
+    }
+  },
+  "limitations": [
+    "All original-source requests are derived from already retained source cells; they are development replay, not unseen financial questions.",
+    "Synthetic installed HTTP assertions are not counts of distinct HTTP requests.",
+    "Canonical hashes establish local consistency; they do not authenticate publisher identity or a human review.",
+    "Current source-native geometry and monetary/currency interpretation retain their existing limitations."
+  ],
+  "local_wheel": {
+    "bytes": 143222,
+    "production_modules": 24,
+    "sha256": "e7f6b17342a71e6fa8ebcbc473e5564f83c8ccab9694f0b176a95e3ed76c910b",
+    "wheel_record_rows": 31
+  },
+  "new_focused_tests": 97,
+  "original_source_development_replay": {
+    "actual_http_requests": 535,
+    "cells": 531,
+    "complete_native_cells_equal": 531,
+    "fresh_native_index_equals_archived": true,
+    "generation_runs": 0,
+    "index_sha256": "cb38468d4c9aa485156ef4319fcc60ba394d23d2b030119157b4bf3a3bb2fb93",
+    "model_runs": 0,
+    "negative_requests_withheld": 4,
+    "omissions": 6,
+    "ordinary_query_calls": 0,
+    "protected_input_count": 18,
+    "protected_original_inputs_unchanged": true,
+    "receipt": {
+      "bytes": 8250,
+      "sha256": "2335ab3d4719d4e3e5b8d63c19445538fed027cfc9cc2ded3c1ea8007a8921cc"
+    },
+    "reports": 10,
+    "trace": {
+      "bytes": 1610110,
+      "sha256": "d9fec172aedfe0277174e90441ee9170795831c4ada3fbe6eaf9c293f4074ac1"
+    },
+    "unit_kind_counts": {
+      "count": 60,
+      "monetary": 411,
+      "per_share": 60
+    }
+  },
+  "preserved_failures": [
+    {
+      "cause": "colliding printed numeric literals caused native ambiguous text geometry; fixture corrected with distinct literals",
+      "route_failure": false,
+      "scope": "independent synthetic PDF fixture construction"
+    },
+    {
+      "cause": "Windows venv launcher PID differs from actual interpreter PID; corrected owned-tree bookkeeping",
+      "route_failure": false,
+      "scope": "first independent installed verifier"
+    }
+  ],
+  "route": "POST /v1/statement-fields",
+  "schema_version": 1,
+  "scope": "typed source-field selection, native source retention and installed loopback transport; not financial accuracy"
+}

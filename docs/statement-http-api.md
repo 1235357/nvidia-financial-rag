@@ -4,6 +4,11 @@
 
 This interface supports the selector's existing monetary row and literal-period vocabulary. The [annual guide](annual-income-selection.md) explains fiscal-year periods, and the [quarterly guide](structured-income-selection.md) explains row, column and span bindings. EPS/share-count natural-language lookup, arithmetic, currency conversion and unseen financial accuracy remain outside the accepted scope. A returned cell remains a source candidate with `financial_correctness="unestablished"`.
 
+Applications that already know the field and unit can use the separate
+[`/v1/statement-fields` typed interface](statement-fields-api.md), including the
+native per-share and share-count sections. It does not expand this route's
+natural-language vocabulary or create a generated financial answer.
+
 For a complete packaged startup path, use [the verified corpus startup guide](verified-corpus-startup.md). It documents the installed command and Python factory, strict registry/PDF-bound fiscal declarations, shared document scope, model-launcher options and read-only container composition. The custom application injection below remains supported.
 
 ## Configure a consumer-owned application

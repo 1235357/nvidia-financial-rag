@@ -1,6 +1,6 @@
 # Launch the installed API from verified local sources
 
-The installed `nvidia-rag-serve-corpus` command serves an existing verified lexical corpus. Supplying a local PDF directory and explicit fiscal declarations additionally configures `/v1/statement-candidates`. Consumers can use the same startup composition from Python. Neither path downloads PDFs or models, generates an answer, infers a fiscal year, or establishes financial correctness.
+The installed `nvidia-rag-serve-corpus` command serves an existing verified lexical corpus. Supplying a local PDF directory and explicit fiscal declarations additionally configures `/v1/statement-candidates` and the explicit [`/v1/statement-fields` interface](statement-fields-api.md). Consumers can use the same startup composition from Python. Neither path downloads PDFs or models, generates an answer, infers a fiscal year, or establishes financial correctness.
 
 The command is installed through `[project.scripts]`, following the [PyPA packaging guide](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#creating-executable-scripts). The module form is useful with isolated Python or an explicit container command.
 

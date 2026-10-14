@@ -64,6 +64,8 @@ jobs:
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -I -B (Join-Path $workspace 'acceptance/statement_http.py') --output (Join-Path $workspace 'installed-statement-contract.json')
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
+            & $consumerPython -I -B (Join-Path $workspace 'acceptance/statement_fields_http.py') --wheel $wheel.FullName --output (Join-Path $workspace 'installed-statement-fields-contract.json')
+            if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -I -B (Join-Path $workspace 'acceptance/serving_startup.py') --wheel $wheel.FullName --output (Join-Path $workspace 'installed-serving-startup.json')
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -m pip check
@@ -78,6 +80,7 @@ jobs:
             checkout-tests.xml
             installed-api-contract.json
             installed-statement-contract.json
+            installed-statement-fields-contract.json
             installed-serving-startup.json
             resolved-api.txt
           retention-days: 14

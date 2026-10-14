@@ -320,7 +320,7 @@ def _http_checks(base_url, token, fixture_root, *, scoped=False, unconfigured=Fa
         checked("liveness", client.get("/healthz").status_code == 200, http_status=200)
         checked("readiness-authentication", client.get("/readyz").status_code == 401, http_status=401)
         checked("docs-disabled", client.get("/docs").status_code == client.get("/openapi.json").status_code == 404, http_status=404)
-        for path in ("/v1/query", "/v1/statement-candidates"):
+        for path in ("/v1/query", "/v1/statement-candidates", "/v1/statement-fields"):
             response = client.post(path, content=b"not-json")
             checked(path + "-authentication-before-malformed-body", response.status_code == 401, http_status=401)
         if unconfigured:
@@ -329,6 +329,13 @@ def _http_checks(base_url, token, fixture_root, *, scoped=False, unconfigured=Fa
             checked("unconfigured-is-operational-503", response.status_code == 503 and body["disposition"] == "unavailable" and
                     body["reason"] == "STATEMENT_INDEX_NOT_CONFIGURED" and body["index_sha256"] is None and
                     body["cells"] == [] and body["error_code"] == "statement_selection_unavailable", http_status=503)
+            typed = client.post('/v1/statement-fields', headers=headers, content=b'not-json')
+            typed_body = typed.json()
+            checked('unconfigured-typed-fields-operational-503', typed.status_code == 503 and
+                typed_body['disposition'] == 'unavailable' and typed_body['cells'] == [] and
+                typed_body['reason'] == 'STATEMENT_INDEX_NOT_CONFIGURED' and
+                typed_body['selection_request'] is None and typed_body['selection_request_sha256'] is None and
+                typed_body['index_sha256'] is None, http_status=503)
             return records
         indexes = set()
         for expected in proof["reports"]:
@@ -347,6 +354,31 @@ def _http_checks(base_url, token, fixture_root, *, scoped=False, unconfigured=Fa
             checked(expected['period_kind'] + '-complete-source-cell-transport',
                 body['cells'][0] == expected_cells.get(body['cells'][0]['cell_id']))
         checked("one-immutable-source-index", indexes == {expected_index_hash}, index_sha256=expected_index_hash)
+        for report in proof['reports']:
+            if scoped and report['document_id'] == 'synthetic-annual':
+                continue
+            for kind, row_path in (('monetary', 'monetary/net_income'),
+                                   ('per_share', 'per_share/basic'), ('count', 'count/basic')):
+                native = next(cell for cell in expected_cells.values()
+                    if cell['document_id'] == report['document_id'] and cell['row_path'] == row_path
+                    and cell['column_number'] == 1)
+                payload = {name: native[name] for name in ('row_path', 'period_kind', 'period_end',
+                    'duration_months', 'unit_kind', 'scale', 'currency_literal', 'fiscal_year',
+                    'fiscal_quarter', 'column_role')}
+                payload['document_ids'] = [native['document_id']]
+                typed = client.post('/v1/statement-fields', headers=headers, json=payload)
+                typed_body = typed.json()
+                request_hash = sha256(json.dumps(payload, ensure_ascii=False, sort_keys=True,
+                    separators=(',', ':'), allow_nan=False).encode() + b'\n').hexdigest()
+                checked(report['document_id'] + '-typed-' + kind + '-complete-native-cell',
+                    typed.status_code == 200 and typed_body['disposition'] == 'source_candidate' and
+                    typed_body['cells'] == [native] and typed_body['selection_request'] == payload and
+                    typed_body['selection_request_sha256'] == request_hash and
+                    typed_body['index_sha256'] == expected_index_hash and
+                    typed_body['financial_correctness'] == 'unestablished' and
+                    typed_body['score_semantics'] == 'exact-source-field-selection;no-cosine-score' and
+                    typed_body['request_id'] == typed.headers.get('X-Request-ID') == headers['X-Request-ID'],
+                    http_status=200, cell_id=native['cell_id'], unit_kind=kind)
         annual = REPORTS[0]["question"]
         control = REPORTS[1] if scoped else REPORTS[0]
         question = control["question"]

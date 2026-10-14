@@ -23,6 +23,7 @@ from .generation import GeneratedResponse
 from .sources import _reviewed_provenance
 from .structured_income import IncomeIndex
 from .statement_api import attach_statement_route
+from .statement_fields_api import attach_statement_fields_route
 
 LOGGER = logging.getLogger("nvidia_rag.api")
 _SAFE_REQUEST_ID = re.compile(r"[A-Za-z0-9._:-]{1,64}\Z")
@@ -278,6 +279,9 @@ def create_app(
         )
 
     attach_statement_route(
+        app, index=statement_index, require_bearer=require_bearer, logger=LOGGER,
+    )
+    attach_statement_fields_route(
         app, index=statement_index, require_bearer=require_bearer, logger=LOGGER,
     )
     return app
