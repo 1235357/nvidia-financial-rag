@@ -57,7 +57,11 @@ The default `--routing-policy none` applies only the run-wide document scope. `-
 
 ## Inspect the retained run
 
-The runner reserves the output directory before constructing a backend. It copies the exact small input bodies, writes its freeze, and records each attempted retrieval. It verifies the named original inputs after construction and after all questions. Output bodies are limited to a combined 64 MiB; exceeding the bound fails the run without truncating candidates.
+The runner reserves the output directory before constructing a backend. It copies the exact selected input bodies, writes its freeze, and records each attempted retrieval. It verifies the named original inputs after construction and after all questions. Each copied input or output body is limited to 64 MiB; the complete retained run is limited to 256 MiB. Exceeding either bound fails the run without truncating source bodies or candidates.
+
+Known corpus, registry, question/reference, package, declaration and vector paths receive a size-only preflight before corpus/vector loading. After the verified corpus determines the selected PDF scope, the full input set is checked again before snapshot allocation, native PDF parsing or model construction. Bounded reads still check actual bytes, and the completed loader checks its entire file inventory before reading its artifact bodies. These checks do not replace the byte/hash closure checks.
+
+The 256 MiB bound covers the logical retained run, including input snapshots, attempts, results, review packet and completion receipt. It is not a RAM or peak-disk limit: in-memory copies, parsed objects, model weights and the temporary attempt-journal replacement can consume additional resources. A failed reserved directory may also retain a small failure diagnostic alongside its pending marker. The independent review JSON limit remains 64 MiB; question/reference input remains 1 MiB, 1,000 rows and 500 decoded characters per query. The limits do not promise that every allowed question/top-K combination will fit.
 
 | Artifact | Retained evidence |
 | --- | --- |

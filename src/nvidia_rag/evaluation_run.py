@@ -17,7 +17,8 @@ from .core import Chunk, ScoredChunk
 from .evaluation import evaluate_retriever, validate_acceptance_preflight
 from .evaluation_inputs import canonical_json, parse_json, parse_questions
 
-MAX_OUTPUT_BYTES = 64 * 1024 * 1024
+MAX_BODY_BYTES = 64 * 1024 * 1024
+MAX_OUTPUT_BYTES = 256 * 1024 * 1024
 FREEZE_FILE = "freeze.json"
 RESULTS_FILE = "results.json"
 PACKET_FILE = "review-packet.json"
@@ -57,13 +58,53 @@ def _path(path, label, *, directory=False, exists=True):
     return path.resolve(strict=exists)
 
 
-def _read(path, *, limit=MAX_OUTPUT_BYTES):
+def _read(path, *, limit=None):
+    if limit is None:
+        limit = MAX_BODY_BYTES
     _path(path, "input")
     _require(path.stat().st_size <= limit, "input exceeds byte budget")
     with path.open("rb") as stream:
         body = stream.read(limit + 1)
     _require(len(body) <= limit, "input exceeds byte budget")
     return body
+
+
+def _check_capture_budget(paths):
+    """Refuse known oversize inputs before loading or parsing their bodies."""
+    total = 0
+    for path in paths.values():
+        _path(path, "input")
+        size = path.stat().st_size
+        _require(size <= MAX_BODY_BYTES, "input exceeds byte budget")
+        total += size
+        _require(total <= MAX_OUTPUT_BYTES, "complete input capture exceeds byte budget")
+
+
+def _capture_bodies(paths):
+    """Capture complete bounded inputs; recheck actual sizes after the stat pass."""
+    _check_capture_budget(paths)
+    bodies, total = {}, 0
+    for name, path in paths.items():
+        body = _read(path)
+        total += len(body)
+        _require(total <= MAX_OUTPUT_BYTES, "complete input capture exceeds byte budget")
+        bodies[name] = body
+    return bodies
+
+
+def _run_inventory(directory):
+    """Bound every named body and the complete graph before reading its JSON/PDFs."""
+    files, total = set(), 0
+    for parent, directories, filenames in os.walk(directory, followlinks=False):
+        _require(not any(_linked(Path(parent) / name) for name in directories), "linked run directory")
+        for name in filenames:
+            path = _path(Path(parent) / name, "run inventory")
+            size = path.stat().st_size
+            _require(size <= MAX_BODY_BYTES, "run body exceeds byte budget")
+            total += size
+            _require(total <= MAX_OUTPUT_BYTES, "complete output exceeds byte budget")
+            files.add(path.relative_to(directory).as_posix())
+    return files
 
 
 def _identity(body):
@@ -188,6 +229,7 @@ class _Writer:
         self.directory, self.written = directory, 0
 
     def body(self, name, body):
+        _require(len(body) <= MAX_BODY_BYTES, "output body exceeds byte budget")
         _require(self.written + len(body) <= MAX_OUTPUT_BYTES, "complete output exceeds byte budget")
         path = self.directory / name
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -202,6 +244,7 @@ class _Writer:
     def progress(self, value):
         """Atomically replace only this reserved run's mutable attempt journal."""
         body = canonical_json(value)
+        _require(len(body) <= MAX_BODY_BYTES, "output body exceeds byte budget")
         path = self.directory / ATTEMPTS_FILE
         previous = path.stat().st_size if path.exists() else 0
         _require(self.written - previous + len(body) <= MAX_OUTPUT_BYTES,
@@ -295,6 +338,16 @@ def run_evaluation(*, artifact_dir, source_registry, questions, output_dir, mode
     declarations = None if statement_fiscal_declarations is None else _path(statement_fiscal_declarations, "fiscal declarations")
     original_paths = [p for p in (directory, registry, question_path, reference_path, vector, cache, source, declarations) if p is not None]
     output = _output_path(output_dir, original_paths)
+    paths = {"questions": question_path, "source_registry": registry,
+        **{"corpus/" + name: _path(directory / name, "corpus input") for name in CORPUS_FILES},
+        **{"package/" + name: path for name, path in _package_files().items()}}
+    if reference_path is not None:
+        paths["reference"] = reference_path
+    if vector is not None:
+        paths.update({"vectors/" + name: _path(vector / name, "vector input") for name in VECTOR_FILES})
+    if declarations is not None:
+        paths["statement/fiscal-declarations.json"] = declarations
+    _check_capture_budget(paths)
     from .corpus import load_verified_corpus
     corpus = load_verified_corpus(artifact_dir=directory, source_registry=registry)
     available = frozenset(source.document_id for source in corpus.sources)
@@ -316,13 +369,6 @@ def run_evaluation(*, artifact_dir, source_registry, questions, output_dir, mode
         from .corpus_embeddings import load_local_bge_vectors
         matrix = load_local_bge_vectors(artifact_dir=directory, source_registry=registry, vector_dir=vector)
         model_identity = model_snapshot_identity(cache)
-    if source is not None:
-        from .statement_startup import load_statement_snapshot
-        from .period_routing import build_report_catalog
-        snapshot = load_statement_snapshot(source_registry=registry, source_dir=source,
-            fiscal_declarations=declarations, document_ids=scope, expected_sources=corpus.sources,
-            corpus_manifest=directory / "manifest.json", chunks_path=directory / "chunks.jsonl")
-        catalog = build_report_catalog(snapshot, corpus_manifest=directory / "manifest.json", chunks_path=directory / "chunks.jsonl")
     config = {"mode": mode, "backend": backend, "top_k": top_k, "threshold": threshold,
         "document_ids": sorted(scope), "routing_policy": routing_policy,
         "model_execution_origin": None if backend == "lexical" else ("cached-local-only" if model_factory is None else "operator-injected"),
@@ -331,19 +377,20 @@ def run_evaluation(*, artifact_dir, source_registry, questions, output_dir, mode
         "device": "cpu" if backend == "cached-bge" and model_factory is None else None,
         "local_files_only": True if backend == "cached-bge" and model_factory is None else None}
     config_body = canonical_json(config)
-    paths = {"questions": question_path, "source_registry": registry,
-        **{"corpus/" + name: _path(directory / name, "corpus input") for name in CORPUS_FILES},
-        **{"package/" + name: path for name, path in _package_files().items()}}
-    if reference_path is not None:
-        paths["reference"] = reference_path
-    if vector is not None:
-        paths.update({"vectors/" + name: _path(vector / name, "vector input") for name in VECTOR_FILES})
-    if snapshot is not None:
-        paths["statement/fiscal-declarations.json"] = declarations
+    if source is not None:
         for record in corpus.sources:
             if record.document_id in scope:
                 paths["statement/" + record.filename] = _path(source / record.filename, "statement PDF")
-    bodies = {name: _read(path) for name, path in paths.items()}
+    bodies = _capture_bodies(paths)
+    _require(sum(map(len, bodies.values())) + len(config_body) <= MAX_OUTPUT_BYTES,
+             "complete input capture exceeds byte budget")
+    if source is not None:
+        from .statement_startup import load_statement_snapshot
+        from .period_routing import build_report_catalog
+        snapshot = load_statement_snapshot(source_registry=registry, source_dir=source,
+            fiscal_declarations=declarations, document_ids=scope, expected_sources=corpus.sources,
+            corpus_manifest=directory / "manifest.json", chunks_path=directory / "chunks.jsonl")
+        catalog = build_report_catalog(snapshot, corpus_manifest=directory / "manifest.json", chunks_path=directory / "chunks.jsonl")
     _require(bodies["questions"] == question_body
         and (reference_body is None or bodies["reference"] == reference_body), "question inputs changed during preflight")
     # Pin the bytes that actually supplied the in-memory corpus/matrix. Later
@@ -444,7 +491,7 @@ def _canonical_file(directory, name):
     path = _path(directory / name, "run artifact")
     _require(path.is_relative_to(directory), "run artifact escapes directory")
     body = _read(path)
-    value = parse_json(body, max_bytes=MAX_OUTPUT_BYTES)
+    value = parse_json(body, max_bytes=MAX_BODY_BYTES)
     _require(canonical_json(value) == body, "run artifact is not canonical JSON")
     return value, body
 
@@ -487,6 +534,7 @@ def _validate_graph(directory, *, allow_pending=False):
     """Reconstruct metrics only from retained candidates; never execute a model."""
     if not allow_pending:
         _complete_input(directory)
+    actual_files = _run_inventory(directory)
     freeze, freeze_body = _canonical_file(directory, FREEZE_FILE)
     result, result_body = _canonical_file(directory, RESULTS_FILE)
     packet, packet_body = _canonical_file(directory, PACKET_FILE)
@@ -519,16 +567,7 @@ def _validate_graph(directory, *, allow_pending=False):
     expected_files = {row["snapshot"] for row in inputs.values() if row["snapshot"] is not None}
     expected_files.update({FREEZE_FILE, RESULTS_FILE, PACKET_FILE, ATTEMPTS_FILE,
                            PENDING_FILE if allow_pending else RECEIPT_FILE})
-    actual_files = set()
-    total_bytes = 0
-    for parent, directories, filenames in os.walk(directory, followlinks=False):
-        _require(not any(_linked(Path(parent) / name) for name in directories), "linked run directory")
-        for name in filenames:
-            path = _path(Path(parent) / name, "run inventory")
-            actual_files.add(path.relative_to(directory).as_posix())
-            total_bytes += path.stat().st_size
     _require(actual_files == expected_files, "unexpected or missing run file inventory")
-    _require(total_bytes <= MAX_OUTPUT_BYTES, "complete output exceeds byte budget")
     _require(snapshots["config"] == canonical_json(config), "configuration snapshot mismatch")
     registered = parse_questions(snapshots["questions"])
     _require(bool(registered), "questions must be nonempty")
@@ -604,6 +643,7 @@ def load_completed_run(run_dir):
     """Validate a portable completed artifact graph without original input access."""
     directory = _path(run_dir, "run_dir", directory=True)
     _complete_input(directory)
+    _run_inventory(directory)
     receipt, receipt_body = _canonical_file(directory, RECEIPT_FILE)
     _keys(receipt, {"schema_version", "status", "files", "generation_runs", "financial_correctness"}, "receipt")
     _require(type(receipt["schema_version"]) is int and receipt["schema_version"] == 1
