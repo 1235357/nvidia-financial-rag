@@ -145,6 +145,13 @@ For a collaborator's fresh checkout, clone `main`, install the chosen extras and
 
 ## Source review and evaluation boundaries
 
+The [source-field passage guide](docs/source-field-passages.md) builds a separate
+typed sidecar from registered original PDFs and explicit fiscal declarations.
+Each record keeps its native row, date, duration, unit and source boxes; a fresh
+reader replays the original sources. This source-only artifact preserves the
+existing raw corpus/vector baseline and does not change either HTTP route or
+establish retrieval or financial quality.
+
 [The corpus/evaluation map](docs/evaluation-readiness-and-corpus-map-20261011.md) documents the existing data and its missing acceptance labels. Four portable FY2025-Q2 bindings under `evaluation/source-candidates/` are assistant-reviewed **development candidates**. They retain report/page/row/duration/date/unit/span identities and are not independently accepted human gold. The original PDF is supplied externally and verified by hash; it is not copied into this repository.
 
 [The table experiment](docs/2026-10-11-table-aware-ingestion-experiment.md) keeps lexical presence separate from exact field selection. Its frozen profile controls and experimental cells are source-replay evidence, not retrieval recall, generation accuracy or a false-acceptance rate. No held-out financial accuracy number is claimed.

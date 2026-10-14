@@ -1,0 +1,102 @@
+{
+  "artifact_files": [
+    {
+      "bytes": 950,
+      "name": "build-receipt.json",
+      "sha256": "9c77a1de426d2e5c9cc677a79090420f020eec2c6430a86ea314a29d8e4c594a"
+    },
+    {
+      "bytes": 3631,
+      "name": "manifest.json",
+      "sha256": "30fec8215cf3111fc4a2077c9b5c6be86d4b27a1ebc099d6a7f472b92593b3f0"
+    },
+    {
+      "bytes": 1610105,
+      "name": "passages.jsonl",
+      "sha256": "ce97b0a146922d782cd1978d9948173e587cadb54e3a37e808f6b9b5b75fdb47"
+    }
+  ],
+  "base_revision": "2e49c25308c71499c417904c7fbd9d7a4735557f",
+  "checks": {
+    "existing_starlette_httpx_deprecation_warning": true,
+    "focused_author_tests": 36,
+    "fresh_api_dev_environment_full_suite": 941,
+    "full_suite_failures": 0,
+    "full_suite_skips": 0
+  },
+  "embedding_runs": 0,
+  "evidence_sha256": {
+    "author-readiness-01.json": "65c323cb811a2b599960097aebe14988dae276803bb7957f25d660d2ecc2ffc0",
+    "full-suite-01.log": "13eb1af821cdb007215ca8822b56b669e09e235a9a1f28d898bf62942cfad96d",
+    "full-suite-02.log": "ad139f33b8b19abc1f6802f1eb2d1635c95247fe2a4dc87ac7644ad8e2cd1809",
+    "full-suite-03.log": "5e548c32af7bda9faf222b2257dad501b415e9d6853df9c7f7eb0c3a78c3674f",
+    "full-suite-03.xml": "1bce1f27fb5378ccb4286ec45df6ce8f4bf0b39a306501db1715251ae89221b5",
+    "installed-source-passages-acceptance-01.json": "6ee7c974438ee8942378f9820f917759b2d824156b1a2557539db66f1627f51b",
+    "native-ten-report-acceptance-01.json": "15ba8d11d60dfc1fa4514bf580ff5325fa46d4da9286421229eca8f8acc10c42"
+  },
+  "financial_correctness": "unestablished",
+  "generation_runs": 0,
+  "held_out_questions": 0,
+  "human_gold_count": 0,
+  "installed": {
+    "all_package_bytes_match_wheel_and_source": true,
+    "fresh_native_reader_replay_passed": true,
+    "three_cli_outputs_byte_equal_source_build": true,
+    "wheel_python_modules": 22,
+    "wheel_record_rows": 29,
+    "wheel_sha256": "cb1787b666a6ccf15effdad299ddd5fa651fc21982d5074a227076004f8f68bd"
+  },
+  "limitations": [
+    "Source-only field text is deterministic assembly, not a contiguous PDF quotation.",
+    "Printed dollar glyph remains ISO-currency-unverified; count fields have no currency.",
+    "No new field BGE vectors, dense query, score improvement or generation were accepted.",
+    "No v1 API route, legacy corpus/vector recipe or browser model pipeline changed.",
+    "Human financial adjudication, held-out accuracy, hosted integration and physical-device acceptance remain open."
+  ],
+  "model_runs": 0,
+  "new_source_files": [
+    {
+      "bytes": 15677,
+      "path": "src/nvidia_rag/source_passages.py",
+      "sha256": "47be444c491ee8a794f5bec243f143a0df9949aba85636daf106e2bbc59c7be3"
+    },
+    {
+      "bytes": 1803,
+      "path": "examples/build_source_passages.py",
+      "sha256": "c9e6ef128de59bbf116296b4cee682cab22cdc7d0ef9ef9c94a6949c7675bddf"
+    },
+    {
+      "bytes": 18027,
+      "path": "tests/test_source_passages.py",
+      "sha256": "2e4da1d5a8f465b7822f28bfc440b21d8a064ea1937109e55e702b9a35315c38"
+    }
+  ],
+  "retained_failed_attempts": [
+    {
+      "attempt": "full-suite-01",
+      "cause": "isolated Python omitted checkout root required by existing acceptance imports",
+      "outcome": "two collection errors"
+    },
+    {
+      "attempt": "full-suite-02",
+      "cause": "historical semantic environment TestClient raised httpx2.HTTPStatusError; existing consumer test expects httpx.HTTPStatusError",
+      "outcome": "940 passed and one failed"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "all_original_pdf_raw_corpus_vectors_and_index_bytes_unchanged": true,
+    "fresh_native_index_equal_archived_index": true,
+    "omissions": 6,
+    "passages": 531,
+    "pymupdf_version": "1.28.2",
+    "reports": 10,
+    "three_projection_boxes_equal_native_spans": true,
+    "unit_kinds": {
+      "count": 60,
+      "monetary": 411,
+      "per_share": 60
+    }
+  },
+  "status": "source-only-native-and-installed-replay-passed"
+}
