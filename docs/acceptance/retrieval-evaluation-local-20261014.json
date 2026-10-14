@@ -1,0 +1,160 @@
+{
+  "checkout_tests": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 1330,
+    "seconds": 233.36,
+    "skipped": 0,
+    "warning": "existing Starlette/httpx test-client deprecation",
+    "xml_sha256": "5f66a1ba549875678a29bc148986314d0ac7c60e8ae53f9a82bb49533a9183d7"
+  },
+  "independent_review": "input/review/run/factory implementation approved; later private worker process and 13 focused regressions independently approved",
+  "installed_consumer": {
+    "candidate_count": 4,
+    "input_and_run_closures_unchanged": true,
+    "question_count": 2,
+    "receipt_sha256": "3345513baf8afb2f329009b3e87ecffa78a7515279eded98bf1ab235275d170c",
+    "reviewed_summary": {
+      "assessment_unit": "chunk",
+      "empty_retrieval_count": 0,
+      "judged_irrelevant_count": 1,
+      "judged_relevant_count": 1,
+      "judgment_coverage": 0.5,
+      "question_count": 2,
+      "retrieved_unique_count": 4,
+      "rows": [
+        {
+          "assessment_unit": "chunk",
+          "judged_irrelevant_count": 1,
+          "judged_relevant_count": 1,
+          "judgment_coverage": 1.0,
+          "question_id": "synthetic-positive",
+          "retrieved_unique_count": 2,
+          "scope": "explicit relevance judgment coverage; not retrieval quality or answer truth",
+          "unjudged_count": 0,
+          "unjudged_ids": [],
+          "unjudged_ratio": 0.0
+        },
+        {
+          "assessment_unit": "chunk",
+          "judged_irrelevant_count": 0,
+          "judged_relevant_count": 0,
+          "judgment_coverage": 0.0,
+          "question_id": "synthetic-negative",
+          "retrieved_unique_count": 2,
+          "scope": "explicit relevance judgment coverage; not retrieval quality or answer truth",
+          "unjudged_count": 2,
+          "unjudged_ids": [
+            "synthetic-quarter:p2:w:99a350e4f8d7110e",
+            "synthetic-annual:p2:w:7e807d3055316232"
+          ],
+          "unjudged_ratio": 1.0
+        }
+      ],
+      "scope": "candidate-weighted explicit judgment coverage; not answer accuracy or independence",
+      "unjudged_count": 2,
+      "unjudged_ratio": 0.5
+    },
+    "tampered_rank_refused": true,
+    "unknown_summary": {
+      "assessment_unit": "chunk",
+      "empty_retrieval_count": 0,
+      "judged_irrelevant_count": 0,
+      "judged_relevant_count": 0,
+      "judgment_coverage": 0.0,
+      "question_count": 2,
+      "retrieved_unique_count": 4,
+      "rows": [
+        {
+          "assessment_unit": "chunk",
+          "judged_irrelevant_count": 0,
+          "judged_relevant_count": 0,
+          "judgment_coverage": 0.0,
+          "question_id": "synthetic-positive",
+          "retrieved_unique_count": 2,
+          "scope": "explicit relevance judgment coverage; not retrieval quality or answer truth",
+          "unjudged_count": 2,
+          "unjudged_ids": [
+            "synthetic-annual:p2:w:7e807d3055316232",
+            "synthetic-quarter:p2:w:99a350e4f8d7110e"
+          ],
+          "unjudged_ratio": 1.0
+        },
+        {
+          "assessment_unit": "chunk",
+          "judged_irrelevant_count": 0,
+          "judged_relevant_count": 0,
+          "judgment_coverage": 0.0,
+          "question_id": "synthetic-negative",
+          "retrieved_unique_count": 2,
+          "scope": "explicit relevance judgment coverage; not retrieval quality or answer truth",
+          "unjudged_count": 2,
+          "unjudged_ids": [
+            "synthetic-quarter:p2:w:99a350e4f8d7110e",
+            "synthetic-annual:p2:w:7e807d3055316232"
+          ],
+          "unjudged_ratio": 1.0
+        }
+      ],
+      "scope": "candidate-weighted explicit judgment coverage; not answer accuracy or independence",
+      "unjudged_count": 4,
+      "unjudged_ratio": 1.0
+    }
+  },
+  "limits": {
+    "complete_runtime_dependency_authentication": false,
+    "encoder_runs": 0,
+    "financial_correctness": "unestablished",
+    "generation_runs": 0,
+    "held_out_count": 0,
+    "human_gold_count": 0,
+    "public_API_or_load_acceptance": false
+  },
+  "preserved_failures": [
+    "optional HTTP import in core-only installation",
+    "legacy PyMuPDF alias stdout from core and table parser",
+    "Python stream redirection did not suppress native descriptors",
+    "descriptor redirection did not suppress Windows mixed CRT output"
+  ],
+  "schema_version": 1,
+  "scope": "local Windows/Python 3.13 installed evaluator acceptance over generated PDF text; no CI or native BGE execution claim",
+  "source_modules": {
+    "nvidia_rag/__init__.py": "7813b376c6630a10dbcc47d3aab8391d1d6d352ee33947ac59667907da107ab7",
+    "nvidia_rag/api.py": "47327061c92aa3cc6b8d781bd2913637a2b2efbc12e5bead86826182a84b0fd7",
+    "nvidia_rag/conversation.py": "bb0b745c4afeb204b07959cbba744e71bdf16df0870ca3ae8b483481ea5521ed",
+    "nvidia_rag/core.py": "6eeb587e73a9ceb9fdb39aabf206da98bb2916997a57386cc512dc766ab21cb8",
+    "nvidia_rag/corpus.py": "00fb1c1c3360875fb6d6d1e06040388276eb9672a352d382f7195b81147e8e7f",
+    "nvidia_rag/corpus_embeddings.py": "a340decf0e1435b7ecb5efe21cb6211fc4d5a8e9e71644c6fc403ed460ecdbcb",
+    "nvidia_rag/demo.py": "6e649bde9413d2106569d8bc66abcba190f9cfdbc878f777bfbda0b94e10af8e",
+    "nvidia_rag/embedding_store.py": "7922b538ab9206b8a81670d7f1ee9a49484eb3141bba933c871dc549314075f4",
+    "nvidia_rag/evaluation.py": "ea7090b46edd3a7cb764d4aa27aaae3d72c2d1b70253eb7d2bddc36ed3359da6",
+    "nvidia_rag/evaluation_cli.py": "5eb18bcabf04ad9f09e6d997d8bd49fe4487c2522e8576686b5187b093ba114a",
+    "nvidia_rag/evaluation_inputs.py": "ce3f8caf16339839bf75d2ba704d2aa135f0b855d58165899f23dfe97aa667f8",
+    "nvidia_rag/evaluation_review.py": "0a778c5f6a93d4f64c5c6bc98e8244e1439db368ba0f13c9ecdb70a75af9a537",
+    "nvidia_rag/evaluation_run.py": "7754a46719485f7949a4fbf73e49c37064cd836ea3feb8bdb80e0e2f0df04c97",
+    "nvidia_rag/evaluation_worker.py": "3ff9177a06c93e54ffca7117fd19f5bf4e48d9ebf76f962179644c3736ce8ec4",
+    "nvidia_rag/generation.py": "88deb43dc701c696fffe3b021c7b08a6f0616e5b0539ae6e9d7d86a6f3e7ec44",
+    "nvidia_rag/ingest.py": "6f9e91715a789046c1c7fa827de205948da6cce9e05a3f6e7a1b3d171738838f",
+    "nvidia_rag/period_routing.py": "a11dcbe99ecb1e5a5bdacf543b21ec222c9ee41886692b4086aa103c3337ec9f",
+    "nvidia_rag/prompt.py": "decf5efa0dde13c5c5c5cdb7ed78d85c663057aa5d3d86a7ae2e1017807d3f8e",
+    "nvidia_rag/retrieval.py": "c887abb2b2d8eed620738f084f4a73d0b4a37f00448684aef09f1cb08ed9fbec",
+    "nvidia_rag/runtime.py": "5ce51e35657e7f79b4a74ee136c6b6ec99e4136238acc59dd78a7d95c3c7268a",
+    "nvidia_rag/service.py": "afe876f279080d8b74774a59b286c8d8847dab75be0472a33771ffbddddc218e",
+    "nvidia_rag/serving.py": "8ccc41dc79c5a04c8fc876b1851fae123247af0229171c0e1626e641f5fb1444",
+    "nvidia_rag/source_passages.py": "47be444c491ee8a794f5bec243f143a0df9949aba85636daf106e2bbc59c7be3",
+    "nvidia_rag/sources.py": "4007e680e42a4df0a5f71f27094073686d3eebe94f8d61552e2c0f088fec1d2a",
+    "nvidia_rag/statement_api.py": "a8f625a8b5889dd137952712f1dcb46f0ac7367d6482421f34224faf45885973",
+    "nvidia_rag/statement_fields.py": "735c84640e19dccc56971d6884193f850c8f1b8543f0684f5bf5b10b1eb72900",
+    "nvidia_rag/statement_fields_api.py": "b66dd913444fab31788974cf69a59c13998162651b13dc158b770cd0f9962831",
+    "nvidia_rag/statement_startup.py": "cd753c20f8f0f10148dc0827987a84476deb7c1a6ee9bc27b5f13e1bd529cfe7",
+    "nvidia_rag/structured_income.py": "c26c829b763ea196fc40d8384b4c93837ef2f8716585c5f066ab8e2ab47ddad8",
+    "nvidia_rag/table_structure.py": "38b1da557317c378962b005c1b76d0e86c96a11dbb8fbbc7eceb657e4c79df1c"
+  },
+  "wheel": {
+    "module_count": 30,
+    "record_rows": 37,
+    "source_wheel_installed_modules_equal": true,
+    "wheel_bytes": 163523,
+    "wheel_sha256": "8478698a6c14cf014f8fc0f0d052e4482e6ebc3b7311c38f42d010b48d32dd7e"
+  }
+}

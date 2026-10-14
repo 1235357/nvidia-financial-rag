@@ -14,7 +14,7 @@ from hashlib import sha256
 from pathlib import Path
 from typing import Sequence
 
-import fitz
+import pymupdf as fitz
 
 from .core import Chunk
 

@@ -68,6 +68,8 @@ jobs:
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -I -B (Join-Path $workspace 'acceptance/serving_startup.py') --wheel $wheel.FullName --output (Join-Path $workspace 'installed-serving-startup.json')
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
+            & $consumerPython -I -B (Join-Path $workspace 'acceptance/evaluation_consumer.py') --wheel $wheel.FullName --output (Join-Path $workspace 'installed-evaluation-consumer.json')
+            if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -m pip check
             if ($LASTEXITCODE) { exit $LASTEXITCODE }
             & $consumerPython -m pip freeze | Set-Content -LiteralPath (Join-Path $workspace 'resolved-api.txt')
@@ -82,6 +84,7 @@ jobs:
             installed-statement-contract.json
             installed-statement-fields-contract.json
             installed-serving-startup.json
+            installed-evaluation-consumer.json
             resolved-api.txt
           retention-days: 14
 

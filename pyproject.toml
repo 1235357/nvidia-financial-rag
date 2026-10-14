@@ -35,6 +35,7 @@ Repository = "https://github.com/1235357/nvidia-financial-rag"
 
 [project.scripts]
 nvidia-rag-serve-corpus = "nvidia_rag.serving:main"
+nvidia-rag-evaluate = "nvidia_rag.evaluation_cli:main"
 
 [tool.setuptools]
 include-package-data = false

@@ -12,7 +12,7 @@ from .core import Chunk
 from .retrieval import DenseRetriever, FiscalYearRoutingRetriever, TaskSourceRetriever
 from .period_routing import ReportCatalog, SourceBoundPeriodRetriever, validate_report_catalog
 from .sources import SourceRecord
-from .service import EvidenceService
+from .service import EvidenceService, Retriever
 
 BGE_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 BGE_MODEL_REVISION = "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a"
@@ -23,19 +23,21 @@ class EmbeddingModel(Protocol):
     def encode(self, texts: Sequence[str], **kwargs): ...
 
 
-def build_bge_service(
+def build_bge_retriever(
     *,
     chunks: Sequence[Chunk],
     model: EmbeddingModel,
-    threshold: float,
-    top_k: int,
     route_fiscal_year: bool = False,
     passage_embeddings: Sequence[Sequence[float]] | np.ndarray | None = None,
     source_task: str | None = None,
     source_records: list[SourceRecord] | None = None,
     report_catalog: ReportCatalog | None = None,
-) -> EvidenceService:
-    """Wire BGE's passage/query conventions into the generic dense retriever."""
+) -> Retriever:
+    """Build the shared BGE ranking boundary before any evidence gate.
+
+    Evaluation consumes these complete ranked candidates. The HTTP application
+    applies its independent threshold and query validation in EvidenceService.
+    """
 
     if source_task is not None and (route_fiscal_year or report_catalog is not None):
         raise ValueError('source task cannot be combined with automatic report routing')
@@ -87,8 +89,27 @@ def build_bge_service(
         )
     else:
         retriever = dense_retriever
+    return retriever
+
+
+def build_bge_service(
+    *,
+    chunks: Sequence[Chunk],
+    model: EmbeddingModel,
+    threshold: float,
+    top_k: int,
+    route_fiscal_year: bool = False,
+    passage_embeddings: Sequence[Sequence[float]] | np.ndarray | None = None,
+    source_task: str | None = None,
+    source_records: list[SourceRecord] | None = None,
+    report_catalog: ReportCatalog | None = None,
+) -> EvidenceService:
+    """Compose the shared BGE retriever with the application's evidence gate."""
     return EvidenceService(
-        retriever=retriever,
-        threshold=threshold,
-        top_k=top_k,
+        retriever=build_bge_retriever(
+            chunks=chunks, model=model, route_fiscal_year=route_fiscal_year,
+            passage_embeddings=passage_embeddings, source_task=source_task,
+            source_records=source_records, report_catalog=report_catalog,
+        ),
+        threshold=threshold, top_k=top_k,
     )

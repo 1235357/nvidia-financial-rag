@@ -145,6 +145,14 @@ For a collaborator's fresh checkout, clone `main`, install the chosen extras and
 
 ## Source review and evaluation boundaries
 
+The installed [`nvidia-rag-evaluate` command](docs/retrieval-evaluation-runner.md)
+executes a frozen lexical or explicitly prepared cached-BGE retrieval run,
+retains complete ordered source candidates and input identities, and imports a
+separate result-bound relevance review. Unknown judgments remain unjudged;
+generation and financial correctness remain separate. The command's generated
+PDF acceptance fixture checks installation and artifact consistency, with no
+human gold, held-out financial score or model execution claim.
+
 The [source-field passage guide](docs/source-field-passages.md) builds a separate
 typed sidecar from registered original PDFs and explicit fiscal declarations.
 Each record keeps its native row, date, duration, unit and source boxes; a fresh

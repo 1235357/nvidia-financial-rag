@@ -13,7 +13,7 @@ from time import perf_counter
 from typing import Protocol, Sequence
 
 from .core import ScoredChunk, build_grounded_context, select_evidence
-from .generation import build_grounded_prompt
+from .prompt import build_grounded_prompt
 
 
 def summarize_judgment_coverage(

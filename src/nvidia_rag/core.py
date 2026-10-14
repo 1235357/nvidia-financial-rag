@@ -9,7 +9,7 @@ import re
 import math
 from typing import Iterable, Literal, Sequence
 
-import fitz
+import pymupdf as fitz
 import tiktoken
 
 
