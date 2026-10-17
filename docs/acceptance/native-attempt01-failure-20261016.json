@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "attempt_id": "native01",
+  "observation_date_local": "2026-10-16",
+  "timezone": "America/Chicago",
+  "status": "failed-native-attempt",
+  "publication_scope": "Sanitized summary derived from retained local records; raw private experiment files are not published here.",
+  "process_binding": {
+    "controller_pid": 44108,
+    "owned_launcher_root_pid": 55420,
+    "child_writer_pid": 85456,
+    "child_writer_parent_pid": 55420,
+    "frozen_rule": "writer PID equals owned root PID, writer parent PID equals controller PID",
+    "observed_result": "both equalities fail",
+    "independent_kernel_child_image_creation_and_job_binding_retained": false,
+    "third_process_identity": "unknown",
+    "remaining_member_identity": "unknown"
+  },
+  "cleanup": {
+    "returncode": 0,
+    "timed_out": false,
+    "root_exited_before_cleanup": true,
+    "job_total_processes": 3,
+    "job_active_processes_before_termination": 1,
+    "cleanup_termination_requested": true,
+    "job_active_processes_after_cleanup": 0,
+    "pipes_drained": true,
+    "cleanup_verified": true
+  },
+  "cleanup_interpretation": "Forced containment reached zero and EOF. A separate natural grace was not demonstrated. Forced cleanup is incompatible with the frozen graceful-completion predicate.",
+  "parent_gates": {
+    "completed_graph_reached": false,
+    "completion_validation_reached": false,
+    "outer_terminal_final_exit_code_observed": false
+  },
+  "retained_child_observations": {
+    "model_constructor_entries": 1,
+    "model_constructor_returns": 1,
+    "encode_entries": 3,
+    "encode_returns": 3,
+    "query_count": 3,
+    "candidate_slots": 15,
+    "judged_candidates": 0,
+    "candidate_judgments": "all null",
+    "generation_runs": 0,
+    "human_gold_count": 0,
+    "held_out_count": 0
+  },
+  "financial_correctness": "unestablished",
+  "automatic_retry": false,
+  "source_artifact_identities": [
+    {
+      "artifact": "protocol-final-01.json",
+      "bytes": 29852,
+      "sha256": "de83c3cf897cd760ac6f0ff3513b7d8cef2f22fdcec2d07e5cd15e3a90d12e78"
+    },
+    {
+      "artifact": "attempt-01/parent-start.json",
+      "bytes": 1054,
+      "sha256": "e4838b92493e4ab9da13dbe28add90a2b07b2258144ab4aa094fc1e2b5b31c63"
+    },
+    {
+      "artifact": "attempt-01/parent-final.json",
+      "bytes": 796,
+      "sha256": "51972eea7dfd5d9d2e52e65634a97e22774fe2c67c5670d8ddbff8b913470846"
+    },
+    {
+      "artifact": "attempt-01/child-start.json",
+      "bytes": 315,
+      "sha256": "40af745b90ceda9a8623ebf40748bf8b417b73650f53486c567c3b9af0da2635"
+    },
+    {
+      "artifact": "attempt-01/child-final.json",
+      "bytes": 6199,
+      "sha256": "a767fad05cbb6dcc1f6d4f72522a22cb38f91cd5dc8817205f655b6a03d7c6eb"
+    },
+    {
+      "artifact": "attempt-01/process.json",
+      "bytes": 404,
+      "sha256": "fba380439eee8e0f5504d9bd6f6c146374e270be7882a430caa772c25198e76c"
+    },
+    {
+      "artifact": "native-attempt01-independent-diagnosis-20261016.md",
+      "bytes": 27214,
+      "sha256": "812652d330c6c67eaf97213ddc2f8729bca7bfb8c0895378a4fef054fca79fc9"
+    },
+    {
+      "artifact": "native-attempt01-root-disposition-20261016.json",
+      "bytes": 6625,
+      "sha256": "4cda6fbbc4c3ba43ee450f2c339acccc3b32a07748d0fce63e24b0c16ffbbb10"
+    }
+  ],
+  "limits": [
+    "This summary preserves a failed owning attempt; it does not accept the child result as a successful native run.",
+    "Local launcher metadata supports an intermediary explanation; missing historical kernel child/third-member identity is not reconstructed.",
+    "Source hashes bind named local records; they are not whole-runtime authentication or public copies of those records.",
+    "The exposed development questions are not an independent financial benchmark.",
+    "No model, PDF parser, controller or cleanup was run to publish this summary."
+  ]
+}
