@@ -159,6 +159,34 @@ def parse_literal_period_scope(query: str) -> LiteralPeriodScope:
     _require(type(query) is str and 0 < len(query) <= 4000 and bool(query.strip()), 'invalid routing query')
     years, quarters, dates, durations, issues = set(), set(), set(), set(), set()
     scoped = False
+    # Reject malformed numeric period tokens before the bounded grammar can
+    # consume a valid-looking suffix/prefix (Q2.5 -> Q2, -3 months -> 3).
+    # A dot ending a sentence is allowed; a decimal or slash operand is not.
+    # Keep the compact FY2025Q2 spelling and ordinary Q-prefixed prose intact.
+    mantissa = r'(?:\d+(?:\.\d*)?|\.\d+)'
+    exponent = r'[eE][+\-\u2212]?\d+'
+    unsigned_number = mantissa + '(?:' + exponent + ')?'
+    signed_number = r'[+\-\u2212]\s*' + unsigned_number
+    decimal_number = r'(?:\d+\.\d+|\.\d+)'
+    exponent_number = mantissa + exponent
+    slash_operand = unsigned_number + r'(?:st|nd|rd|th)?'
+    slash_number = slash_operand + r'\s*/\s*(?:Q\s*)?[+\-\u2212]?\s*' + slash_operand
+    invalid_number = '(?:' + '|'.join((signed_number, decimal_number, slash_number, exponent_number)) + ')'
+    # Before an explicit unit, even a trailing decimal dot is malformed.
+    # Do not exclude punctuation/letters before a sign: the existing grammar
+    # can consume its unsigned suffix there (income.-3 months, 1e-3 months).
+    # Unsigned starts inside a digit run are redundant and cause quadratic
+    # rescanning. Signs remain unrestricted so punctuation cannot hide them.
+    invalid_unit_number = '(?:' + signed_number + r'|(?<!\d)(?:' + '|'.join((
+        r'(?:\d+\.\d*|\.\d+)', slash_number, exponent_number)) + '))'
+    invalid_numeric_periods = (
+        r'(?<![A-Za-z])Q\s*' + invalid_number,
+        invalid_unit_number + r'(?:st|nd|rd|th)?[-\s]+quarter\b',
+        invalid_unit_number + r'[-\s]+months?\b',
+    )
+    if any(re.search(pattern, query, re.I) for pattern in invalid_numeric_periods):
+        scoped = True
+        issues.add('INVALID_PERIOD_LITERAL')
     fiscal_spans = []
     for match in re.finditer(r'\b(?:fiscal(?:\s+year)?\s*|FY\s*)(\d+)(?=Q\d|\b)', query, re.I):
         scoped = True
